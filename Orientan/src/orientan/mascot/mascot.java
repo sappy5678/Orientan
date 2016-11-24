@@ -29,7 +29,7 @@ import javafx.util.Duration;
  * @author zp
  */
 public class mascot {
-    double deltaX=-20;
+    double deltaX=-10;
     public mascot() {
 
         javafx.scene.control.Button btn = new javafx.scene.control.Button();
@@ -44,7 +44,7 @@ public class mascot {
         /**/
         //設定透明顯示視窗
         //stage透明化
-        Stage mascotStage = new Stage();       
+        Stage mascotStage = new Stage();     
         mascotStage.setAlwaysOnTop(true);   //讓其永遠在最上層
         mascotStage.initStyle(StageStyle.TRANSPARENT);
         AnchorPane root = new AnchorPane();
@@ -63,15 +63,21 @@ public class mascot {
         Image image3 = new Image(new File(System.getProperty("user.dir") + "\\img\\shime3.png").toURI().toString());
         ImageView imageView = new ImageView();
          //取得螢幕框架
-        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();/*
+        stage2.setX(primScreenBounds.getMinX());
+        stage2.setY(primScreenBounds.getMinY());
+        stage2.setWidth(primScreenBounds.getWidth());
+        stage2.setHeight(primScreenBounds.getHeight());
+        stage2.show();*/
         //設定視窗初始位置
-        mascotStage.setY(primScreenBounds.getMaxY()-140);
-        mascotStage.setX(primScreenBounds.getMaxX()-100);
+        mascotStage.setY(primScreenBounds.getMaxY()-image1.getHeight());
+        mascotStage.setX(primScreenBounds.getMaxX()-image1.getWidth()-1);
         //事件監聽  
         EventHandler onFinished = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent t) {
                 //如果超出左右邊界，就變換前進方向與圖片翻轉
-                if(mascotStage.getX()<=-20||mascotStage.getX()>=primScreenBounds.getWidth())
+                //if(mascotStage.getX()<=-20||mascotStage.getX()>=primScreenBounds.getWidth())
+                if(mascotStage.getX()<= primScreenBounds.getMinX()||mascotStage.getX()>=primScreenBounds.getWidth()-image1.getWidth())
                 {
                     deltaX=deltaX * (-1);
                     imageView.setRotationAxis(Rotate.Y_AXIS);
@@ -87,13 +93,13 @@ public class mascot {
         KeyFrame start;
         KeyFrame end;
         Timeline timeline = new Timeline(
-                new KeyFrame(Duration.ZERO, new KeyValue(imageView.imageProperty(), image2)),
+                new KeyFrame(Duration.ZERO, onFinished, new KeyValue(imageView.imageProperty(), image1)),
                 //new KeyFrame(Duration.seconds(0.5), new KeyValue(imageView.imageProperty(), image1)),
-                new KeyFrame(Duration.seconds(0.5), onFinished, new KeyValue(imageView.imageProperty(), image1)),
-                new KeyFrame(Duration.seconds(1), new KeyValue(imageView.imageProperty(), image3)),
-                new KeyFrame(Duration.seconds(1.5), onFinished, new KeyValue(imageView.imageProperty(), image1)),
+                new KeyFrame(Duration.seconds(0.4), onFinished, new KeyValue(imageView.imageProperty(), image2)),
+                new KeyFrame(Duration.seconds(0.8), onFinished, new KeyValue(imageView.imageProperty(), image1)),
+                new KeyFrame(Duration.seconds(1.2), onFinished, new KeyValue(imageView.imageProperty(), image3)),
                 //下面這行是給不斷循環的時間軸在下一次循環的緩衝，如果刪掉的話，這個最後一個影格會因為太快而看不到
-                new KeyFrame(Duration.seconds(2), new KeyValue(imageView.imageProperty(), image1))
+                new KeyFrame(Duration.seconds(1.6), new KeyValue(imageView.imageProperty(), image3))
         );
        
         

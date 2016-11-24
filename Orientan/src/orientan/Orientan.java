@@ -6,6 +6,7 @@
 package orientan;
 
 import java.awt.AWTException;
+import java.awt.Button;
 import java.awt.PopupMenu;
 import java.awt.SystemTray;
 import java.awt.Toolkit;
@@ -26,7 +27,10 @@ import java.util.ResourceBundle;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
+import javafx.event.EventHandler;
+import javafx.scene.layout.AnchorPane;
 import org.controlsfx.control.*;
+import orientan.mascot.mascot;
 
 /**
  *
@@ -38,7 +42,7 @@ public class Orientan extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("OrientanFXMLDocument.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("OrientanFXMLDocument.fxml"));
 
         // set log type
         // 設定log的類別
@@ -47,12 +51,27 @@ public class Orientan extends Application {
         // get config in orientan 
         //  取得設定檔 在  orientan 底下
         properties = getConfig();
-
-        Scene scene = new Scene(root);
         setIcon(stage);
-        stage.initStyle(StageStyle.UTILITY);
-        stage.setScene(scene);
-        stage.show();
+      /**/
+      
+        mascot m=new mascot();
+        /*
+        //Image image =new Image("user.dir/img/shime1.png");
+        //ImageView iv1=new ImageView();
+        //iv1.setImage(image);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
+        StackPane root = new StackPane();
+        //設定root顏色
+        root.getChildren().add(btn);
+        root.setStyle("-fx-background:transparent;");
+        //設定scene顏色與大小
+        Scene scene = new Scene(root, 300, 250);
+        scene.setFill(null);
+        //連結在一起並且顯示出來
+        primaryStage.setTitle("Hello World!");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+        */
         Notifications.create().title("Orientan Status").text("Orientan Start to Run").showInformation();
     }
 

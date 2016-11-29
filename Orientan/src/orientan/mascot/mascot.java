@@ -6,6 +6,7 @@
 package orientan.mascot;
 
 import java.io.File;
+import java.util.ArrayList;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -23,15 +24,21 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import orientan.config.Action;
+import orientan.config.loadconfig;
 
 /**
  *
  * @author zp
  */
 public class mascot {
-    double deltaX=-10;
-    public mascot() {
 
+    double deltaX = -10;
+
+    public mascot(loadconfig actionConfig) {
+        Action Walk = actionConfig.getData("Walk", "Move");
+        //deltaX=Walk.getAnimation().get(0).getVelocity();
+        /*按鈕測試
         javafx.scene.control.Button btn = new javafx.scene.control.Button();
         btn.setText("Say 'Hello World'");
         btn.setOnAction(new EventHandler<javafx.event.ActionEvent>() {
@@ -41,10 +48,11 @@ public class mascot {
                 System.out.println("Hello World!");
             }
         });
-        /**/
+         */
+ /**/
         //設定透明顯示視窗
         //stage透明化
-        Stage mascotStage = new Stage();     
+        Stage mascotStage = new Stage();
         mascotStage.setAlwaysOnTop(true);   //讓其永遠在最上層
         mascotStage.initStyle(StageStyle.TRANSPARENT);
         AnchorPane root = new AnchorPane();
@@ -54,7 +62,7 @@ public class mascot {
         //設定scene顏色與大小
         Scene scene = new Scene(root);
         scene.setFill(null);
-        
+
         mascotStage.setScene(scene);
         mascotStage.show();
         //配置動畫圖片  
@@ -62,7 +70,7 @@ public class mascot {
         Image image2 = new Image(new File(System.getProperty("user.dir") + "\\img\\shime2.png").toURI().toString());
         Image image3 = new Image(new File(System.getProperty("user.dir") + "\\img\\shime3.png").toURI().toString());
         ImageView imageView = new ImageView();
-         //取得螢幕框架
+        //取得螢幕框架
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();/*
         stage2.setX(primScreenBounds.getMinX());
         stage2.setY(primScreenBounds.getMinY());
@@ -70,26 +78,27 @@ public class mascot {
         stage2.setHeight(primScreenBounds.getHeight());
         stage2.show();*/
         //設定視窗初始位置
-        mascotStage.setY(primScreenBounds.getMaxY()-image1.getHeight());
-        mascotStage.setX(primScreenBounds.getMaxX()-image1.getWidth()-1);
+        mascotStage.setY(primScreenBounds.getMaxY() - image1.getHeight());
+        mascotStage.setX(primScreenBounds.getMaxX() - image1.getWidth() - 1);
         //事件監聽  
         EventHandler onFinished = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent t) {
                 //如果超出左右邊界，就變換前進方向與圖片翻轉
                 //if(mascotStage.getX()<=-20||mascotStage.getX()>=primScreenBounds.getWidth())
-                if(mascotStage.getX()<= primScreenBounds.getMinX()||mascotStage.getX()>=primScreenBounds.getWidth()-image1.getWidth())
-                {
-                    deltaX=deltaX * (-1);
+                if (mascotStage.getX() <= primScreenBounds.getMinX() || mascotStage.getX() >= primScreenBounds.getWidth() - image1.getWidth()) {
+                    deltaX = deltaX * (-1);
                     imageView.setRotationAxis(Rotate.Y_AXIS);
-                    if(deltaX>0)
+                    if (deltaX > 0) {
                         imageView.setRotate(180);
-                    else
+                    } else {
                         imageView.setRotate(0);
+                    }
                 }
-                mascotStage.setX((mascotStage.getX() +deltaX));
+                mascotStage.setX((mascotStage.getX() + deltaX));
             }
         };
         //設定時間軸
+        /*
         KeyFrame start;
         KeyFrame end;
         Timeline timeline = new Timeline(
@@ -100,9 +109,26 @@ public class mascot {
                 new KeyFrame(Duration.seconds(1.2), onFinished, new KeyValue(imageView.imageProperty(), image3)),
                 //下面這行是給不斷循環的時間軸在下一次循環的緩衝，如果刪掉的話，這個最後一個影格會因為太快而看不到
                 new KeyFrame(Duration.seconds(1.6), new KeyValue(imageView.imageProperty(), image3))
-        );
-       
-        
+        );*/
+        Timeline timeline = new Timeline();   
+        ArrayList<Image> image = new ArrayList<Image>();
+        double time = 0;
+        double duration = Walk.getAnimation().get(0).getDuration() / 10;
+        for (int i = 0; i < Walk.getAnimation().size(); i++) {
+            //image.add(new Image(new File(System.getProperty("user.dir") + "\\img" + Walk.getAnimation().get(i).getImage()).toURI().toString()));
+            image.add(new Image(new File(System.getProperty("user.dir") + "\\img" + Walk.getAnimation().get(i).getImage()).toURI().toString()));
+        }
+        for (int i = 0; i < Walk.getAnimation().size(); i++) {
+            if (i == 0) {
+                timeline.getKeyFrames().add(new KeyFrame(Duration.ZERO, onFinished, new KeyValue(imageView.imageProperty(), image.get(i))));
+                continue;
+            }
+            timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(time = time + (double)Walk.getAnimation().get(i-1).getDuration() / 10), onFinished, new KeyValue(imageView.imageProperty(), image.get(i))));
+            if (i == Walk.getAnimation().size()-1) {
+                timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(time = time + (double)Walk.getAnimation().get(i).getDuration() / 10), new KeyValue(imageView.imageProperty(), image.get(i))));
+            }
+        }
+
         root.getChildren().add(imageView);
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();

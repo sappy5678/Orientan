@@ -30,6 +30,7 @@ import java.util.logging.SimpleFormatter;
 import javafx.event.EventHandler;
 import javafx.scene.layout.AnchorPane;
 import org.controlsfx.control.*;
+import orientan.config.loadconfig;
 import orientan.mascot.mascot;
 
 /**
@@ -52,26 +53,11 @@ public class Orientan extends Application {
         //  取得設定檔 在  orientan 底下
         properties = getConfig();
         setIcon(stage);
+        //取得動作設定檔(actions)
+        loadconfig config=new loadconfig("actions");
       /**/
       
-        mascot m=new mascot();
-        /*
-        //Image image =new Image("user.dir/img/shime1.png");
-        //ImageView iv1=new ImageView();
-        //iv1.setImage(image);
-        primaryStage.initStyle(StageStyle.TRANSPARENT);
-        StackPane root = new StackPane();
-        //設定root顏色
-        root.getChildren().add(btn);
-        root.setStyle("-fx-background:transparent;");
-        //設定scene顏色與大小
-        Scene scene = new Scene(root, 300, 250);
-        scene.setFill(null);
-        //連結在一起並且顯示出來
-        primaryStage.setTitle("Hello World!");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        */
+        mascot m=new mascot(config);
         Notifications.create().title("Orientan Status").text("Orientan Start to Run").showInformation();
     }
 

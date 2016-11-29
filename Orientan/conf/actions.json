@@ -1,0 +1,2134 @@
+{"Mascot": {
+"xmlns": "http://www.group-finity.com/Mascot",
+"xsi:schemaLocation": "http://www.group-finity.com/Mascot Mascot.xsd",
+"xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+"ActionList": [
+{"Action": [
+{
+"Type": "Embedded",
+"Class": "com.group_finity.mascot.action.Look",
+"Name": "Look"
+},
+{
+"Type": "Embedded",
+"Class": "com.group_finity.mascot.action.Offset",
+"Name": "Offset"
+},
+{
+"Type": "Stay",
+"Animation": {"Pose": {
+"ImageAnchor": "64,128",
+"Duration": 250,
+"Image": "/shime1.png",
+"Velocity": "0,0"
+}},
+"BorderType": "Floor",
+"Name": "Stand"
+},
+{
+"Type": "Move",
+"Animation": {"Pose": [
+{
+"ImageAnchor": "64,128",
+"Duration": 6,
+"Image": "/shime1.png",
+"Velocity": "-2,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 6,
+"Image": "/shime2.png",
+"Velocity": "-2,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 6,
+"Image": "/shime1.png",
+"Velocity": "-2,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 6,
+"Image": "/shime3.png",
+"Velocity": "-2,0"
+}
+]},
+"BorderType": "Floor",
+"Name": "Walk"
+},
+{
+"Type": "Move",
+"Animation": {"Pose": [
+{
+"ImageAnchor": "64,128",
+"Duration": 2,
+"Image": "/shime1.png",
+"Velocity": "-4,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 2,
+"Image": "/shime2.png",
+"Velocity": "-4,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 2,
+"Image": "/shime1.png",
+"Velocity": "-4,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 2,
+"Image": "/shime3.png",
+"Velocity": "-4,0"
+}
+]},
+"BorderType": "Floor",
+"Name": "Run"
+},
+{
+"Type": "Move",
+"Animation": {"Pose": [
+{
+"ImageAnchor": "64,128",
+"Duration": 2,
+"Image": "/shime1.png",
+"Velocity": "-8,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 2,
+"Image": "/shime2.png",
+"Velocity": "-8,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 2,
+"Image": "/shime1.png",
+"Velocity": "-8,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 2,
+"Image": "/shime3.png",
+"Velocity": "-8,0"
+}
+]},
+"BorderType": "Floor",
+"Name": "Dash"
+},
+{
+"Type": "Stay",
+"Animation": {"Pose": {
+"ImageAnchor": "64,128",
+"Duration": 250,
+"Image": "/shime11.png",
+"Velocity": "0,0"
+}},
+"BorderType": "Floor",
+"Name": "Sit"
+},
+{
+"Type": "Stay",
+"Animation": {"Pose": {
+"ImageAnchor": "64,128",
+"Duration": 250,
+"Image": "/shime26.png",
+"Velocity": "0,0"
+}},
+"BorderType": "Floor",
+"Name": "SitAndLookUp"
+},
+{
+"Type": "Stay",
+"Animation": [
+{
+"Condition": "#{mascot.environment.cursor.y < mascot.environment.screen.height/2}",
+"Pose": {
+"ImageAnchor": "64,128",
+"Duration": 250,
+"Image": "/shime26.png",
+"Velocity": "0,0"
+}
+},
+{"Pose": {
+"ImageAnchor": "64,128",
+"Duration": 250,
+"Image": "/shime11.png",
+"Velocity": "0,0"
+}}
+],
+"BorderType": "Floor",
+"Name": "SitAndLookAtMouse"
+},
+{
+"Type": "Animate",
+"Animation": {"Pose": [
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime26.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime15.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime27.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime16.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime28.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime17.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime29.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime11.png",
+"Velocity": "0,0"
+}
+]},
+"BorderType": "Floor",
+"Name": "SitAndSpinHeadAction"
+},
+{
+"Type": "Stay",
+"Animation": {"Pose": {
+"ImageAnchor": "64,112",
+"Duration": 250,
+"Image": "/shime30.png",
+"Velocity": "0,0"
+}},
+"BorderType": "Floor",
+"Name": "SitWithLegsUp"
+},
+{
+"Type": "Stay",
+"Animation": {"Pose": {
+"ImageAnchor": "64,112",
+"Duration": 250,
+"Image": "/shime31.png",
+"Velocity": "0,0"
+}},
+"BorderType": "Floor",
+"Name": "SitWithLegsDown"
+},
+{
+"Type": "Stay",
+"Animation": {"Pose": [
+{
+"ImageAnchor": "64,112",
+"Duration": 5,
+"Image": "/shime31.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,112",
+"Duration": 15,
+"Image": "/shime32.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,112",
+"Duration": 5,
+"Image": "/shime31.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,112",
+"Duration": 15,
+"Image": "/shime33.png",
+"Velocity": "0,0"
+}
+]},
+"BorderType": "Floor",
+"Name": "SitAndDangleLegs"
+},
+{
+"Type": "Stay",
+"Animation": {"Pose": {
+"ImageAnchor": "64,128",
+"Duration": 250,
+"Image": "/shime21.png",
+"Velocity": "0,0"
+}},
+"BorderType": "Floor",
+"Name": "Sprawl"
+},
+{
+"Type": "Move",
+"Animation": {"Pose": [
+{
+"ImageAnchor": "64,128",
+"Duration": 28,
+"Image": "/shime20.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 4,
+"Image": "/shime20.png",
+"Velocity": "-2,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 4,
+"Image": "/shime21.png",
+"Velocity": "-2,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 4,
+"Image": "/shime21.png",
+"Velocity": "-1,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 24,
+"Image": "/shime21.png",
+"Velocity": "0,0"
+}
+]},
+"BorderType": "Floor",
+"Name": "Creep"
+},
+{
+"Type": "Stay",
+"Animation": {"Pose": {
+"ImageAnchor": "64,48",
+"Duration": 250,
+"Image": "/shime23.png",
+"Velocity": "0,0"
+}},
+"BorderType": "Ceiling",
+"Name": "GrabCeiling"
+},
+{
+"Type": "Move",
+"Animation": {"Pose": [
+{
+"ImageAnchor": "64,48",
+"Duration": 16,
+"Image": "/shime25.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,48",
+"Duration": 4,
+"Image": "/shime25.png",
+"Velocity": "-1,0"
+},
+{
+"ImageAnchor": "64,48",
+"Duration": 4,
+"Image": "/shime23.png",
+"Velocity": "-1,0"
+},
+{
+"ImageAnchor": "64,48",
+"Duration": 4,
+"Image": "/shime24.png",
+"Velocity": "-1,0"
+},
+{
+"ImageAnchor": "64,48",
+"Duration": 16,
+"Image": "/shime24.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,48",
+"Duration": 4,
+"Image": "/shime24.png",
+"Velocity": "-2,0"
+},
+{
+"ImageAnchor": "64,48",
+"Duration": 4,
+"Image": "/shime23.png",
+"Velocity": "-2,0"
+},
+{
+"ImageAnchor": "64,48",
+"Duration": 4,
+"Image": "/shime25.png",
+"Velocity": "-2,0"
+}
+]},
+"BorderType": "Ceiling",
+"Name": "ClimbCeiling"
+},
+{
+"Type": "Stay",
+"Animation": {"Pose": {
+"ImageAnchor": "64,128",
+"Duration": 250,
+"Image": "/shime13.png",
+"Velocity": "0,0"
+}},
+"BorderType": "Wall",
+"Name": "GrabWall"
+},
+{
+"Type": "Move",
+"Animation": [
+{
+"Condition": "#{TargetY < mascot.anchor.y}",
+"Pose": [
+{
+"ImageAnchor": "64,128",
+"Duration": 16,
+"Image": "/shime14.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 4,
+"Image": "/shime14.png",
+"Velocity": "0,-1"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 4,
+"Image": "/shime12.png",
+"Velocity": "0,-1"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 4,
+"Image": "/shime13.png",
+"Velocity": "0,-1"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 16,
+"Image": "/shime13.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 4,
+"Image": "/shime13.png",
+"Velocity": "0,-2"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 4,
+"Image": "/shime12.png",
+"Velocity": "0,-2"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 4,
+"Image": "/shime14.png",
+"Velocity": "0,-2"
+}
+]
+},
+{
+"Condition": "#{TargetY >= mascot.anchor.y}",
+"Pose": [
+{
+"ImageAnchor": "64,128",
+"Duration": 16,
+"Image": "/shime14.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 4,
+"Image": "/shime14.png",
+"Velocity": "0,2"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 4,
+"Image": "/shime12.png",
+"Velocity": "0,2"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 4,
+"Image": "/shime13.png",
+"Velocity": "0,2"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 16,
+"Image": "/shime13.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 4,
+"Image": "/shime13.png",
+"Velocity": "0,1"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 4,
+"Image": "/shime12.png",
+"Velocity": "0,1"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 4,
+"Image": "/shime14.png",
+"Velocity": "0,1"
+}
+]
+}
+],
+"BorderType": "Wall",
+"Name": "ClimbWall"
+},
+{
+"IeOffsetX": 0,
+"Type": "Embedded",
+"IeOffsetY": -64,
+"Animation": {"Pose": {
+"ImageAnchor": "64,128",
+"Duration": 250,
+"Image": "/shime36.png",
+"Velocity": "0,0"
+}},
+"Class": "com.group_finity.mascot.action.FallWithIE",
+"Name": "FallWithIe"
+},
+{
+"IeOffsetX": 0,
+"Type": "Embedded",
+"IeOffsetY": -64,
+"Animation": {"Pose": [
+{
+"ImageAnchor": "64,128",
+"Duration": 6,
+"Image": "/shime34.png",
+"Velocity": "-2,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 6,
+"Image": "/shime35.png",
+"Velocity": "-2,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 6,
+"Image": "/shime34.png",
+"Velocity": "-2,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 6,
+"Image": "/shime36.png",
+"Velocity": "-2,0"
+}
+]},
+"Class": "com.group_finity.mascot.action.WalkWithIE",
+"BorderType": "Floor",
+"Name": "WalkWithIe"
+},
+{
+"IeOffsetX": 0,
+"Type": "Embedded",
+"IeOffsetY": -64,
+"Animation": {"Pose": [
+{
+"ImageAnchor": "64,128",
+"Duration": 2,
+"Image": "/shime34.png",
+"Velocity": "-8,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 2,
+"Image": "/shime35.png",
+"Velocity": "-8,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 2,
+"Image": "/shime34.png",
+"Velocity": "-8,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 2,
+"Image": "/shime36.png",
+"Velocity": "-8,0"
+}
+]},
+"Class": "com.group_finity.mascot.action.WalkWithIE",
+"BorderType": "Floor",
+"Name": "RunWithIe"
+},
+{
+"Type": "Embedded",
+"Animation": {"Pose": {
+"ImageAnchor": "64,128",
+"Duration": 40,
+"Image": "/shime37.png",
+"Velocity": "0,0"
+}},
+"Class": "com.group_finity.mascot.action.ThrowIE",
+"InitialVX": 32,
+"InitialVY": -10,
+"BorderType": "Floor",
+"Name": "ThrowIe",
+"Gravity": 0.5
+},
+{
+"Type": "Embedded",
+"VelocityParam": 20,
+"Animation": {"Pose": {
+"ImageAnchor": "64,128",
+"Duration": 250,
+"Image": "/shime22.png",
+"Velocity": "0,0"
+}},
+"Class": "com.group_finity.mascot.action.Jump",
+"Name": "Jumping"
+},
+{
+"Type": "Embedded",
+"Animation": {"Pose": {
+"ImageAnchor": "64,128",
+"Duration": 250,
+"Image": "/shime4.png",
+"Velocity": "0,0"
+}},
+"Class": "com.group_finity.mascot.action.Fall",
+"RegistanceX": 0.05,
+"RegistanceY": 0.1,
+"Name": "Falling",
+"Gravity": 2
+},
+{
+"Type": "Animate",
+"Animation": {"Pose": [
+{
+"ImageAnchor": "64,128",
+"Duration": 4,
+"Image": "/shime18.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 4,
+"Image": "/shime19.png",
+"Velocity": "0,0"
+}
+]},
+"BorderType": "Floor",
+"Name": "Bouncing"
+},
+{
+"Type": "Animate",
+"Animation": {"Pose": [
+{
+"ImageAnchor": "64,128",
+"Duration": 8,
+"Image": "/shime19.png",
+"Velocity": "-8,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 4,
+"Image": "/shime18.png",
+"Velocity": "-4,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 4,
+"Image": "/shime20.png",
+"Velocity": "-2,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 10,
+"Image": "/shime20.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,104",
+"Duration": 4,
+"Image": "/shime19.png",
+"Velocity": "-4,0"
+}
+]},
+"BorderType": "Floor",
+"Name": "Tripping"
+},
+{
+"Type": "Embedded",
+"Animation": [
+{
+"Condition": "#{FootX < mascot.environment.cursor.x-50}",
+"Pose": {
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime9.png",
+"Velocity": "0,0"
+}
+},
+{
+"Condition": "#{FootX < mascot.environment.cursor.x-30}",
+"Pose": {
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime7.png",
+"Velocity": "0,0"
+}
+},
+{
+"Condition": "#{FootX < mascot.environment.cursor.x+30}",
+"Pose": {
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime1.png",
+"Velocity": "0,0"
+}
+},
+{
+"Condition": "#{FootX < mascot.environment.cursor.x+50}",
+"Pose": {
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime8.png",
+"Velocity": "0,0"
+}
+},
+{
+"Condition": "#{FootX >= mascot.environment.cursor.x+30}",
+"Pose": {
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime10.png",
+"Velocity": "0,0"
+}
+}
+],
+"Class": "com.group_finity.mascot.action.Dragged",
+"Name": "Pinched"
+},
+{
+"Type": "Embedded",
+"Animation": {"Pose": [
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime5.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime6.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime5.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime6.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 50,
+"Image": "/shime1.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime5.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime6.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime5.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime6.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime5.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime6.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime5.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime6.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 100,
+"Image": "/shime1.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime5.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime6.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime5.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime6.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime5.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime6.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime5.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime6.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 2,
+"Image": "/shime5.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 2,
+"Image": "/shime6.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 2,
+"Image": "/shime5.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 2,
+"Image": "/shime6.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 2,
+"Image": "/shime5.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 2,
+"Image": "/shime6.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 2,
+"Image": "/shime5.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 2,
+"Image": "/shime6.png",
+"Velocity": "0,0"
+}
+]},
+"Class": "com.group_finity.mascot.action.Regist",
+"Name": "Resisting"
+}
+]},
+{"Action": [
+{
+"Loop": false,
+"Type": "Sequence",
+"Action": {
+"Type": "Select",
+"Action": {
+"Condition": "${mascot.environment.floor.isOn(mascot.anchor) ||\t\t\t\t\tmascot.environment.activeIE.topBorder.isOn(mascot.anchor) }",
+"Type": "Sequence",
+"ActionReference": [
+{"Name": "Bouncing"},
+{
+"Duration": "${100+Math.random()*100}",
+"Name": "Stand"
+}
+]
+},
+"ActionReference": {
+"Duration": 100,
+"Name": "GrabWall"
+}
+},
+"ActionReference": {"Name": "Falling"},
+"Name": "Fall"
+},
+{
+"Loop": true,
+"Type": "Sequence",
+"ActionReference": [
+{"Name": "Pinched"},
+{"Name": "Resisting"}
+],
+"Name": "Dragged"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"Action": {
+"Type": "Select",
+"Action": {
+"Condition": "${mascot.environment.floor.isOn(mascot.anchor) || mascot.environment.activeIE.topBorder.isOn(mascot.anchor) }",
+"Type": "Sequence",
+"ActionReference": [
+{"Name": "Bouncing"},
+{
+"Duration": "${100+Math.random()*100}",
+"Name": "Stand"
+}
+]
+},
+"ActionReference": {
+"Duration": 100,
+"Name": "GrabWall"
+}
+},
+"ActionReference": {
+"InitialVX": "${mascot.environment.cursor.dx}",
+"InitialVY": "${mascot.environment.cursor.dy}",
+"Name": "Falling"
+},
+"Name": "Thrown"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": {
+"Duration": "${500+Math.random()*1000}",
+"Name": "Stand"
+},
+"Name": "StandUp"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": {
+"Duration": "${500+Math.random()*1000}",
+"Name": "Sit"
+},
+"Name": "SitDown"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": {
+"Duration": "${500+Math.random()*1000}",
+"Name": "Sprawl"
+},
+"Name": "LieDown"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"Duration": 10,
+"Name": "SitWithLegsUp"
+},
+{
+"Duration": "${100+Math.random()*100}",
+"Name": "SitWithLegsDown"
+},
+{
+"Duration": "${500+Math.random()*100}",
+"Name": "SitAndDangleLegs"
+},
+{
+"Duration": "${100+Math.random()*100}",
+"Name": "SitWithLegsDown"
+},
+{
+"Duration": 10,
+"Name": "SitWithLegsUp"
+}
+],
+"Name": "SitWhileDanglingLegs"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": {
+"Duration": "${500+Math.random()*1000}",
+"Name": "GrabWall"
+},
+"Name": "HoldOntoWall"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"X": "${mascot.lookRight ? -1 : 1}",
+"Name": "Offset"
+},
+{"Name": "Stand"}
+],
+"Name": "FallFromWall"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": {
+"Duration": "${500+Math.random()*1000}",
+"Name": "GrabCeiling"
+},
+"Name": "HoldOntoCeiling"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"Y": 1,
+"Name": "Offset"
+},
+{"Name": "Stand"}
+],
+"Name": "FallFromCeiling"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": {
+"Name": "Walk",
+"TargetX": "${mascot.environment.workArea.left+64+Math.random()*(mascot.environment.workArea.width-128)}"
+},
+"Name": "WalkAlongWorkAreaFloor"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": {
+"Name": "Run",
+"TargetX": "${mascot.environment.workArea.left+64+Math.random()*(mascot.environment.workArea.width-128)}"
+},
+"Name": "RunAlongWorkAreaFloor"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": {
+"Name": "Creep",
+"TargetX": "${mascot.environment.workArea.left+64+Math.random()*(mascot.environment.workArea.width-128)}"
+},
+"Name": "CrawlAlongWorkAreaFloor"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"Name": "Walk",
+"TargetX": "${mascot.environment.workArea.left+100+Math.random()*300}"
+},
+{
+"Duration": "${20+Math.random()*20}",
+"Name": "Stand"
+},
+{
+"Name": "Look",
+"LookRight": true
+},
+{
+"Duration": "${20+Math.random()*20}",
+"Name": "Stand"
+},
+{
+"Duration": "${500+Math.random()*1000}",
+"Name": "Sit"
+}
+],
+"Name": "WalkLeftAlongFloorAndSit"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"Name": "Walk",
+"TargetX": "${mascot.environment.workArea.right-100-Math.random()*300}"
+},
+{
+"Duration": "${20+Math.random()*20}",
+"Name": "Stand"
+},
+{
+"Name": "Look",
+"LookRight": false
+},
+{
+"Duration": "${20+Math.random()*20}",
+"Name": "Stand"
+},
+{
+"Duration": "${500+Math.random()*1000}",
+"Name": "Sit"
+}
+],
+"Name": "WalkRightAlongFloorAndSit"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"Name": "Walk",
+"TargetX": "#{mascot.environment.workArea.left}"
+},
+{
+"TargetY": "#{mascot.environment.workArea.bottom-64}",
+"Name": "ClimbWall"
+}
+],
+"Name": "GrabWorkAreaBottomLeftWall"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"Name": "Walk",
+"TargetX": "#{mascot.environment.workArea.right}"
+},
+{
+"TargetY": "#{mascot.environment.workArea.bottom-64}",
+"Name": "ClimbWall"
+}
+],
+"Name": "GrabWorkAreaBottomRightWall"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"Name": "Run",
+"TargetX": "${mascot.environment.workArea.left+100+Math.random()*300}"
+},
+{
+"Duration": "${20+Math.random()*20}",
+"Name": "Stand"
+},
+{
+"Name": "Look",
+"LookRight": true
+},
+{
+"Duration": "${20+Math.random()*20}",
+"Name": "Stand"
+},
+{
+"Duration": "${500+Math.random()*1000}",
+"Name": "Sit"
+}
+],
+"Name": "WalkLeftAndSit"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"Name": "Run",
+"TargetX": "${mascot.environment.workArea.right-100-Math.random()*300}"
+},
+{
+"Duration": "${20+Math.random()*20}",
+"Name": "Stand"
+},
+{
+"Name": "Look",
+"LookRight": false
+},
+{
+"Duration": "${20+Math.random()*20}",
+"Name": "Stand"
+},
+{
+"Duration": "${500+Math.random()*1000}",
+"Name": "Sit"
+}
+],
+"Name": "WalkRightAndSit"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"Name": "Run",
+"TargetX": "#{mascot.environment.workArea.left}"
+},
+{
+"TargetY": "#{mascot.environment.workArea.bottom-64}",
+"Name": "ClimbWall"
+}
+],
+"Name": "WalkAndGrabBottomLeftWall"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"Name": "Run",
+"TargetX": "#{mascot.environment.workArea.right}"
+},
+{
+"TargetY": "#{mascot.environment.workArea.bottom-64}",
+"Name": "ClimbWall"
+}
+],
+"Name": "WalkAndGrabBottomRightWall"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"TargetY": "${mascot.environment.activeIE.bottom}",
+"Name": "Jumping",
+"TargetX": "${(mascot.anchor.x*3+mascot.environment.activeIE.left+Math.random()*mascot.environment.activeIE.width)/4}"
+},
+{
+"Duration": "${100+Math.random()*100}",
+"Name": "GrabCeiling"
+}
+],
+"Name": "JumpFromBottomOfIE"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": {
+"TargetY": "${mascot.environment.workArea.top+64 + Math.random()*(mascot.environment.workArea.height-128)}",
+"Name": "ClimbWall"
+},
+"Name": "ClimbHalfwayAlongWall"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"TargetY": "#{mascot.environment.workArea.top+64}",
+"Name": "ClimbWall"
+},
+{
+"Y": -64,
+"Name": "Offset"
+},
+{"Name": "Look"},
+{
+"Name": "ClimbCeiling",
+"TargetX": "${mascot.lookRight ? mascot.environment.workArea.left+Math.random()*100 : mascot.environment.workArea.right-Math.random*100}"
+}
+],
+"Name": "ClimbAlongWall"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": {
+"Name": "ClimbCeiling",
+"TargetX": "${mascot.environment.workArea.left+64+Math.random()*(mascot.environment.workArea.width-128)}"
+},
+"Name": "ClimbAlongCeiling"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": {
+"Name": "Walk",
+"TargetX": "${mascot.environment.activeIE.left+64+Math.random()*(mascot.environment.activeIE.width-128)}"
+},
+"Name": "WalkAlongIECeiling"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": {
+"Name": "Run",
+"TargetX": "${mascot.environment.activeIE.left+64+Math.random()*(mascot.environment.activeIE.width-128)}"
+},
+"Name": "RunAlongIECeiling"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": {
+"Name": "Creep",
+"TargetX": "${mascot.environment.activeIE.left+64+Math.random()*(mascot.environment.activeIE.width-128)}"
+},
+"Name": "CrawlAlongIECeiling"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"Name": "Walk",
+"TargetX": "${mascot.environment.activeIE.left+100+Math.random()*300}"
+},
+{
+"Duration": "${100+Math.random()*100}",
+"Name": "Stand"
+},
+{
+"Duration": "${500+Math.random()*1000}",
+"Name": "Sit"
+}
+],
+"Name": "SitOnTheLeftEdgeOfIE"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"Name": "Walk",
+"TargetX": "${mascot.environment.activeIE.right-100-Math.random()*300}"
+},
+{
+"Duration": "${100+Math.random()*100}",
+"Name": "Stand"
+},
+{
+"Duration": "${500+Math.random()*1000}",
+"Name": "Sit"
+}
+],
+"Name": "SitOnTheRightEdgeOfIE"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"Name": "Walk",
+"TargetX": "${mascot.environment.activeIE.left+Math.random()*50}"
+},
+{
+"Duration": "${50+Math.random()*50}",
+"Name": "Stand"
+},
+{
+"InitialVX": "${-15-Math.random()*5}",
+"InitialVY": "${-20-Math.random()*5}",
+"Name": "Falling"
+},
+{"Name": "Bouncing"}
+],
+"Name": "JumpFromLeftEdgeOfIE"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"Name": "Walk",
+"TargetX": "${mascot.environment.activeIE.right-Math.random()*50}"
+},
+{
+"Duration": "${50+Math.random()*50}",
+"Name": "Stand"
+},
+{
+"InitialVX": "${15+Math.random()*5}",
+"InitialVY": "${-20-Math.random()*5}",
+"Name": "Falling"
+},
+{"Name": "Bouncing"}
+],
+"Name": "JumpFromRightEdgeOfIE"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"Name": "Run",
+"TargetX": "${mascot.environment.activeIE.left+100+Math.random()*300}"
+},
+{
+"Duration": "${100+Math.random()*100}",
+"Name": "Stand"
+},
+{
+"Duration": "${500+Math.random()*1000}",
+"Name": "Sit"
+}
+],
+"Name": "WalkLeftAlongIEAndSit"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"Name": "Run",
+"TargetX": "${mascot.environment.activeIE.right-100-Math.random()*300}"
+},
+{
+"Duration": "${100+Math.random()*100}",
+"Name": "Stand"
+},
+{
+"Duration": "${500+Math.random()*1000}",
+"Name": "Sit"
+}
+],
+"Name": "WalkRightAlongIEAndSit"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"Name": "Run",
+"TargetX": "${mascot.environment.activeIE.left+Math.random()*50}"
+},
+{
+"InitialVX": "${-15-Math.random()*5}",
+"InitialVY": "${-20-Math.random()*5}",
+"Name": "Falling"
+},
+{"Name": "Bouncing"}
+],
+"Name": "WalkLeftAlongIEAndJump"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"Name": "Run",
+"TargetX": "${mascot.environment.activeIE.right-Math.random()*50}"
+},
+{
+"InitialVX": "${15+Math.random()*5}",
+"InitialVY": "${-20-Math.random()*5}",
+"Name": "Falling"
+},
+{"Name": "Bouncing"}
+],
+"Name": "WalkRightAlongIEAndJump"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"Name": "Dash",
+"TargetX": "${mascot.environment.activeIE.left+Math.random()*20+20}"
+},
+{
+"InitialVX": "${-5-Math.random()*2}",
+"InitialVY": "${-20-Math.random()*5}",
+"Name": "Falling"
+},
+{"Name": "Bouncing"}
+],
+"Name": "DashIeCeilingLeftEdgeFromJump"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"Name": "Dash",
+"TargetX": "${mascot.environment.activeIE.right-Math.random()*20-20}"
+},
+{
+"InitialVX": "${5+Math.random()*2}",
+"InitialVY": "${-20-Math.random()*5}",
+"Name": "Falling"
+},
+{"Name": "Bouncing"}
+],
+"Name": "DashIeCeilingRightEdgeFromJump"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": {
+"TargetY": "${mascot.environment.activeIE.top+64 + Math.random()*(mascot.environment.activeIE.height-128)}",
+"Name": "ClimbWall"
+},
+"Name": "HoldOntoIEWall"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"TargetY": "#{mascot.environment.activeIE.top+64}",
+"Name": "ClimbWall"
+},
+{
+"Y": -64,
+"Name": "Offset"
+},
+{
+"Duration": 5,
+"Name": "Sit"
+},
+{
+"Duration": "${10+Math.random()*10}",
+"Name": "Stand"
+},
+{
+"Name": "Walk",
+"TargetX": "${mascot.lookRight ? mascot.environment.activeIE.left+Math.random()*100 : mascot.environment.activeIE.right-Math.random*100}"
+}
+],
+"Name": "ClimbIEWall"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": {
+"Name": "ClimbCeiling",
+"TargetX": "${mascot.environment.activeIE.left+64+(Math.random()*mascot.environment.activeIE.width-128)}"
+},
+"Name": "ClimbIEBottom"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"Name": "ClimbCeiling",
+"TargetX": "#{mascot.environment.activeIE.left}"
+},
+{"Name": "Look"},
+{
+"TargetY": "#{mascot.environment.activeIE.bottom-64}",
+"Name": "ClimbWall"
+}
+],
+"Name": "GrabIEBottomLeftWall"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"Name": "ClimbCeiling",
+"TargetX": "#{mascot.environment.activeIE.right}"
+},
+{"Name": "Look"},
+{
+"TargetY": "#{mascot.environment.activeIE.bottom-64}",
+"Name": "ClimbWall"
+}
+],
+"Name": "GrabIEBottomRightWall"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"TargetY": "${mascot.environment.workArea.bottom-Math.random()*mascot.environment.workArea.height/4}",
+"Name": "Jumping",
+"TargetX": "${mascot.environment.workArea.left}"
+},
+{
+"Duration": "${100+Math.random()*100}",
+"Name": "GrabWall"
+}
+],
+"Name": "JumpFromLeftWall"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"TargetY": "${mascot.environment.workArea.bottom-Math.random()*mascot.environment.workArea.height/4}",
+"Name": "Jumping",
+"TargetX": "${mascot.environment.workArea.right}"
+},
+{
+"Duration": "${100+Math.random()*100}",
+"Name": "GrabWall"
+}
+],
+"Name": "JumpFromRightWall"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"TargetY": "${mascot.environment.activeIE.bottom-Math.random()*mascot.environment.activeIE.height/4}",
+"Name": "Jumping",
+"TargetX": "${mascot.environment.activeIE.left}"
+},
+{
+"Duration": "${100+Math.random()*100}",
+"Name": "GrabWall"
+}
+],
+"Name": "JumpOnIELeftWall"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"TargetY": "${mascot.environment.activeIE.bottom-Math.random()*mascot.environment.activeIE.height/4}",
+"Name": "Jumping",
+"TargetX": "${mascot.environment.activeIE.right}"
+},
+{
+"Duration": "${100+Math.random()*100}",
+"Name": "GrabWall"
+}
+],
+"Name": "JumpOnIERightWall"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"TargetY": "${mascot.environment.activeIE.bottom+64}",
+"Name": "Jumping",
+"TargetX": "${mascot.environment.activeIE.left}"
+},
+{"Name": "FallWithIe"},
+{
+"Name": "WalkWithIe",
+"TargetX": "#{mascot.environment.workArea.right-400}"
+},
+{"Name": "ThrowIe"},
+{
+"Duration": "${50+Math.random()*50}",
+"Name": "Stand"
+},
+{"Name": "Look"},
+{
+"Duration": "${50+Math.random()*50}",
+"Name": "Stand"
+}
+],
+"Name": "ThrowIEFromLeft"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"TargetY": "${mascot.environment.activeIE.bottom+64}",
+"Name": "Jumping",
+"TargetX": "${mascot.environment.activeIE.right}"
+},
+{"Name": "FallWithIe"},
+{
+"Name": "WalkWithIe",
+"TargetX": "#{mascot.environment.workArea.left+400}"
+},
+{"Name": "ThrowIe"},
+{
+"Duration": "${50+Math.random()*50}",
+"Name": "Stand"
+},
+{"Name": "Look"},
+{
+"Duration": "${50+Math.random()*50}",
+"Name": "Stand"
+}
+],
+"Name": "ThrowIEFromRight"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"TargetY": "${mascot.environment.activeIE.bottom+64}",
+"Name": "Jumping",
+"TargetX": "${mascot.environment.activeIE.left}"
+},
+{"Name": "FallWithIe"},
+{
+"Name": "RunWithIe",
+"TargetX": "#{mascot.environment.workArea.right-400}"
+},
+{"Name": "ThrowIe"},
+{
+"Duration": "${50+Math.random()*50}",
+"Name": "Stand"
+},
+{"Name": "Look"},
+{
+"Duration": "${50+Math.random()*50}",
+"Name": "Stand"
+}
+],
+"Name": "WalkAndThrowIEFromRight"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"TargetY": "${mascot.environment.activeIE.bottom+64}",
+"Name": "Jumping",
+"TargetX": "${mascot.environment.activeIE.right}"
+},
+{"Name": "FallWithIe"},
+{
+"Name": "RunWithIe",
+"TargetX": "#{mascot.environment.workArea.left+400}"
+},
+{"Name": "ThrowIe"},
+{
+"Duration": "${50+Math.random()*50}",
+"Name": "Stand"
+},
+{"Name": "Look"},
+{
+"Duration": "${50+Math.random()*50}",
+"Name": "Stand"
+}
+],
+"Name": "WalkAndThrowIEFromLeft"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"Action": [
+{
+"Condition": "${mascot.environment.ceiling.isOn(mascot.anchor) || mascot.environment.activeIE.bottomBorder.isOn(mascot.anchor)}",
+"Type": "Sequence",
+"ActionReference": [
+{
+"Y": 1,
+"Name": "Offset"
+},
+{"Name": "Falling"},
+{"Name": "Bouncing"}
+]
+},
+{
+"Condition": "${mascot.environment.workArea.leftBorder.isOn(mascot.anchor) || mascot.environment.activeIE.rightBorder.isOn(mascot.anchor)}",
+"Type": "Sequence",
+"ActionReference": [
+{
+"X": 1,
+"Name": "Offset"
+},
+{"Name": "Falling"},
+{"Name": "Bouncing"}
+]
+},
+{
+"Condition": "${mascot.environment.workArea.rightBorder.isOn(mascot.anchor) || mascot.environment.activeIE.leftBorder.isOn(mascot.anchor)}",
+"Type": "Sequence",
+"ActionReference": [
+{
+"X": -1,
+"Name": "Offset"
+},
+{"Name": "Falling"},
+{"Name": "Bouncing"}
+]
+},
+{
+"Type": "Select",
+"ActionReference": [
+{
+"Condition": "${mascot.environment.activeIE.topBorder.isOn(mascot.anchor) &&\t\t\t\t\tmascot.anchor.x < (mascot.environment.activeIE.left+mascot.environment.activeIE.right)/2}",
+"Name": "DashIeCeilingLeftEdgeFromJump"
+},
+{
+"Condition": "${mascot.environment.activeIE.topBorder.isOn(mascot.anchor) &&\t\t\t\t\tmascot.anchor.x >= (mascot.environment.activeIE.left+mascot.environment.activeIE.right)/2}",
+"Name": "DashIeCeilingRightEdgeFromJump"
+}
+]
+}
+],
+"ActionReference": [
+{
+"Name": "Dash",
+"TargetX": "${ mascot.anchor.x+(mascot.environment.cursor.x-mascot.anchor.x)*Math.random()/2 }"
+},
+{
+"Condition": "${Math.random() < 0.05}",
+"Name": "Tripping"
+},
+{
+"Name": "Dash",
+"TargetX": "${ mascot.anchor.x+(mascot.environment.cursor.x-mascot.anchor.x)*Math.random() }"
+},
+{
+"Condition": "${Math.random() < 0.05}",
+"Name": "Tripping"
+},
+{
+"Gap": "${ mascot.anchor.x < mascot.environment.cursor.x ?\t\t\t\t\t-Math.min( mascot.environment.cursor.x-mascot.anchor.x, Math.random()*200) :\t\t\t\t\tMath.min( mascot.anchor.x-mascot.environment.cursor.x, Math.random()*200 ) }",
+"Name": "Dash",
+"TargetX": "#{mascot.environment.cursor.x+Gap}"
+},
+{
+"Name": "Look",
+"LookRight": "${mascot.anchor.x < mascot.environment.cursor.x}"
+}
+],
+"Name": "ChaseMouse"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": [
+{
+"Duration": "${10+Math.random()*10}",
+"Name": "SitAndLookAtMouse"
+},
+{
+"Name": "Look",
+"LookRight": "${mascot.anchor.x < mascot.environment.cursor.x}"
+},
+{
+"Duration": "${10+Math.random()*10}",
+"Name": "SitAndLookAtMouse"
+},
+{
+"Name": "Look",
+"LookRight": "${mascot.anchor.x < mascot.environment.cursor.x}"
+},
+{
+"Duration": "${10+Math.random()*10}",
+"Name": "SitAndLookAtMouse"
+},
+{
+"Name": "Look",
+"LookRight": "${mascot.anchor.x < mascot.environment.cursor.x}"
+},
+{
+"Duration": "${10+Math.random()*10}",
+"Name": "SitAndLookAtMouse"
+},
+{
+"Name": "Look",
+"LookRight": "${mascot.anchor.x < mascot.environment.cursor.x}"
+},
+{
+"Duration": "${10+Math.random()*10}",
+"Name": "SitAndLookAtMouse"
+},
+{
+"Name": "Look",
+"LookRight": "${mascot.anchor.x < mascot.environment.cursor.x}"
+},
+{
+"Duration": "${10+Math.random()*10}",
+"Name": "SitAndLookAtMouse"
+},
+{
+"Name": "Look",
+"LookRight": "${mascot.anchor.x < mascot.environment.cursor.x}"
+},
+{
+"Duration": "${10+Math.random()*10}",
+"Name": "SitAndLookAtMouse"
+},
+{
+"Name": "Look",
+"LookRight": "${mascot.anchor.x < mascot.environment.cursor.x}"
+},
+{
+"Duration": "${10+Math.random()*10}",
+"Name": "SitAndLookAtMouse"
+},
+{
+"Name": "Look",
+"LookRight": "${mascot.anchor.x < mascot.environment.cursor.x}"
+},
+{
+"Duration": "${10+Math.random()*10}",
+"Name": "SitAndLookAtMouse"
+},
+{
+"Name": "Look",
+"LookRight": "${mascot.anchor.x < mascot.environment.cursor.x}"
+},
+{
+"Duration": "${10+Math.random()*10}",
+"Name": "SitAndLookAtMouse"
+},
+{
+"Name": "Look",
+"LookRight": "${mascot.anchor.x < mascot.environment.cursor.x}"
+}
+],
+"Name": "SitAndFaceMouse"
+},
+{
+"Loop": false,
+"Type": "Sequence",
+"ActionReference": {"Name": "SitAndSpinHeadAction"},
+"Name": "SitAndSpinHead"
+},
+{
+"BornBehavior": "PullUp",
+"Type": "Embedded",
+"BornY": 96,
+"BornX": -32,
+"Animation": {"Pose": [
+{
+"ImageAnchor": "64,128",
+"Duration": 16,
+"Image": "/shime1.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "96,128",
+"Duration": 4,
+"Image": "/shime38.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "96,128",
+"Duration": 40,
+"Image": "/shime39.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "96,128",
+"Duration": 40,
+"Image": "/shime40.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "96,128",
+"Duration": 40,
+"Image": "/shime41.png",
+"Velocity": "0,0"
+}
+]},
+"Class": "com.group_finity.mascot.action.Breed",
+"Name": "PullUpShimeji1"
+},
+{
+"Type": "Animate",
+"Animation": {"Pose": [
+{
+"ImageAnchor": "32,128",
+"Duration": 1,
+"Image": "/shime9.png",
+"Velocity": "20,-20"
+},
+{
+"ImageAnchor": "32,128",
+"Duration": 1,
+"Image": "/shime9.png",
+"Velocity": "20,-10"
+},
+{
+"ImageAnchor": "32,128",
+"Duration": 1,
+"Image": "/shime9.png",
+"Velocity": "20,-5"
+}
+]},
+"Name": "PullUpShimeji2"
+},
+{
+"Type": "Sequence",
+"ActionReference": [
+{"Name": "PullUpShimeji1"},
+{"Name": "PullUpShimeji2"},
+{
+"InitialVX": "${mascot.lookRight ? -20 : 20}",
+"Name": "Falling"
+},
+{"Name": "Bouncing"},
+{
+"Duration": 40,
+"Name": "Sprawl"
+}
+],
+"Name": "PullUpShimeji"
+},
+{
+"Type": "Sequence",
+"ActionReference": [
+{
+"InitialVX": "${mascot.lookRight ? 10 : -10}",
+"InitialVY": -40,
+"Name": "Falling"
+},
+{"Name": "Bouncing"}
+],
+"Name": "PullUp"
+},
+{
+"BornBehavior": "Divided",
+"Type": "Embedded",
+"BornY": 0,
+"BornX": -16,
+"Animation": {"Pose": [
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime42.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 2,
+"Image": "/shime43.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 2,
+"Image": "/shime44.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 5,
+"Image": "/shime45.png",
+"Velocity": "0,0"
+},
+{
+"ImageAnchor": "64,128",
+"Duration": 20,
+"Image": "/shime46.png",
+"Velocity": "0,0"
+}
+]},
+"Class": "com.group_finity.mascot.action.Breed",
+"Name": "Divide1"
+},
+{
+"Type": "Sequence",
+"ActionReference": [
+{"Name": "Divide1"},
+{
+"X": 16,
+"Name": "Offset"
+},
+{"Name": "Look"},
+{"Name": "Divided"}
+],
+"Name": "SplitIntoTwo"
+},
+{
+"Type": "Sequence",
+"ActionReference": [
+{
+"InitialVX": "${mascot.lookRight ? 10 : -10}",
+"InitialVY": -5,
+"Name": "Falling"
+},
+{"Name": "Bouncing"}
+],
+"Name": "Divided"
+}
+]}
+]
+}}

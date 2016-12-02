@@ -56,9 +56,9 @@ public class Orientan extends Application {
         //取得動作設定檔(actions)
         loadconfig config=new loadconfig("actions");
       /**/
-      
+
         mascot m=new mascot(config);
-        Notifications.create().title("Orientan Status").text("Orientan Start to Run").showInformation();
+        //Notifications.create().title("Orientan Status").text("Orientan Start to Run").showInformation();
     }
 
     /**

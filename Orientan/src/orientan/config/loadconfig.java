@@ -29,9 +29,20 @@ public class loadconfig {
         }*/
 
         // Action_List = new ArrayList<Action>();
-        for (int i = 3; i < 6; i++) {
-            Action_List.add(new Action(actiondata.getAction_List().getJSONObject(i)));
-            //System.out.println(i);
+         for (int i = 2, j = 0; i < 29; i++) {
+            if (i == 8||i==18||i==19||i==23||i==24||i==27||i==28) {
+                continue;
+            } else {
+                Action_List.add(new Action(actiondata.getAction_List().getJSONObject(i)));
+                Action a = Action_List.get(j);
+                /*
+                System.out.println(a.getBorderType());
+                System.out.println(a.getType());
+                System.out.println(a.getName());
+                System.out.println(a.getAnimation());
+*/
+                j++;
+            }
         }
         //Action_List.add(new Action(actiondata.getAction_List().getJSONObject(3)));//move floor walk
         //Action a = Action_List.get(0);

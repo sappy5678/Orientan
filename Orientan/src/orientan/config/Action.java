@@ -64,12 +64,24 @@ public class Action {
     }
 
     public Action(JSONObject anaction) throws JSONException {
-        this.Type = anaction.get("Type").toString();
+         this.Type = anaction.get("Type").toString();
         Type listType = new TypeToken<ArrayList<Pose>>() {
         }.getType();
         Gson gson = new Gson();
-        Animation = gson.fromJson(anaction.getJSONObject("Animation").getJSONArray("Pose").toString(), listType);
-        //System.out.println(Animation.size());
+        JSONObject check = anaction.getJSONObject("Animation").optJSONObject("Pose");
+        if (check == null) {
+            Animation = gson.fromJson(anaction.getJSONObject("Animation").getJSONArray("Pose").toString(), listType);
+        } else {
+        //直接加入ArrayList
+        Pose cha = new Pose();
+        cha.setImage(anaction.getJSONObject("Animation").getJSONObject("Pose").getString("Image"));
+        cha.setDuration(anaction.getJSONObject("Animation").getJSONObject("Pose").getInt("Duration"));
+        cha.setImageAnchor(anaction.getJSONObject("Animation").getJSONObject("Pose").getString("ImageAnchor"));
+        cha.setVelocity(anaction.getJSONObject("Animation").getJSONObject("Pose").getString("Velocity"));
+
+        Animation.add(cha);
+        
+        }
         //System.out.println(anaction.getJSONObject("Animation").getJSONArray("Pose").toString());
         this.BorderType = anaction.get("BorderType").toString();
         this.Name = anaction.get("Name").toString();

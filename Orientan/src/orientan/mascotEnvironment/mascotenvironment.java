@@ -19,8 +19,8 @@ import javafx.stage.Screen;
         static private Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
         //取得圖片範本
         static Image image = new Image(new File(System.getProperty("user.dir") + "\\img\\shime1.png").toURI().toString());
-        static private double LeftWall=primScreenBounds.getMinX();
-        static private double RightWall=primScreenBounds.getMaxX()-image.getWidth();
+        static private double LeftWall=primScreenBounds.getMinX()-image.getWidth()/2;
+        static private double RightWall=primScreenBounds.getMaxX()-image.getWidth()/2;
         static private double Floor=primScreenBounds.getMaxY()-image.getHeight();
         static private double ceiling=primScreenBounds.getMinY();
         public static Rectangle2D getPrimScreenBounds() {

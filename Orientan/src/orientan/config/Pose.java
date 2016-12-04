@@ -25,7 +25,10 @@ public class Pose {
     private int Duration;
     private String Image;
     private String Velocity;
+    private double VelocityX;
+    private double VelocityY;
 
+    
     public Pose(JSONObject pose_data) throws JSONException {
         /*System.out.println(pose_data.get(0).toString());
         this.ImageAnchor = pose_data.get(0).toString();
@@ -37,11 +40,20 @@ public class Pose {
         this.Duration = Integer.parseInt(pose_data.get("Duration").toString());
         this.Image = pose_data.get("Image").toString();
         this.Velocity = pose_data.get("Velocity").toString();
-        
+        String[] token=this.Velocity.split(",|\n");
+        this.VelocityX=Double.parseDouble(token[0]);
+        this.VelocityY=Double.parseDouble(token[1]);      
     }
 
     Pose() {
         
+    }
+    public double getVelocityX() {
+        return VelocityX;
+    }
+
+    public double getVelocityY() {
+        return VelocityY;
     }
 
     public String getImageAnchor() {

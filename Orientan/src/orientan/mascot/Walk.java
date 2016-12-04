@@ -30,10 +30,12 @@ public class Walk {
     private double time = 0;
     private double duration = 0;
     private double deltaX = -10;
+    private double deltaY = 0;
     private Timeline timeline = new Timeline();
 
-    public Walk(Stage mascotStage, ImageView MascotimageView, Action walkConfig) {
+    public Walk(Stage mascotStage, ImageView MascotimageView, Action walkConfig,TimelineManger animationManger) {
         this.duration=walkConfig.getAnimation().get(0).getDuration();
+        
         //this.deltaX=walkConfig.getAnimation().get(0).getVelocity();
         time = 0;
         //事件監聽  
@@ -54,7 +56,6 @@ public class Walk {
             }
         };
 
-        ArrayList<Image> image = new ArrayList<Image>();
         double time = 0;
         double duration = walkConfig.getAnimation().get(0).getDuration() / 10;
         for (int i = 0; i < walkConfig.getAnimation().size(); i++) {
@@ -71,7 +72,7 @@ public class Walk {
                 timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(time = time + (double) walkConfig.getAnimation().get(i).getDuration() / 10), new KeyValue(MascotimageView.imageProperty(), image.get(i))));
             }
         }
-
+        animationManger.getTimelineList().add(timeline);
     }
     public void play() {
         timeline.setCycleCount(Timeline.INDEFINITE);

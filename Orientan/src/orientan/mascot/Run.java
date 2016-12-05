@@ -24,8 +24,7 @@ import orientan.mascotEnvironment.mascotenvironment;
  *
  * @author zp
  */
-public class Walk extends MascotAction {
-
+public class Run extends MascotAction{
     private ArrayList<Image> image = new ArrayList<Image>();
     private double time = 0;
     private double duration = 0;
@@ -33,23 +32,22 @@ public class Walk extends MascotAction {
     //private double deltaY = 0;
     private Timeline timeline = new Timeline();
 
-    public Walk(Stage mascotStage, ImageView MascotimageView, Action walkConfig, TimelineManger animationManger) {
-        this.duration = walkConfig.getAnimation().get(0).getDuration();
-
+    public Run(Stage mascotStage, ImageView MascotimageView, Action Config,TimelineManger animationManger) {
+        this.duration=Config.getAnimation().get(0).getDuration();
+        
         //this.deltaX=walkConfig.getAnimation().get(0).getVelocity();
         time = 0;
         //事件監聽  
         EventHandler onFinished = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent t) {
-                //如果超出左右邊界，就變換前進方向與圖片翻轉
-                //if(mascotStage.getX()<=-20||mascotStage.getX()>=primScreenBounds.getWidth())
                 if (MascotimageView.getRotate() == 180) {
                     deltaX = Math.abs(deltaX);
                 } else if (MascotimageView.getRotate() == 0) {
                     deltaX = Math.abs(deltaX) * -1;
                 }
+                //如果超出左右邊界，就變換前進方向與圖片翻轉
+                //if(mascotStage.getX()<=-20||mascotStage.getX()>=primScreenBounds.getWidth())
                 if (mascotStage.getX() <= mascotenvironment.getLeftWall() || mascotStage.getX() >= mascotenvironment.getRightWall()) {
-
                     deltaX = deltaX * (-1);
                     MascotimageView.setRotationAxis(Rotate.Y_AXIS);
                     if (deltaX > 0) {
@@ -62,31 +60,31 @@ public class Walk extends MascotAction {
             }
         };
 
-        duration = walkConfig.getAnimation().get(0).getDuration() / 10;
-        for (int i = 0; i < walkConfig.getAnimation().size(); i++) {
+        duration = Config.getAnimation().get(0).getDuration() / 10;
+        for (int i = 0; i < Config.getAnimation().size(); i++) {
             //image.add(new Image(new File(System.getProperty("user.dir") + "\\img" + Walk.getAnimation().get(i).getImage()).toURI().toString()));
-            image.add(new Image(new File(System.getProperty("user.dir") + "\\img" + walkConfig.getAnimation().get(i).getImage()).toURI().toString()));
+            image.add(new Image(new File(System.getProperty("user.dir") + "\\img" + Config.getAnimation().get(i).getImage()).toURI().toString()));
         }
-        for (int i = 0; i < walkConfig.getAnimation().size(); i++) {
+        for (int i = 0; i < Config.getAnimation().size(); i++) {
             if (i == 0) {
                 timeline.getKeyFrames().add(new KeyFrame(Duration.ZERO, onFinished, new KeyValue(MascotimageView.imageProperty(), image.get(i))));
                 continue;
             }
-            timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(time = time + (double) walkConfig.getAnimation().get(i - 1).getDuration() / 10), onFinished, new KeyValue(MascotimageView.imageProperty(), image.get(i))));
-            if (i == walkConfig.getAnimation().size() - 1) {
-                timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(time = time + (double) walkConfig.getAnimation().get(i).getDuration() / 10), new KeyValue(MascotimageView.imageProperty(), image.get(i))));
+            timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(time = time + (double) Config.getAnimation().get(i - 1).getDuration() / 10), onFinished, new KeyValue(MascotimageView.imageProperty(), image.get(i))));
+            if (i == Config.getAnimation().size() - 1) {
+                timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(time = time + (double) Config.getAnimation().get(i).getDuration() / 10), new KeyValue(MascotimageView.imageProperty(), image.get(i))));
             }
         }
         animationManger.getTimelineList().add(timeline);
     }
-
     public void play() {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }
-
     public void play(int circleTime) {
         timeline.setCycleCount(circleTime);
         timeline.play();
     }
 }
+
+

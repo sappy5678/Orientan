@@ -32,6 +32,7 @@ import javafx.scene.layout.AnchorPane;
 import org.controlsfx.control.*;
 import orientan.config.loadconfig;
 import orientan.mascot.mascot;
+import orientan.mascotEnvironment.Mouse;
 
 /**
  *
@@ -57,7 +58,9 @@ public class Orientan extends Application {
         loadconfig config=new loadconfig("actions");
       /**/
 //
-        mascot m=new mascot(config);
+        //建立滑鼠監控
+        Mouse mouseDetect=new Mouse();
+        mascot m=new mascot(config,mouseDetect);
         //Notifications.create().title("Orientan Status").text("Orientan Start to Run").showInformation();
     }
 

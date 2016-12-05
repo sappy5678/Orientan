@@ -8,6 +8,7 @@ package orientan.mascot;
 import java.io.File;
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.AnimationTimer;
@@ -35,6 +36,7 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import orientan.config.Action;
 import orientan.config.loadconfig;
+import orientan.mascotEnvironment.Mouse;
 import orientan.mascotEnvironment.mascotenvironment;
 
 /**
@@ -46,33 +48,36 @@ public class mascot {
     private TimelineManger animationManger = new TimelineManger();
     private loadconfig configList;
     private Stage mascotStage = new Stage();
-    private ImageView MascotimageView = new ImageView(new Image(new File(System.getProperty("user.dir") + "\\img\\shime1.png").toURI().toString()));
+    private Image DefaultImage=new Image(new File(System.getProperty("user.dir") + "\\img\\shime1.png").toURI().toString());
+    private ImageView MascotimageView = new ImageView(DefaultImage);
     private Walk walkAction;
+    private Run runAction;
+    private Dash dashAction;
     private FallingAndBouncing fallAction;
     private Drag dragAction;
-    private double oldX = 0;
-    private double oldY = 0;
-    private double newX = 0;
-    private double newY = 0;
-    private double mouseSpeedX = 0;
-    private double mouseSpeedY = 0;
-    boolean speedXIsPositive = true;
-    boolean speedYIsPositive = true;
-    private double mascotdeltaX = 0.5;
-    private double mascotdeltaY = 0.02;
+    private ArrayList<MascotAction> actionList = new ArrayList<MascotAction>();
+    private Random random=new Random();
+    private boolean isAction=false;
+    //private double mascotdeltaX = 0.5;
+    //private double mascotdeltaY = 0.02;
     //private Time currentTime;
-    private long lastTime;
 
-    public mascot(loadconfig actionConfig) {
+    public mascot(loadconfig actionConfig, Mouse mouseDetect) {
         //初始化設定
         this.configList = actionConfig;
         //設定視窗初始位置
         mascotStage.setY(mascotenvironment.getFloor());
         mascotStage.setX(mascotenvironment.getRightWall() - 10);
         walkAction = new Walk(mascotStage, MascotimageView, configList.getData("Walk", "Move"), animationManger);
-        fallAction = new FallingAndBouncing(mascotStage, MascotimageView, configList.getData("Falling", "Move"), animationManger);
+        runAction= new Run(mascotStage, MascotimageView, configList.getData("Run", "Move"), animationManger);
+        dashAction= new Dash(mascotStage, MascotimageView, configList.getData("Dash", "Move"), animationManger);
+        fallAction = new FallingAndBouncing(mascotStage, MascotimageView, configList.getData("Falling", "Move"), animationManger,isAction);
         dragAction = new Drag(mascotStage, MascotimageView, configList.getData("Resisting", "Embedded"), animationManger);
-        walkAction.play();
+        actionList.add(walkAction);
+        actionList.add(runAction);
+        actionList.add(dashAction);
+            actionList.get(random.nextInt(3)).play(random.nextInt(20)+1);
+        
         //deltaX=Walk.getAnimation().get(0).getVelocity();
         /*按鈕測試
         javafx.scene.control.Button btn = new javafx.scene.control.Button();
@@ -101,23 +106,41 @@ public class mascot {
         mascotStage.setScene(scene);
         mascotStage.show();
         //設定拖曳圖片
-
+        scene.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent me) {
+                if(mascotStage.getY()==mascotenvironment.getFloor())
+                    isAction=false;
+                if(!isAction)
+                {
+                    animationManger.StopAll(); 
+                    MascotimageView.setImage(DefaultImage);
+                }          
+                me.consume();
+            }
+        });
+        scene.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent me) {
+                if(mascotStage.getY()==mascotenvironment.getFloor())
+                    isAction=false;
+                if(!isAction)
+                {
+                     actionList.get(random.nextInt(3)).play(random.nextInt(20)+1);
+                }            
+                me.consume();
+            }
+        });
         scene.setOnDragDetected(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent me) {
+                isAction=true;
                 /* drag was detected, start drag-and-drop gesture*/
                 //System.out.println("onDragDetected");
                 /* allow MOVE transfer mode */
-                animationManger.StopAll();
-
                 if (me.getButton() != MouseButton.MIDDLE && me.getButton() != MouseButton.SECONDARY) {
-                    //現在的滑鼠位置
-                    //oldX=me.getSceneX();
-                    //oldY=me.getSceneY();
-                    //initialX = me.getSceneX();
-                    //initialY = me.getSceneY();
+                    animationManger.StopAll();  
                 }
-                lastTime = System.currentTimeMillis();
                 me.consume();
             }
         });
@@ -126,50 +149,9 @@ public class mascot {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 /* data is dragged over the target */
-                double speedPowTwo = 0;
                 if (mouseEvent.getButton() != MouseButton.MIDDLE && mouseEvent.getButton() != MouseButton.SECONDARY) {
-                    //System.out.println("onDragOver");
-
-                    if (System.currentTimeMillis() - lastTime >= 10) {
-                        lastTime = System.currentTimeMillis();
-                        newX = mouseEvent.getScreenX();
-                        newY = mouseEvent.getScreenY();
-                        if (!(newX - oldX == 0)) {
-                            //speedPowTwo=Math.pow(newX-oldX,2.0)+Math.pow(newY-oldY, 2.0);
-                            speedPowTwo = Math.pow(newX - oldX, 2.0);
-                            if (newX - oldX >= 0) {
-                                speedXIsPositive = true;
-                            } else {
-                                speedXIsPositive = false;
-                            }
-                            mouseSpeedX = Math.sqrt(Math.abs(speedPowTwo));
-                            if (!speedXIsPositive) {
-                                mouseSpeedX = mouseSpeedX * -1;
-                            }
-                            //System.out.println(mouseSpeed);
-                        }
-                        if (!(newY - oldY == 0)) {
-                            //speedPowTwo=Math.pow(newX-oldX,2.0)+Math.pow(newY-oldY, 2.0);
-                            speedPowTwo = Math.pow(newY - oldY, 2.0);
-                            if (newY - oldY >= 0) {
-                                speedYIsPositive = true;
-                            } else {
-                                speedYIsPositive = false;
-                            }
-                            mouseSpeedY = Math.sqrt(Math.abs(speedPowTwo));
-                            if (!speedYIsPositive) {
-                                mouseSpeedY = mouseSpeedY * -1;
-                            }
-                            //System.out.println(mouseSpeed);
-                        }
-                    }
-                    dragAction.ResistingAndDrag(mouseSpeedX);
-                    //System.out.print("X:");
-                    //System.out.println(mouseSpeedX);
-                    //System.out.print("Y:");
-                    //System.out.println(mouseSpeedY);
-                    oldX = newX;
-                    oldY = newY;
+                    mouseDetect.updateMouseData(mouseEvent);
+                    dragAction.ResistingAndDrag(mouseDetect);
                     mascotStage.setX(mouseEvent.getScreenX() - mascotenvironment.getImageWidth() / 2);
                     mascotStage.setY(mouseEvent.getScreenY() - mascotenvironment.getImageHeight() / 5);
                 }
@@ -177,13 +159,15 @@ public class mascot {
             }
 
         });
+
         scene.setOnMouseReleased(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEventdrop) {
-                double deltaY = mascotdeltaY;
-                double deltaX = mascotdeltaX;
-                animationManger.StopAll();
-                fallAction.Falling(mouseSpeedX, mouseSpeedY);
+                if (mouseEventdrop.getButton() != MouseButton.MIDDLE && mouseEventdrop.getButton() != MouseButton.SECONDARY) {
+                    animationManger.StopAll();
+                    fallAction.Falling(mouseDetect.getMouseSpeedX(), mouseDetect.getMouseSpeedY());
+                    //isAction=false;
+                }
             }
         });
         root.getChildren().add(MascotimageView);

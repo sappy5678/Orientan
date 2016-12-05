@@ -16,6 +16,7 @@ import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import orientan.config.Action;
+import orientan.mascotEnvironment.Mouse;
 
 /**
  *
@@ -102,33 +103,33 @@ class Drag {
         animationManger.getTimelineList().add(resistingTimeline);
     }
 
-    public void ResistingAndDrag(double mouseSpeedX) {
+    public void ResistingAndDrag(Mouse mouseDetect) {
         imageView.setRotationAxis(Rotate.Y_AXIS);
         imageView.setRotate(0);
-        if (mouseSpeedX >= 0) {
+        if (mouseDetect.getMouseSpeedX() >= 0) {
             this.mouseSpeedXIsPositive = true;
             
         } else {
             this.mouseSpeedXIsPositive = false;
         }
-        if (Math.abs(mouseSpeedX) <= 3) {
+        if (Math.abs(mouseDetect.getMouseSpeedX()) <= 3) {
             imageView.setImage(pinchedCenter);
             resistingTimeline.play();
         } else {
             timeLineManger.StopAll();
-            if (Math.abs(mouseSpeedX) >= 30) {
+            if (Math.abs(mouseDetect.getMouseSpeedX()) >= 30) {
                 if (mouseSpeedXIsPositive) {
                     imageView.setImage(pinchedLeft3);
                 } else {
                     imageView.setImage(pinchedRight3);
                 }
-            } else if ((Math.abs(mouseSpeedX) < 30 && Math.abs(mouseSpeedX) >= 10)) {
+            } else if ((Math.abs(mouseDetect.getMouseSpeedX()) < 30 && Math.abs(mouseDetect.getMouseSpeedX()) >= 10)) {
                 if (mouseSpeedXIsPositive) {
                     imageView.setImage(pinchedLeft2);
                 } else {
                     imageView.setImage(pinchedRight2);
                 }
-            } else if (Math.abs(mouseSpeedX) < 10 && Math.abs(mouseSpeedX) > 3) {
+            } else if (Math.abs(mouseDetect.getMouseSpeedX()) < 10 && Math.abs(mouseDetect.getMouseSpeedX()) > 3) {
                 if (mouseSpeedXIsPositive) {
                     imageView.setImage(pinchedLeft1);
                 } else {

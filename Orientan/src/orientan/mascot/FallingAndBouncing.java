@@ -42,8 +42,9 @@ public class FallingAndBouncing {
     private Image jumpImage = new Image(new File(System.getProperty("user.dir") + "\\img" + "/shime22.png").toURI().toString());
     private double fallRegistanceY = 0;
     private double ReboundCoefficientX = 0.5;
-
-    public FallingAndBouncing(Stage InmascotStage, ImageView InMascotimageView, Action InConfig, TimelineManger InanimationManger) {
+    private boolean isaction;
+    public FallingAndBouncing(Stage InmascotStage, ImageView InMascotimageView, Action InConfig, TimelineManger InanimationManger,boolean isAction) {
+        this.isaction=isAction;
         this.mascotStage = InmascotStage;
         this.MascotimageView = InMascotimageView;
         this.Config = InConfig;
@@ -148,6 +149,7 @@ public class FallingAndBouncing {
         //事件監聽  
         EventHandler BouncingOnFinished = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent t) {
+                isaction=false;
                 mascotStage.setY(mascotenvironment.getFloor());
             }
         };
@@ -166,5 +168,6 @@ public class FallingAndBouncing {
         falldeltaY = Gravity;
         fallRegistanceY = RegistanceY;
         fallTimeline.play();
+        isaction=false;
     }
 }

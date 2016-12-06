@@ -6,6 +6,7 @@
 package orientan;
 
 import java.awt.AWTException;
+import java.awt.Button;
 import java.awt.PopupMenu;
 import java.awt.SystemTray;
 import java.awt.Toolkit;
@@ -26,7 +27,12 @@ import java.util.ResourceBundle;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
+import javafx.event.EventHandler;
+import javafx.scene.layout.AnchorPane;
 import org.controlsfx.control.*;
+import orientan.config.loadconfig;
+import orientan.mascot.mascot;
+import orientan.mascotEnvironment.Mouse;
 
 /**
  *
@@ -38,7 +44,7 @@ public class Orientan extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("OrientanFXMLDocument.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("OrientanFXMLDocument.fxml"));
 
         // set log type
         // 設定log的類別
@@ -47,13 +53,15 @@ public class Orientan extends Application {
         // get config in orientan 
         //  取得設定檔 在  orientan 底下
         properties = getConfig();
-
-        Scene scene = new Scene(root);
         setIcon(stage);
-        stage.initStyle(StageStyle.UTILITY);
-        stage.setScene(scene);
-        stage.show();
-        Notifications.create().title("Orientan Status").text("Orientan Start to Run").showInformation();
+        //取得動作設定檔(actions)
+        loadconfig config=new loadconfig("actions");
+      /**/
+//
+        //建立滑鼠監控
+        Mouse mouseDetect=new Mouse();
+        mascot m=new mascot(config,mouseDetect);
+        //Notifications.create().title("Orientan Status").text("Orientan Start to Run").showInformation();
     }
 
     /**

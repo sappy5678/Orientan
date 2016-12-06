@@ -76,8 +76,11 @@ public class mascot {
         actionList.add(walkAction);
         actionList.add(runAction);
         actionList.add(dashAction);
-            actionList.get(random.nextInt(3)).play(random.nextInt(20)+1);
-        
+
+             actionList.get(random.nextInt(3)).play(random.nextInt(20)+1);
+
+       
+        //System.out.println(configList.getData("Resisting", "Embedded").getAnimation().size());
         //deltaX=Walk.getAnimation().get(0).getVelocity();
         /*按鈕測試
         javafx.scene.control.Button btn = new javafx.scene.control.Button();

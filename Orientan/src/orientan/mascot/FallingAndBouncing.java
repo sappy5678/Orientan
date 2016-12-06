@@ -42,6 +42,7 @@ public class FallingAndBouncing {
     private Image jumpImage = new Image(new File(System.getProperty("user.dir") + "\\img" + "/shime22.png").toURI().toString());
     private double fallRegistanceY = 0;
     private double ReboundCoefficientX = 0.5;
+    private boolean noCeiling=false;
     private boolean isaction;
     public FallingAndBouncing(Stage InmascotStage, ImageView InMascotimageView, Action InConfig, TimelineManger InanimationManger,boolean isAction) {
         this.isaction=isAction;
@@ -84,7 +85,8 @@ public class FallingAndBouncing {
                      */
                     //System.out.println(mascotStage.getY());
                     //天花板限制
-                    if (mascotStage.getY() + falldeltaY - initialVelocityY - fallRegistanceY <= mascotenvironment.getCeiling()) {
+                    
+                    if (mascotStage.getY() + falldeltaY - initialVelocityY - fallRegistanceY <= mascotenvironment.getCeiling()&&!noCeiling) {
                         mascotStage.setY(mascotenvironment.getCeiling());
                         falldeltaY = Gravity;
                         initialVelocityY = 0;

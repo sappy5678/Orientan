@@ -9,7 +9,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -17,53 +16,12 @@ import org.json.JSONObject;
  *
  * @author ASUS
  */
-//interface
-public class Action {
-
-    /*"Type": "Move",
-"Animation": {"Pose": [
-{
-"ImageAnchor": "64,128",
-"Duration": 6,
-"Image": "/shime1.png",
-"Velocity": "-2,0"
-},
-{
-"ImageAnchor": "64,128",
-"Duration": 6,
-"Image": "/shime2.png",
-"Velocity": "-2,0"
-},
-{
-"ImageAnchor": "64,128",
-"Duration": 6,
-"Image": "/shime1.png",
-"Velocity": "-2,0"
-},
-{
-"ImageAnchor": "64,128",
-"Duration": 6,
-"Image": "/shime3.png",
-"Velocity": "-2,0"
-}
-]},
-"BorderType": "Floor",
-"Name": "Walk"
-}
-     */
+public class ResistingData {
+    
     private String Type;
     private ArrayList<Pose> Animation = new ArrayList<Pose>();
-    private String BorderType;
     private String Name;
-
-    public Action()
-    {
-        this.Type="";
-        this.BorderType="";
-        this.Name="";
-    }
-
-    public Action(JSONObject anaction) throws JSONException {
+    public ResistingData(JSONObject anaction) throws JSONException {
          this.Type = anaction.get("Type").toString();
         Type listType = new TypeToken<ArrayList<Pose>>() {
         }.getType();
@@ -83,10 +41,11 @@ public class Action {
         
         }
         //System.out.println(anaction.getJSONObject("Animation").getJSONArray("Pose").toString());
-        if(anaction.optString("BorderType")!=null)
-            this.BorderType = anaction.get("BorderType").toString();
         this.Name = anaction.get("Name").toString();
 
+    }
+
+    public ResistingData() {
     }
 
     public String getType() {
@@ -105,14 +64,6 @@ public class Action {
         this.Animation = Animation;
     }
 
-    public String getBorderType() {
-        return BorderType;
-    }
-
-    public void setBorderType(String BorderType) {
-        this.BorderType = BorderType;
-    }
-
     public String getName() {
         return Name;
     }
@@ -120,4 +71,6 @@ public class Action {
     public void setName(String Name) {
         this.Name = Name;
     }
+    
+
 }

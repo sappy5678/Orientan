@@ -33,7 +33,9 @@ public class loadconfig {
 
         // Action_List = new ArrayList<Action>();
         for (int i = 2, j = 0; i < 29; i++) {
-            if (i == 8 || i == 18 || i == 19 || i == 23) {
+            //climb的格式與pinched類似
+            if (i == 8 || i == 18 || i == 19) {
+                System.out.println(actiondata.getAction_List().getJSONObject(i).get("Name"));
                 continue;
             } else if (i == 24) {
                 falling_data.setType(actiondata.getAction_List().getJSONObject(i).get("Type").toString());
@@ -55,12 +57,12 @@ public class loadconfig {
             } else {
                 Action_List.add(new Action(actiondata.getAction_List().getJSONObject(i)));
                 /*Action a = Action_List.get(j);
-                
-                System.out.println(a.getBorderType());
-                System.out.println(a.getType());
+                if(j==18)
+                {System.out.println(a.getType());
                 System.out.println(a.getName());
+                System.out.println(a.getVelocityParam());
                 System.out.println(a.getAnimation());
-                 */
+                System.out.println(j);}*/
                 j++;
             }
         }
@@ -96,5 +98,5 @@ public class loadconfig {
     public static ResistingData getResisting_data() {
         return resisting_data;
     }
-    
+
 }

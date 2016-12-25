@@ -19,7 +19,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
@@ -28,8 +30,14 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -48,7 +56,7 @@ public class mascot {
     private TimelineManger animationManger = new TimelineManger();
     private loadconfig configList;
     private Stage mascotStage = new Stage();
-    private Image DefaultImage=new Image(new File(System.getProperty("user.dir") + "\\img\\shime1.png").toURI().toString());
+    private Image DefaultImage = new Image(new File(System.getProperty("user.dir") + "\\img\\shime1.png").toURI().toString());
     private ImageView MascotimageView = new ImageView(DefaultImage);
     private Walk walkAction;
     private Run runAction;
@@ -56,8 +64,8 @@ public class mascot {
     private FallingAndBouncing fallAction;
     private Drag dragAction;
     private ArrayList<MascotAction> actionList = new ArrayList<MascotAction>();
-    private Random random=new Random();
-    private boolean isAction=false;
+    private Random random = new Random();
+    private boolean isAction = false;
     //private double mascotdeltaX = 0.5;
     //private double mascotdeltaY = 0.02;
     //private Time currentTime;
@@ -69,17 +77,16 @@ public class mascot {
         mascotStage.setY(mascotenvironment.getFloor());
         mascotStage.setX(mascotenvironment.getRightWall() - 10);
         walkAction = new Walk(mascotStage, MascotimageView, configList.getData("Walk", "Move"), animationManger);
-        runAction= new Run(mascotStage, MascotimageView, configList.getData("Run", "Move"), animationManger);
-        dashAction= new Dash(mascotStage, MascotimageView, configList.getData("Dash", "Move"), animationManger);
-        fallAction = new FallingAndBouncing(mascotStage, MascotimageView, configList.getData("Falling", "Move"), animationManger,isAction);
+        runAction = new Run(mascotStage, MascotimageView, configList.getData("Run", "Move"), animationManger);
+        dashAction = new Dash(mascotStage, MascotimageView, configList.getData("Dash", "Move"), animationManger);
+        fallAction = new FallingAndBouncing(mascotStage, MascotimageView, configList.getData("Falling", "Move"), animationManger, isAction);
         dragAction = new Drag(mascotStage, MascotimageView, configList.getData("Resisting", "Embedded"), animationManger);
         actionList.add(walkAction);
         actionList.add(runAction);
         actionList.add(dashAction);
 
-             actionList.get(random.nextInt(3)).play(random.nextInt(20)+1);
+        actionList.get(random.nextInt(3)).play(random.nextInt(20) + 1);
 
-       
         //System.out.println(configList.getData("Resisting", "Embedded").getAnimation().size());
         //deltaX=Walk.getAnimation().get(0).getVelocity();
         /*按鈕測試
@@ -112,37 +119,37 @@ public class mascot {
         scene.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent me) {
-                if(mascotStage.getY()==mascotenvironment.getFloor())
-                    isAction=false;
-                if(!isAction)
-                {
-                    animationManger.StopAll(); 
+                if (mascotStage.getY() == mascotenvironment.getFloor()) {
+                    isAction = false;
+                }
+                if (!isAction) {
+                    animationManger.StopAll();
                     MascotimageView.setImage(DefaultImage);
-                }          
+                }
                 me.consume();
             }
         });
         scene.setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent me) {
-                if(mascotStage.getY()==mascotenvironment.getFloor())
-                    isAction=false;
-                if(!isAction)
-                {
-                     actionList.get(random.nextInt(3)).play(random.nextInt(20)+1);
-                }            
+                if (mascotStage.getY() == mascotenvironment.getFloor()) {
+                    isAction = false;
+                }
+                if (!isAction) {
+                    actionList.get(random.nextInt(3)).play(random.nextInt(20) + 1);
+                }
                 me.consume();
             }
         });
         scene.setOnDragDetected(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent me) {
-                isAction=true;
+                isAction = true;
                 /* drag was detected, start drag-and-drop gesture*/
                 //System.out.println("onDragDetected");
                 /* allow MOVE transfer mode */
                 if (me.getButton() != MouseButton.MIDDLE && me.getButton() != MouseButton.SECONDARY) {
-                    animationManger.StopAll();  
+                    animationManger.StopAll();
                 }
                 me.consume();
             }
@@ -172,6 +179,71 @@ public class mascot {
                     //isAction=false;
                 }
             }
+        });
+        scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEventright) {
+                if (mouseEventright.getButton() == MouseButton.SECONDARY) {
+
+                    Stage WebRecom = new Stage();
+
+                    //StackPane Webroot = new StackPane();
+                    VBox vbox = new VBox();
+
+                    vbox.setMinSize(700, 700);
+                    Scene WebRe = new Scene(vbox);
+                    Hyperlink[] link = new Hyperlink[2];
+                    String[] linkname = new String[2];
+                    linkname[0] = "Youtube";
+                    linkname[1] = "Yahoo";
+                    final String[] url = new String[2];
+                    url[0] = "https://www.youtube.com/?gl=TW&hl=zh-TW";
+                    url[1] = "https://tw.yahoo.com/";
+                    for (int i = 0; i < link.length; i++) {
+                        Hyperlink templink = link[i] = new Hyperlink(linkname[i]);
+                        templink.setFont(Font.font("Arial", 20));
+                        String tempurl = url[i];
+
+                        templink.setOnAction((ActionEvent e) -> {
+
+                            System.out.println("This link is clicked");
+                            Stage web = new Stage();
+                            StackPane Webroot = new StackPane();
+                            Scene webv = new Scene(Webroot);
+                            WebView webView = new WebView();
+                            WebEngine engine = new WebEngine();
+                            engine = webView.getEngine();
+
+                            engine.load(tempurl);
+                            Webroot.getChildren().add(webView);
+                            web.setTitle("New window");
+                            web.setScene(webv);
+                            web.show();
+                        });
+
+                        templink.setOnMouseEntered((MouseEvent event) -> {
+
+                            WebView webView = new WebView();
+                            WebEngine engine = new WebEngine();
+                            engine = webView.getEngine();
+
+                            engine.load(tempurl);
+                            vbox.getChildren().add(webView);
+                            templink.setOnMouseExited((MouseEvent e) -> {
+                                vbox.getChildren().remove(webView);
+
+                            });
+                        });
+                    }
+                    vbox.getChildren().addAll(link);
+
+                    // Webroot.getChildren().add(webView);
+                    WebRecom.setTitle("WebRecomend");
+                    WebRecom.setScene(WebRe);
+                    WebRecom.show();
+                }
+            }
+
         });
         root.getChildren().add(MascotimageView);
 

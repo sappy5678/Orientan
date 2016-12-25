@@ -22,6 +22,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
@@ -184,13 +185,17 @@ public class mascot {
             @Override
             public void handle(MouseEvent mouseEventright) {
                 if (mouseEventright.getButton() == MouseButton.SECONDARY) {
-
+                    
                     Stage WebRecom = new Stage();
-
+                    ScrollPane scroll=new ScrollPane();
+                    scroll.setPrefSize(115,700);
+                    scroll.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+                    scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
                     //StackPane Webroot = new StackPane();
                     VBox vbox = new VBox();
-
+                   VBox box = new VBox();
                     vbox.setMinSize(700, 700);
+                    box.setMinSize(600, 600);
                     Scene WebRe = new Scene(vbox);
                     Hyperlink[] link = new Hyperlink[2];
                     String[] linkname = new String[2];
@@ -222,21 +227,30 @@ public class mascot {
                         });
 
                         templink.setOnMouseEntered((MouseEvent event) -> {
-
-                            WebView webView = new WebView();
-                            WebEngine engine = new WebEngine();
-                            engine = webView.getEngine();
-
-                            engine.load(tempurl);
-                            vbox.getChildren().add(webView);
+                            Stage tempst=new Stage();
+                            StackPane tempWebroot = new StackPane();
+                             Scene tempweb = new Scene(tempWebroot);
+                            WebView tempwebView = new WebView();
+                            WebEngine tempengine = new WebEngine();
+                            tempengine = tempwebView.getEngine();
+                            tempst.setX(500);
+                            tempst.setY(70);
+                            tempengine.load(tempurl);
+                            tempWebroot.getChildren().add(tempwebView);
+                            tempst.setTitle("預覽");
+                            tempst.setScene(tempweb);
+                            tempst.show();
                             templink.setOnMouseExited((MouseEvent e) -> {
-                                vbox.getChildren().remove(webView);
+                                tempst.close();
 
                             });
                         });
                     }
-                    vbox.getChildren().addAll(link);
-
+                    box.getChildren().addAll(link);
+                    scroll.setContent(box);
+                    vbox.getChildren().addAll(scroll);
+                    
+                    
                     // Webroot.getChildren().add(webView);
                     WebRecom.setTitle("WebRecomend");
                     WebRecom.setScene(WebRe);

@@ -40,6 +40,14 @@ public class Mouse {
         return mouseSpeedY;
     }
 
+    public double getNewX() {
+        return newX;
+    }
+
+    public double getNewY() {
+        return newY;
+    }
+
     public void updateMouseData(MouseEvent mouseEvent) {
         if (System.currentTimeMillis() - lastTime >= 10) {
             lastTime = System.currentTimeMillis();

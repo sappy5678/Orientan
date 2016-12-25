@@ -233,8 +233,10 @@ public class mascot {
                             WebView tempwebView = new WebView();
                             WebEngine tempengine = new WebEngine();
                             tempengine = tempwebView.getEngine();
-                            tempst.setX(500);
-                            tempst.setY(70);
+                            mouseDetect.updateMouseData(event);
+                            
+                            tempst.setX(mouseDetect.getNewX()+30);
+                            tempst.setY(mouseDetect.getNewY()+20);
                             tempengine.load(tempurl);
                             tempWebroot.getChildren().add(tempwebView);
                             tempst.setTitle("預覽");

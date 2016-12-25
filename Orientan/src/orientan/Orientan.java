@@ -61,7 +61,7 @@ public class Orientan extends Application {
         //建立滑鼠監控
         Mouse mouseDetect=new Mouse();
         mascot m=new mascot(config,mouseDetect);
-        //Notifications.create().title("Orientan Status").text("Orientan Start to Run").showInformation();
+       // Notifications.create().title("Orientan Status").text("Orientan Start to Run").showInformation();
     }
 
     /**

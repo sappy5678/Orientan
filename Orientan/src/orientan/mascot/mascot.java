@@ -223,16 +223,15 @@ public class mascot {
                             //以下是以預設瀏覽器開啟，只能window喔~
                             if(Desktop.isDesktopSupported())
                             {
-                                Desktop desktop = Desktop.getDesktop();
-                                try {
+                                Desktop desktop = Desktop.getDesktop();                             
                                     try {
                                         desktop.browse(new URI(tempurl));
                                     } catch (IOException ex) {
                                         Logger.getLogger(mascot.class.getName()).log(Level.SEVERE, null, ex);
-                                    }
-                                } catch (URISyntaxException ex) {
+                                    } catch (URISyntaxException ex) {
                                     Logger.getLogger(mascot.class.getName()).log(Level.SEVERE, null, ex);
                                 }
+                                 
                             }
                             else
                             {

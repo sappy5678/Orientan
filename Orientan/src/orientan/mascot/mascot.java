@@ -5,7 +5,11 @@
  */
 package orientan.mascot;
 
+import java.awt.Desktop;
 import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Random;
@@ -86,7 +90,7 @@ public class mascot {
         actionList.add(runAction);
         actionList.add(dashAction);
         
-        actionList.get(random.nextInt(3)).play(random.nextInt(20) + 1);
+        //actionList.get(random.nextInt(3)).play(random.nextInt(20) + 1);
 
         //System.out.println(configList.getData("Resisting", "Embedded").getAnimation().size());
         //deltaX=Walk.getAnimation().get(0).getVelocity();
@@ -113,11 +117,15 @@ public class mascot {
         //設定scene顏色與大小
         Scene scene = new Scene(root, mascotenvironment.getImageWidth(), mascotenvironment.getImageHeight());
         scene.setFill(null);
-
+        mascotStage.setY(-5);
+        
+        mascotStage.setX(random.nextInt((int)mascotenvironment.getRightWall()));
+        fallAction.Falling(mouseDetect.getMouseSpeedX(), mouseDetect.getMouseSpeedY());
         mascotStage.setScene(scene);
         mascotStage.show();   
         /*事件HANDLE*/      
         //設定拖曳圖片
+        /*
         scene.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent me) {
@@ -130,7 +138,7 @@ public class mascot {
                 }
                 me.consume();
             }
-        });
+        });*/
         scene.setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent me) {
@@ -209,22 +217,47 @@ public class mascot {
                         Hyperlink templink = link[i] = new Hyperlink(linkname[i]);
                         templink.setFont(Font.font("Arial", 20));
                         String tempurl = url[i];
-
                         templink.setOnAction((ActionEvent e) -> {
 
                             System.out.println("This link is clicked");
-                            Stage web = new Stage();
-                            StackPane Webroot = new StackPane();
-                            Scene webv = new Scene(Webroot);
-                            WebView webView = new WebView();
-                            WebEngine engine = new WebEngine();
-                            engine = webView.getEngine();
+                            //以下是以預設瀏覽器開啟，只能window喔~
+                            if(Desktop.isDesktopSupported())
+                            {
+                                Desktop desktop = Desktop.getDesktop();
+                                try {
+                                    try {
+                                        desktop.browse(new URI(tempurl));
+                                    } catch (IOException ex) {
+                                        Logger.getLogger(mascot.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                } catch (URISyntaxException ex) {
+                                    Logger.getLogger(mascot.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }
+                            else
+                            {
+                                try {
+                                    Runtime runtime = Runtime.getRuntime();
+                                    runtime.exec("xdg-open " + url);
+                                }
+                                //
+                                /*
+                                Stage web = new Stage();
+                                StackPane Webroot = new StackPane();
+                                Scene webv = new Scene(Webroot);
+                                WebView webView = new WebView();
+                                WebEngine engine = new WebEngine();
+                                engine = webView.getEngine();
+                                engine.load(tempurl);
+                                Webroot.getChildren().add(webView);
+                                web.setTitle("New window");
+                                web.setScene(webv);
+                                web.show();*/
+                                catch (IOException ex) {
+                                    Logger.getLogger(mascot.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            }
 
-                            engine.load(tempurl);
-                            Webroot.getChildren().add(webView);
-                            web.setTitle("New window");
-                            web.setScene(webv);
-                            web.show();
                         });
 
                         templink.setOnMouseEntered((MouseEvent event) -> {

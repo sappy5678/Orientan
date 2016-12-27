@@ -69,6 +69,10 @@ public class mascot {
     private FallingAndBouncing fallAction;
     private Drag dragAction;
     private Sit sitAction;
+    private SitWithLegsUp sitWithLegsUpAction;
+    private SitWithLegsDown sitWithLegsDownAction;
+    private SitAndSpinHeadAction sitAndSpinHeadAction;
+    private SitAndDangleLegs sitAndDangleLegsAction;
     private ArrayList<MascotAction> actionList = new ArrayList<MascotAction>();
     private Random random = new Random();
     private Boolean noCeiling=false;
@@ -89,6 +93,10 @@ public class mascot {
         fallAction = new FallingAndBouncing(mascotStage, MascotimageView, configList.getData("Falling", "Move"), animationManger, isAction);
         dragAction = new Drag(mascotStage, MascotimageView, configList.getData("Resisting", "Embedded"), animationManger);
         sitAction=new Sit(mascotStage, MascotimageView, configList.getData("Sit", "Stay"), animationManger);
+        sitAndSpinHeadAction=new SitAndSpinHeadAction(mascotStage, MascotimageView, configList.getData("SitAndSpinHeadAction", "Animate"), animationManger);
+        sitWithLegsUpAction=new SitWithLegsUp(mascotStage, MascotimageView, configList.getData("SitWithLegsUp", "Stay"), animationManger);
+        sitWithLegsDownAction=new SitWithLegsDown(mascotStage, MascotimageView, configList.getData("SitWithLegsDown", "Stay"), animationManger);
+        sitAndDangleLegsAction=new SitAndDangleLegs(mascotStage, MascotimageView, configList.getData("SitAndDangleLegs", "Stay"), animationManger);
         actionList.add(walkAction);
         actionList.add(runAction);
         actionList.add(dashAction);
@@ -146,12 +154,15 @@ public class mascot {
         scene.setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent me) {
+                /*
                 if (mascotStage.getY() == mascotenvironment.getFloor()) {
                     isAction = false;
                 }
                 if (!isAction) {
                     actionList.get(random.nextInt(3)).play(random.nextInt(20) + 1);
-                }
+                }*/
+                //sitAndSpinHeadAction.play();
+                sitAndDangleLegsAction.play();
                 me.consume();
             }
         });

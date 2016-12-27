@@ -68,8 +68,10 @@ public class mascot {
     private Dash dashAction;
     private FallingAndBouncing fallAction;
     private Drag dragAction;
+    private Sit sitAction;
     private ArrayList<MascotAction> actionList = new ArrayList<MascotAction>();
     private Random random = new Random();
+    private Boolean noCeiling=false;
     private boolean isAction = false;
     //private double mascotdeltaX = 0.5;
     //private double mascotdeltaY = 0.02;
@@ -86,6 +88,7 @@ public class mascot {
         dashAction = new Dash(mascotStage, MascotimageView, configList.getData("Dash", "Move"), animationManger);
         fallAction = new FallingAndBouncing(mascotStage, MascotimageView, configList.getData("Falling", "Move"), animationManger, isAction);
         dragAction = new Drag(mascotStage, MascotimageView, configList.getData("Resisting", "Embedded"), animationManger);
+        sitAction=new Sit(mascotStage, MascotimageView, configList.getData("Sit", "Stay"), animationManger);
         actionList.add(walkAction);
         actionList.add(runAction);
         actionList.add(dashAction);
@@ -117,10 +120,11 @@ public class mascot {
         //設定scene顏色與大小
         Scene scene = new Scene(root, mascotenvironment.getImageWidth(), mascotenvironment.getImageHeight());
         scene.setFill(null);
-        mascotStage.setY(-5);
-        
-        mascotStage.setX(random.nextInt((int)mascotenvironment.getRightWall()));
-        fallAction.Falling(mouseDetect.getMouseSpeedX(), mouseDetect.getMouseSpeedY());
+        mascotStage.setY(-1000); 
+        mascotStage.setX(random.nextInt((int)mascotenvironment.getRightWall()+(int)mascotenvironment.getLeftWall()));
+        //一開始落下
+        fallAction.Falling(mouseDetect.getMouseSpeedX(), mouseDetect.getMouseSpeedY(),true);
+        //sitAction.play();
         mascotStage.setScene(scene);
         mascotStage.show();   
         /*事件HANDLE*/      
@@ -185,7 +189,7 @@ public class mascot {
             public void handle(MouseEvent mouseEventdrop) {
                 if (mouseEventdrop.getButton() != MouseButton.MIDDLE && mouseEventdrop.getButton() != MouseButton.SECONDARY) {
                     animationManger.StopAll();
-                    fallAction.Falling(mouseDetect.getMouseSpeedX(), mouseDetect.getMouseSpeedY());
+                    fallAction.Falling(mouseDetect.getMouseSpeedX(), mouseDetect.getMouseSpeedY(),noCeiling);
                     //isAction=false;
                 }
             }

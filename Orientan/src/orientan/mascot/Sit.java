@@ -25,12 +25,13 @@ public class Sit {
     private Timeline timeline = new Timeline();
     private Image sitImage;
     private double duration;
-    public void sit(Stage mascotStage, ImageView MascotimageView, Action sitConfig, TimelineManger animationManger)
+    public Sit(Stage mascotStage, ImageView MascotimageView, Action sitConfig, TimelineManger animationManger)
     {
         sitImage=new Image(new File(System.getProperty("user.dir") + "\\img" + sitConfig.getAnimation().get(0).getImage()).toURI().toString());
         duration=sitConfig.getAnimation().get(0).getDuration();
         timeline.getKeyFrames().add(new KeyFrame(Duration.ZERO, new KeyValue(MascotimageView.imageProperty(),sitImage)));
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(duration/10), new KeyValue(MascotimageView.imageProperty(),sitImage)));
+        timeline.setCycleCount(1);
     }
     public void play()
     {

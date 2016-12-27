@@ -162,8 +162,8 @@ public class FallingAndBouncing {
         InanimationManger.getTimelineList().add(bouncingTimeline);
     }
 
-    public void Falling(double InoldX, double InoldY) {
-
+    public void Falling(double InoldX, double InoldY,Boolean NoCeiling) {
+        noCeiling=NoCeiling;
         initialVelocityX = (InoldX) / 3;
         //使之y軸往上為正
         initialVelocityY = (InoldY * -1) / 3;

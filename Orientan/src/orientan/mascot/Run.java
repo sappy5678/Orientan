@@ -85,6 +85,7 @@ public class Run extends MascotAction{
         timeline.setCycleCount(circleTime);
         timeline.play();
     }
+    
 }
 
 

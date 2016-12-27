@@ -85,7 +85,7 @@ public class mascot {
         actionList.add(walkAction);
         actionList.add(runAction);
         actionList.add(dashAction);
-
+        
         actionList.get(random.nextInt(3)).play(random.nextInt(20) + 1);
 
         //System.out.println(configList.getData("Resisting", "Embedded").getAnimation().size());
@@ -115,7 +115,8 @@ public class mascot {
         scene.setFill(null);
 
         mascotStage.setScene(scene);
-        mascotStage.show();
+        mascotStage.show();   
+        /*事件HANDLE*/      
         //設定拖曳圖片
         scene.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
@@ -264,5 +265,5 @@ public class mascot {
         root.getChildren().add(MascotimageView);
 
     }
-
+//設定事件結束
 }

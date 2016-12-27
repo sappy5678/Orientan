@@ -61,7 +61,7 @@ public class Walk extends MascotAction {
                 mascotStage.setX((mascotStage.getX() + deltaX));
             }
         };
-
+        //時間軸生成
         duration = walkConfig.getAnimation().get(0).getDuration() / 10;
         for (int i = 0; i < walkConfig.getAnimation().size(); i++) {
             //image.add(new Image(new File(System.getProperty("user.dir") + "\\img" + Walk.getAnimation().get(i).getImage()).toURI().toString()));

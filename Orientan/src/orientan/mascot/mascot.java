@@ -87,7 +87,7 @@ public class mascot {
         //初始化設定
         this.configList = actionConfig;
         //設定視窗初始位置
-        mascotStage.setY(mascotenvironment.getFloor());
+        //mascotStage.setY(mascotenvironment.getFloor());
         mascotStage.setX(mascotenvironment.getRightWall() - 10);
         walkAction = new Walk(mascotStage, MascotimageView, configList.getData("Walk", "Move"), animationManger);
         runAction = new Run(mascotStage, MascotimageView, configList.getData("Run", "Move"), animationManger);

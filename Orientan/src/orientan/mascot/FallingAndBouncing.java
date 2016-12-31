@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -189,7 +190,9 @@ public class FallingAndBouncing {
         InanimationManger.getTimelineList().add(bouncingTimeline);
     }
 
-    public void Falling(double InoldX, double InoldY) {
+    public void Falling(double InoldX, double InoldY,Boolean NoCeiling) {
+        noCeiling=NoCeiling;
+        this.isBouncing=false;
         initialVelocityX = (InoldX) / 3;
         //使之y軸往上為正
         initialVelocityY = (InoldY * -1) / 3;

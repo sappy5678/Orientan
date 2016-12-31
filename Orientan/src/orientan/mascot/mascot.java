@@ -5,7 +5,11 @@
  */
 package orientan.mascot;
 
+import java.awt.Desktop;
 import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Random;
@@ -21,7 +25,9 @@ import javafx.event.EventType;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -182,82 +188,127 @@ public class mascot {
                 }
             }
         });
-        scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
+ scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEventright) {
                 if (mouseEventright.getButton() == MouseButton.SECONDARY) {
-                    
-                    Stage WebRecom = new Stage();
-                    ScrollPane scroll=new ScrollPane();
-                    scroll.setPrefSize(115,700);
-                    scroll.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
-                    scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
-                    //StackPane Webroot = new StackPane();
-                    VBox vbox = new VBox();
-                   VBox box = new VBox();
-                    vbox.setMinSize(700, 700);
-                    box.setMinSize(600, 600);
-                    Scene WebRe = new Scene(vbox);
-                    Hyperlink[] link = new Hyperlink[2];
-                    String[] linkname = new String[2];
-                    linkname[0] = "Youtube";
-                    linkname[1] = "Yahoo";
-                    final String[] url = new String[2];
-                    url[0] = "https://www.youtube.com/?gl=TW&hl=zh-TW";
-                    url[1] = "https://tw.yahoo.com/";
-                    for (int i = 0; i < link.length; i++) {
-                        Hyperlink templink = link[i] = new Hyperlink(linkname[i]);
-                        templink.setFont(Font.font("Arial", 20));
-                        String tempurl = url[i];
+                    MenuItem webcommand = new MenuItem();
+                    webcommand.setId("Web command");
+                    webcommand.setText("Web Command");
+                    MenuItem exit = new MenuItem();
+                    exit.setId("Exit");
+                    exit.setText("Exit");
+                    ContextMenu contextmenu = new ContextMenu(webcommand, exit);
+                    contextmenu.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            switch (((MenuItem) event.getTarget()).getId()) {
+                                case "Web command":
+                                    System.out.println("web");
+                                    Stage WebRecom = new Stage();
+                                    ScrollPane scroll = new ScrollPane();
+                                    scroll.setPrefSize(115, 700);
+                                    scroll.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+                                    scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+                                    //StackPane Webroot = new StackPane();
+                                    VBox vbox = new VBox();
+                                    VBox box = new VBox();
+                                    vbox.setMinSize(700, 700);
+                                    box.setMinSize(600, 600);
+                                    Scene WebRe = new Scene(vbox);
+                                    Hyperlink[] link = new Hyperlink[2];
+                                    String[] linkname = new String[2];
+                                    linkname[0] = "Youtube";
+                                    linkname[1] = "Yahoo";
+                                    final String[] url = new String[2];
+                                    url[0] = "https://www.youtube.com/?gl=TW&hl=zh-TW";
+                                    url[1] = "https://tw.yahoo.com/";
+                                    for (int i = 0; i < link.length; i++) {
+                                        Hyperlink templink = link[i] = new Hyperlink(linkname[i]);
+                                        templink.setFont(Font.font("Arial", 20));
+                                        String tempurl = url[i];
+                                        templink.setOnAction((ActionEvent e) -> {
 
-                        templink.setOnAction((ActionEvent e) -> {
+                                            System.out.println("This link is clicked");
+                                            //以下是以預設瀏覽器開啟，只能window喔~
+                                            if (Desktop.isDesktopSupported()) {
+                                                Desktop desktop = Desktop.getDesktop();
+                                                try {
+                                                    desktop.browse(new URI(tempurl));
+                                                } catch (IOException ex) {
+                                                    Logger.getLogger(mascot.class.getName()).log(Level.SEVERE, null, ex);
+                                                } catch (URISyntaxException ex) {
+                                                    Logger.getLogger(mascot.class.getName()).log(Level.SEVERE, null, ex);
+                                                }
 
-                            System.out.println("This link is clicked");
-                            Stage web = new Stage();
-                            StackPane Webroot = new StackPane();
-                            Scene webv = new Scene(Webroot);
-                            WebView webView = new WebView();
-                            WebEngine engine = new WebEngine();
-                            engine = webView.getEngine();
+                                            } else {
+                                                try {
+                                                    Runtime runtime = Runtime.getRuntime();
+                                                    runtime.exec("xdg-open " + url);
+                                                } //
+                                                /*
+                                Stage web = new Stage();
+                                StackPane Webroot = new StackPane();
+                                Scene webv = new Scene(Webroot);
+                                WebView webView = new WebView();
+                                WebEngine engine = new WebEngine();
+                                engine = webView.getEngine();
+                                engine.load(tempurl);
+                                Webroot.getChildren().add(webView);
+                                web.setTitle("New window");
+                                web.setScene(webv);
+                                web.show();*/ catch (IOException ex) {
+                                                    Logger.getLogger(mascot.class.getName()).log(Level.SEVERE, null, ex);
+                                                }
+                                            }
 
-                            engine.load(tempurl);
-                            Webroot.getChildren().add(webView);
-                            web.setTitle("New window");
-                            web.setScene(webv);
-                            web.show();
-                        });
+                                        });
 
-                        templink.setOnMouseEntered((MouseEvent event) -> {
-                            Stage tempst=new Stage();
-                            StackPane tempWebroot = new StackPane();
-                             Scene tempweb = new Scene(tempWebroot);
-                            WebView tempwebView = new WebView();
-                            WebEngine tempengine = new WebEngine();
-                            tempengine = tempwebView.getEngine();
-                            mouseDetect.updateMouseData(event);
-                            
-                            tempst.setX(mouseDetect.getNewX()+30);
-                            tempst.setY(mouseDetect.getNewY()+20);
-                            tempengine.load(tempurl);
-                            tempWebroot.getChildren().add(tempwebView);
-                            tempst.setTitle("預覽");
-                            tempst.setScene(tempweb);
-                            tempst.show();
-                            templink.setOnMouseExited((MouseEvent e) -> {
-                                tempst.close();
+                                        templink.setOnMouseEntered((MouseEvent mouseevent) -> {
+                                            Stage tempst = new Stage();
+                                            StackPane tempWebroot = new StackPane();
+                                            Scene tempweb = new Scene(tempWebroot);
+                                            WebView tempwebView = new WebView();
+                                            WebEngine tempengine = new WebEngine();
+                                            tempengine = tempwebView.getEngine();
+                                            mouseDetect.updateMouseData(mouseevent);
 
-                            });
-                        });
+                                            tempst.setX(mouseDetect.getNewX() + 30);
+                                            tempst.setY(mouseDetect.getNewY() + 20);
+                                            tempengine.load(tempurl);
+                                            tempWebroot.getChildren().add(tempwebView);
+                                            tempst.setTitle("預覽");
+                                            tempst.setScene(tempweb);
+                                            tempst.show();
+                                            templink.setOnMouseExited((MouseEvent e) -> {
+                                                tempst.close();
+
+                                            });
+                                        });
+                                    }
+                                    box.getChildren().addAll(link);
+                                    scroll.setContent(box);
+                                    vbox.getChildren().addAll(scroll);
+
+                                    // Webroot.getChildren().add(webView);
+                                    WebRecom.setTitle("WebRecomend");
+                                    WebRecom.setScene(WebRe);
+                                    WebRecom.show();
+                                    break;
+                                case "Exit":
+                                    System.out.println("exit");
+                                    System.exit(0);
+                                    break;
+                                default:
+                                    break;
+
+                            }
+                        }
+
                     }
-                    box.getChildren().addAll(link);
-                    scroll.setContent(box);
-                    vbox.getChildren().addAll(scroll);
-                    
-                    
-                    // Webroot.getChildren().add(webView);
-                    WebRecom.setTitle("WebRecomend");
-                    WebRecom.setScene(WebRe);
-                    WebRecom.show();
+                    );
+                    mouseDetect.updateMouseData(mouseEventright);
+                    contextmenu.show(mascotStage, mouseDetect.getNewX(), mouseDetect.getNewY());
                 }
             }
 

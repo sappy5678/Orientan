@@ -5,6 +5,8 @@
  */
 package orientan;
 
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import java.awt.AWTException;
 import java.awt.Button;
 import java.awt.PopupMenu;

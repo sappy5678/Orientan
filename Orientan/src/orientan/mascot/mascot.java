@@ -1,9 +1,12 @@
-/*
+﻿/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package orientan.mascot;
+
+
+
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
@@ -90,7 +93,7 @@ public class mascot {
         actionList.add(walkAction);
         actionList.add(runAction);
         actionList.add(dashAction);
-        
+
         actionList.get(random.nextInt(3)).play(random.nextInt(20) + 1);
 
         //System.out.println(configList.getData("Resisting", "Embedded").getAnimation().size());
@@ -120,8 +123,8 @@ public class mascot {
         scene.setFill(null);
 
         mascotStage.setScene(scene);
-        mascotStage.show();   
-        /*事件HANDLE*/      
+        mascotStage.show();
+        /*事件HANDLE*/
         //設定拖曳圖片
         scene.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override

@@ -44,6 +44,7 @@ public class FallingAndBouncing {
     private double ReboundCoefficientX = 0.5;
     private boolean noCeiling=false;
     private boolean isaction;
+    private boolean isBouncing=true;
     public FallingAndBouncing(Stage InmascotStage, ImageView InMascotimageView, Action InConfig, TimelineManger InanimationManger,boolean isAction) {
         this.isaction=isAction;
         this.mascotStage = InmascotStage;
@@ -59,19 +60,44 @@ public class FallingAndBouncing {
         EventHandler onFinished = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent t) {
                 if (falldeltaY - initialVelocityY > 0) {
-                    fallRegistanceY = Math.abs(fallRegistanceY);
+                    fallRegistanceY = Math.abs(RegistanceY);
                     MascotimageView.setImage(fallImage);
 
                 } else if (falldeltaY - initialVelocityY < 0) {
-                    fallRegistanceY = Math.abs(fallRegistanceY) * -1;
+                    fallRegistanceY = Math.abs(RegistanceY) * -1;
                     MascotimageView.setImage(jumpImage);
                 } else if (falldeltaY - initialVelocityY == 0) {
                     fallRegistanceY = 0;
                 }
+                if(isBouncing)
+                {
+                    MascotimageView.setImage(new Image(new File(System.getProperty("user.dir") + "\\img" + "/shime19.png").toURI().toString()));
+                            //new Image(new File(System.getProperty("user.dir") + "\\img" + "/shime18.png")
+                }
                 //y的部分
-                if (mascotStage.getY() + falldeltaY - initialVelocityY - fallRegistanceY + imageOnFloor >= mascotenvironment.getFloor()) {
+                if (mascotStage.getY() + falldeltaY - initialVelocityY - fallRegistanceY  >= mascotenvironment.getFloor()+ imageOnFloor) {
                     mascotStage.setY(mascotenvironment.getFloor() + imageOnFloor);
-                    initialVelocityY = 0;
+                    //反彈
+                    if(Math.abs( falldeltaY - initialVelocityY - fallRegistanceY)<10)
+                    {
+                        isBouncing=false;
+                        initialVelocityY = 0;
+                        initialVelocityX = 0;
+                    }
+                    else
+                    {
+                        MascotimageView.setImage(new Image(new File(System.getProperty("user.dir") + "\\img" + "/shime18.png").toURI().toString()));
+                        isBouncing=true;
+                        System.out.println(falldeltaY-initialVelocityY+"!!");
+                        initialVelocityY=(falldeltaY-initialVelocityY)*0.5;
+                        falldeltaY=Gravity;
+                        /*
+                        System.out.println(initialVelocityY);
+                        System.out.println(falldeltaY);
+                        System.out.println(falldeltaY-initialVelocityY);
+                        System.out.println(falldeltaY - initialVelocityY - fallRegistanceY+"!!!");
+                        System.out.println("???????????????????");*/
+                    }
                 } else {
                     //if (oldY - deltaY >= 0) {
                     //   oldY = 0;
@@ -102,7 +128,8 @@ public class FallingAndBouncing {
                 if (initialVelocityX != 0) {
 
                     if (Math.abs(initialVelocityX) - falldeltaX <= 0) {
-                        initialVelocityX = 0;
+                        //此註解是為了讓等於0的權利給是否繼續反彈的y方法上
+                        //initialVelocityX = 0;
                     } else if (initialVelocityX > 0 && initialVelocityX != 0) {
                         initialVelocityX = initialVelocityX - falldeltaX;
                     } else if (initialVelocityX < 0 && initialVelocityX != 0) {
@@ -127,7 +154,7 @@ public class FallingAndBouncing {
                     }
                 }
                 //結束條件  目前註解掉的oldY部分是反彈
-                if (mascotStage.getY() >= mascotenvironment.getFloor() + imageOnFloor/*&&oldY==0*/) {
+                if (mascotStage.getY() >= mascotenvironment.getFloor() + imageOnFloor&&isBouncing==false) {
                     falldeltaY = Gravity;
                     fallTimeline.stop();
                     bouncingTimeline.play();
@@ -162,8 +189,7 @@ public class FallingAndBouncing {
         InanimationManger.getTimelineList().add(bouncingTimeline);
     }
 
-    public void Falling(double InoldX, double InoldY,Boolean NoCeiling) {
-        noCeiling=NoCeiling;
+    public void Falling(double InoldX, double InoldY) {
         initialVelocityX = (InoldX) / 3;
         //使之y軸往上為正
         initialVelocityY = (InoldY * -1) / 3;

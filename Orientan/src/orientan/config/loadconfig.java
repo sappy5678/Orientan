@@ -45,6 +45,7 @@ public class loadconfig {
                 falling_data.setRegistanceY(actiondata.getAction_List().getJSONObject(i).getDouble("RegistanceY"));
                 falling_data.setName(actiondata.getAction_List().getJSONObject(i).get("Name").toString());
                 falling_data.setGravity(actiondata.getAction_List().getJSONObject(i).getDouble("Gravity"));
+                falling_data.setFallingAction(new Action(actiondata.getAction_List().getJSONObject(24)));
             } else if (i == 27) {
                 pinched_data = new PinchedData(actiondata.getAction_List().getJSONObject(i));
                 /*System.out.println(pinched_data.getName());

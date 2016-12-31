@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package orientan.mascot;
-
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
@@ -86,7 +85,7 @@ public class mascot {
         walkAction = new Walk(mascotStage, MascotimageView, configList.getData("Walk", "Move"), animationManger);
         runAction = new Run(mascotStage, MascotimageView, configList.getData("Run", "Move"), animationManger);
         dashAction = new Dash(mascotStage, MascotimageView, configList.getData("Dash", "Move"), animationManger);
-        fallAction = new FallingAndBouncing(mascotStage, MascotimageView, configList.getData("Falling", "Move"), animationManger, isAction);
+        fallAction = new FallingAndBouncing(mascotStage, MascotimageView,configList.getFallingData(),configList.getData("Bouncing", "Animate"),configList.getData("Jumping", "Embedded"), animationManger, isAction);
         dragAction = new Drag(mascotStage, MascotimageView, configList.getData("Resisting", "Embedded"), animationManger);
         actionList.add(walkAction);
         actionList.add(runAction);

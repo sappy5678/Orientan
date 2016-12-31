@@ -17,6 +17,7 @@ import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import orientan.config.Action;
+import orientan.config.FallingData;
 import orientan.mascotEnvironment.mascotenvironment;
 
 /**
@@ -36,23 +37,30 @@ public class FallingAndBouncing {
     private Timeline bouncingTimeline = new Timeline();
     private Stage mascotStage;
     private ImageView MascotimageView;
-    private Action Config;
+    private Action BouncingConfig;
     private double imageOnFloor = 10;
-    private Image fallImage = new Image(new File(System.getProperty("user.dir") + "\\img" + "/shime4.png").toURI().toString());
-    private Image jumpImage = new Image(new File(System.getProperty("user.dir") + "\\img" + "/shime22.png").toURI().toString());
+    private Image fallImage;
+    private Image jumpImage;
+    private Image BouncingImage;
+    private Image FallOnFloorImage;
     private double fallRegistanceY = 0;
     private double ReboundCoefficientX = 0.5;
-    private boolean noCeiling=false;
+    private boolean noCeiling = false;
     private boolean isaction;
-    private boolean isBouncing=true;
-    public FallingAndBouncing(Stage InmascotStage, ImageView InMascotimageView, Action InConfig, TimelineManger InanimationManger,boolean isAction) {
-        this.isaction=isAction;
+    private boolean isBouncing = true;
+
+    public FallingAndBouncing(Stage InmascotStage, ImageView InMascotimageView, FallingData InFallConfig, Action BouncingConfig, Action JumpConfig, TimelineManger InanimationManger, boolean isAction) {
+        this.isaction = isAction;
         this.mascotStage = InmascotStage;
         this.MascotimageView = InMascotimageView;
-        this.Config = InConfig;
-        RegistanceX = 0.1;  //0.2
-        RegistanceY = 0.1;
-        Gravity = 0.25;  //0.25
+        this.BouncingConfig = BouncingConfig;
+        fallImage = new Image(new File(System.getProperty("user.dir") + "\\img" + InFallConfig.getFallingAction().getAnimation().get(0).getImage()).toURI().toString());
+        jumpImage = new Image(new File(System.getProperty("user.dir") + "\\img" + JumpConfig.getAnimation().get(0).getImage()).toURI().toString());
+        BouncingImage = new Image(new File(System.getProperty("user.dir") + "\\img" + BouncingConfig.getAnimation().get(1).getImage()).toURI().toString());
+        FallOnFloorImage=new Image(new File(System.getProperty("user.dir") + "\\img" + BouncingConfig.getAnimation().get(0).getImage()).toURI().toString());
+        RegistanceX = InFallConfig.getRegistanceX();  //0.1
+        RegistanceY = InFallConfig.getRegistanceY();  //0.1
+        Gravity = InFallConfig.getGravity() / 10;  //0.25
         falldeltaX = RegistanceX;
         falldeltaY = Gravity;
         fallRegistanceY = RegistanceY;
@@ -65,32 +73,28 @@ public class FallingAndBouncing {
 
                 } else if (falldeltaY - initialVelocityY < 0) {
                     fallRegistanceY = Math.abs(RegistanceY) * -1;
-                    MascotimageView.setImage(jumpImage);
+                    if (isBouncing) {
+                        MascotimageView.setImage(BouncingImage);
+                    } else {
+                        MascotimageView.setImage(jumpImage);
+                    }
                 } else if (falldeltaY - initialVelocityY == 0) {
                     fallRegistanceY = 0;
                 }
-                if(isBouncing)
-                {
-                    MascotimageView.setImage(new Image(new File(System.getProperty("user.dir") + "\\img" + "/shime19.png").toURI().toString()));
-                            //new Image(new File(System.getProperty("user.dir") + "\\img" + "/shime18.png")
-                }
                 //y的部分
-                if (mascotStage.getY() + falldeltaY - initialVelocityY - fallRegistanceY  >= mascotenvironment.getFloor()+ imageOnFloor) {
+                if (mascotStage.getY() + falldeltaY - initialVelocityY - fallRegistanceY >= mascotenvironment.getFloor() + imageOnFloor) {
                     mascotStage.setY(mascotenvironment.getFloor() + imageOnFloor);
                     //反彈
-                    if(Math.abs( falldeltaY - initialVelocityY - fallRegistanceY)<10)
-                    {
-                        isBouncing=false;
+                    if (Math.abs(falldeltaY - initialVelocityY - fallRegistanceY) < 10) {
+                        isBouncing = false;
                         initialVelocityY = 0;
                         initialVelocityX = 0;
-                    }
-                    else
-                    {
-                        MascotimageView.setImage(new Image(new File(System.getProperty("user.dir") + "\\img" + "/shime18.png").toURI().toString()));
-                        isBouncing=true;
-                        System.out.println(falldeltaY-initialVelocityY+"!!");
-                        initialVelocityY=(falldeltaY-initialVelocityY)*0.5;
-                        falldeltaY=Gravity;
+                    } else {
+                        MascotimageView.setImage(FallOnFloorImage);
+                        isBouncing = true;
+                        //System.out.println(falldeltaY-initialVelocityY+"!!");
+                        initialVelocityY = (falldeltaY - initialVelocityY) * 0.5;
+                        falldeltaY = Gravity;
                         /*
                         System.out.println(initialVelocityY);
                         System.out.println(falldeltaY);
@@ -111,8 +115,8 @@ public class FallingAndBouncing {
                      */
                     //System.out.println(mascotStage.getY());
                     //天花板限制
-                    
-                    if (mascotStage.getY() + falldeltaY - initialVelocityY - fallRegistanceY <= mascotenvironment.getCeiling()&&!noCeiling) {
+
+                    if (mascotStage.getY() + falldeltaY - initialVelocityY - fallRegistanceY <= mascotenvironment.getCeiling() && !noCeiling) {
                         mascotStage.setY(mascotenvironment.getCeiling());
                         falldeltaY = Gravity;
                         initialVelocityY = 0;
@@ -154,7 +158,7 @@ public class FallingAndBouncing {
                     }
                 }
                 //結束條件  目前註解掉的oldY部分是反彈
-                if (mascotStage.getY() >= mascotenvironment.getFloor() + imageOnFloor&&isBouncing==false) {
+                if (mascotStage.getY() >= mascotenvironment.getFloor() + imageOnFloor && isBouncing == false) {
                     falldeltaY = Gravity;
                     fallTimeline.stop();
                     bouncingTimeline.play();
@@ -178,7 +182,7 @@ public class FallingAndBouncing {
         //事件監聽  
         EventHandler BouncingOnFinished = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent t) {
-                isaction=false;
+                isaction = false;
                 mascotStage.setY(mascotenvironment.getFloor());
             }
         };
@@ -196,6 +200,6 @@ public class FallingAndBouncing {
         falldeltaY = Gravity;
         fallRegistanceY = RegistanceY;
         fallTimeline.play();
-        isaction=false;
+        isaction = false;
     }
 }

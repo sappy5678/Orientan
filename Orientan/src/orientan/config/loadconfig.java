@@ -27,6 +27,7 @@ public class loadconfig {
         int listlength = actiondata.GetListLength();
 
         JSONArray List = actiondata.getAction_List();
+        
         /*for (int i = 0; i < listlength; i++) {
 
         }*/

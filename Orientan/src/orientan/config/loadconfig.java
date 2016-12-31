@@ -35,6 +35,7 @@ public class loadconfig {
         for (int i = 2, j = 0; i < 29; i++) {
             //climb的格式與pinched類似
             if (i == 8 || i == 18 || i == 19) {
+                System.out.println(i);
                 System.out.println(actiondata.getAction_List().getJSONObject(i).get("Name"));
                 continue;
             } else if (i == 24) {

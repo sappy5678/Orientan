@@ -30,6 +30,7 @@ import java.util.logging.SimpleFormatter;
 import javafx.event.EventHandler;
 import javafx.scene.layout.AnchorPane;
 import org.controlsfx.control.*;
+import orientan.ImageSetChooser.ImageSetChooser;
 import orientan.config.loadconfig;
 import orientan.mascot.mascot;
 import orientan.mascotEnvironment.Mouse;
@@ -55,13 +56,21 @@ public class Orientan extends Application {
         properties = getConfig();
         setIcon(stage);
         //取得動作設定檔(actions)
-        loadconfig config=new loadconfig("actions");
-      /**/
+        loadconfig config = new loadconfig("actions");
+        /**/
 //
+        //選擇寵物
+        String PetPath = "";
+        Thread waitchose = new Thread();
+        ImageSetChooser chose = new ImageSetChooser();
+
+        PetPath = chose.getPath();
+        System.out.println(PetPath);
+        
         //建立滑鼠監控
-        Mouse mouseDetect=new Mouse();
-        mascot m=new mascot(config,mouseDetect);
-       // Notifications.create().title("Orientan Status").text("Orientan Start to Run").showInformation();
+        Mouse mouseDetect = new Mouse();
+        mascot m = new mascot(config, mouseDetect);
+        // Notifications.create().title("Orientan Status").text("Orientan Start to Run").showInformation();
     }
 
     /**
@@ -89,11 +98,10 @@ public class Orientan extends Application {
                     // execute default action of the application
                     String cmd = e.getActionCommand();
                     // exit 離開
-                    if(cmd == SystemTrayMenu.getString("exit"))
-                    {
+                    if (cmd == SystemTrayMenu.getString("exit")) {
                         System.out.println(e);
                         System.exit(0);
-                        
+
                     }
                 }
 

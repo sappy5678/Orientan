@@ -19,8 +19,12 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -31,6 +35,12 @@ import javafx.stage.Stage;
 public class ImageSetChooser extends Application {
 
     private List<File> ImageFile = new ArrayList<File>();
+    private String path="";
+
+    public ImageSetChooser() {
+        Stage stage = new Stage();
+        this.start(stage);
+    }
 
     @Override
     public void start(Stage primaryStage) {
@@ -39,6 +49,11 @@ public class ImageSetChooser extends Application {
             System.out.println(f);
 
         }
+        Image first = new Image("file:///"+ImageFile.get(3).getPath() + "\\shime1.png");
+        ImageView iv1 = new ImageView(first);
+
+        Image second = new Image("file:///"+ImageFile.get(4).getPath() + "\\shime1.png");
+        ImageView iv2 = new ImageView(second);
         ToggleGroup group = new ToggleGroup();
         //RadioButton[] choose = new RadioButton[2];
         RadioButton chose_one = new RadioButton(ImageFile.get(3).getName().toString());
@@ -65,12 +80,14 @@ public class ImageSetChooser extends Application {
 
         });*/
         chose_two.setMinSize(10, 20);
+        //決定是哪一隻角色
         Button set = new Button("Set");
         set.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-
+                path = group.getSelectedToggle().getUserData().toString();
                 System.out.println("set character");
+                primaryStage.close();
 
             }
         });
@@ -81,12 +98,19 @@ public class ImageSetChooser extends Application {
                         System.out.println(group.getSelectedToggle().getUserData());
                     }
                 });
+        HBox hb1 = new HBox();
+        HBox hb2 = new HBox();
+        hb1.getChildren().addAll(chose_one, iv1);
+        hb2.getChildren().addAll(chose_two, iv2);
+
         /*choose[0] = chose_one;
         choose[1] = chose_two;*/
+        //StackPane root = new StackPane();  
         VBox vb = new VBox();
-        vb.getChildren().addAll(chose_one,chose_two);
-        vb.getChildren().add(set);
-        Scene sc = new Scene(vb,100,100);
+        /*vb.getChildren().addAll(chose_one, chose_two);
+        vb.getChildren().add(set);*/
+        vb.getChildren().addAll(hb1,hb2,set);
+        Scene sc = new Scene(vb, 300, 300);
         primaryStage.setX(200);
         primaryStage.setY(200);
         primaryStage.setTitle("chose");
@@ -94,13 +118,18 @@ public class ImageSetChooser extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args) {
+    public String getPath() {
+        return path;
+    }
+}
+
+/*public static void main(String[] args) {
         launch(args);
         //System.out.println("chose two chose");
-    }
+    }*/
 
-}
-/*public ImageSetChooser() {
+
+ /*public ImageSetChooser() {
         for (File f : new File(System.getProperty("user.dir") + "\\img").listFiles()) {
             ImageFile.add(f);
             System.out.println(f);

@@ -26,13 +26,13 @@ import orientan.mascotEnvironment.mascotenvironment;
  */
 public class FallingAndBouncing {
 
-    private double RegistanceY = 0;
-    private double RegistanceX = 0;
-    private double Gravity = 0;
-    private double falldeltaX = 0;
-    private double falldeltaY = 0;
-    private double initialVelocityX = 0;
-    private double initialVelocityY = 0;
+    private double RegistanceY = 0; //y方向阻力
+    private double RegistanceX = 0; //x方向阻力
+    private double Gravity = 0;   //重力加速度
+    private double falldeltaX = 0; //目前為止x速度變化
+    private double falldeltaY = 0; //目前為止y速度變化
+    private double initialVelocityX = 0; //初始速度x
+    private double initialVelocityY = 0; //初始速度y
     private Timeline fallTimeline = new Timeline();
     private Timeline bouncingTimeline = new Timeline();
     private Stage mascotStage;
@@ -43,6 +43,7 @@ public class FallingAndBouncing {
     private Image jumpImage;
     private Image BouncingImage;
     private Image FallOnFloorImage;
+    private Image StandImage = new Image(new File(System.getProperty("user.dir") + "\\img" + "/shime1.png").toURI().toString());
     private double fallRegistanceY = 0;
     private double ReboundCoefficientX = 0.5;
     private boolean noCeiling = false;
@@ -57,7 +58,7 @@ public class FallingAndBouncing {
         fallImage = new Image(new File(System.getProperty("user.dir") + "\\img" + InFallConfig.getFallingAction().getAnimation().get(0).getImage()).toURI().toString());
         jumpImage = new Image(new File(System.getProperty("user.dir") + "\\img" + JumpConfig.getAnimation().get(0).getImage()).toURI().toString());
         BouncingImage = new Image(new File(System.getProperty("user.dir") + "\\img" + BouncingConfig.getAnimation().get(1).getImage()).toURI().toString());
-        FallOnFloorImage=new Image(new File(System.getProperty("user.dir") + "\\img" + BouncingConfig.getAnimation().get(0).getImage()).toURI().toString());
+        FallOnFloorImage = new Image(new File(System.getProperty("user.dir") + "\\img" + BouncingConfig.getAnimation().get(0).getImage()).toURI().toString());
         RegistanceX = InFallConfig.getRegistanceX();  //0.1
         RegistanceY = InFallConfig.getRegistanceY();  //0.1
         Gravity = InFallConfig.getGravity() / 10;  //0.25
@@ -186,9 +187,9 @@ public class FallingAndBouncing {
                 mascotStage.setY(mascotenvironment.getFloor());
             }
         };
-        bouncingTimeline.getKeyFrames().add(new KeyFrame(Duration.ZERO, new KeyValue(InMascotimageView.imageProperty(), new Image(new File(System.getProperty("user.dir") + "\\img" + "/shime18.png").toURI().toString()))));
-        bouncingTimeline.getKeyFrames().add(new KeyFrame(Duration.millis(500), new KeyValue(InMascotimageView.imageProperty(), new Image(new File(System.getProperty("user.dir") + "\\img" + "/shime19.png").toURI().toString()))));
-        bouncingTimeline.getKeyFrames().add(new KeyFrame(Duration.millis(800), BouncingOnFinished, new KeyValue(InMascotimageView.imageProperty(), new Image(new File(System.getProperty("user.dir") + "\\img" + "/shime1.png").toURI().toString()))));
+        bouncingTimeline.getKeyFrames().add(new KeyFrame(Duration.ZERO, new KeyValue(InMascotimageView.imageProperty(), FallOnFloorImage)));
+        bouncingTimeline.getKeyFrames().add(new KeyFrame(Duration.millis(500), new KeyValue(InMascotimageView.imageProperty(), BouncingImage)));
+        bouncingTimeline.getKeyFrames().add(new KeyFrame(Duration.millis(800), BouncingOnFinished, new KeyValue(InMascotimageView.imageProperty(), StandImage)));
         bouncingTimeline.setCycleCount(1);
         InanimationManger.getTimelineList().add(bouncingTimeline);
     }

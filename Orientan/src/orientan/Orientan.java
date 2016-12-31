@@ -57,13 +57,13 @@ public class Orientan extends Application {
         properties = getConfig();
         setIcon(stage);
         //取得動作設定檔(actions)
-        loadconfig config=new loadconfig("actions");
-      /**/
+        loadconfig config = new loadconfig("actions");
+        /**/
 //
         //建立滑鼠監控
-        Mouse mouseDetect=new Mouse();
-        mascot m=new mascot(config,mouseDetect);
-       // Notifications.create().title("Orientan Status").text("Orientan Start to Run").showInformation();
+        Mouse mouseDetect = new Mouse();
+        mascot m = new mascot(config, mouseDetect);
+        // Notifications.create().title("Orientan Status").text("Orientan Start to Run").showInformation();
     }
 
     /**
@@ -91,11 +91,10 @@ public class Orientan extends Application {
                     // execute default action of the application
                     String cmd = e.getActionCommand();
                     // exit 離開
-                    if(cmd == SystemTrayMenu.getString("exit"))
-                    {
+                    if (cmd == SystemTrayMenu.getString("exit")) {
                         System.out.println(e);
                         System.exit(0);
-                        
+
                     }
                 }
 

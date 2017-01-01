@@ -20,18 +20,30 @@ import orientan.mascotEnvironment.Mouse;
  *
  * @author user
  */
-public class SitAndLookAtMouse {
+public class SitAndLookAtMouse extends MascotAction {
+
     private Timeline timeline = new Timeline();
     private Image sitImage;
     private double duration;
     private Mouse mouseDetect;
-    public SitAndLookAtMouse(Stage mascotStage, ImageView MascotimageView, Action SitAndLookAtMouseConfig, TimelineManger animationManger,Mouse mouseDetect)
-    {
+
+    public SitAndLookAtMouse(Stage mascotStage, ImageView MascotimageView, Action SitAndLookAtMouseConfig, TimelineManger animationManger, Mouse mouseDetect, String imgPath) {
+        this.imagePath = imgPath;
         //未完成
-        sitImage=new Image(new File(System.getProperty("user.dir") + "\\img" + SitAndLookAtMouseConfig.getAnimation().get(0).getImage()).toURI().toString());
-        duration=SitAndLookAtMouseConfig.getAnimation().get(0).getDuration();
-        timeline.getKeyFrames().add(new KeyFrame(Duration.ZERO, new KeyValue(MascotimageView.imageProperty(),sitImage)));
-        timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(duration/10), new KeyValue(MascotimageView.imageProperty(),sitImage)));
+        sitImage = new Image(new File(imagePath+ SitAndLookAtMouseConfig.getAnimation().get(0).getImage()).toURI().toString());
+        duration = SitAndLookAtMouseConfig.getAnimation().get(0).getDuration();
+        timeline.getKeyFrames().add(new KeyFrame(Duration.ZERO, new KeyValue(MascotimageView.imageProperty(), sitImage)));
+        timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(duration / 10), new KeyValue(MascotimageView.imageProperty(), sitImage)));
         timeline.setCycleCount(1);
+    }
+
+    @Override
+    public void play() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void play(int circleTime) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

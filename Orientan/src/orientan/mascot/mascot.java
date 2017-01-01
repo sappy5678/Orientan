@@ -59,7 +59,7 @@ public class mascot {
     private TimelineManger animationManger = new TimelineManger();
     private loadconfig configList;
     private Stage mascotStage = new Stage();
-    private Image DefaultImage = new Image(new File(System.getProperty("user.dir") + "\\img\\shime1.png").toURI().toString());
+    private Image DefaultImage = new Image(new File(imagePath + "\\img\\shime1.png").toURI().toString());
     private ImageView MascotimageView = new ImageView(DefaultImage);
     private Walk walkAction;
     private Run runAction;
@@ -73,18 +73,18 @@ public class mascot {
     //private double mascotdeltaY = 0.02;
     //private Time currentTime;
 
-    public mascot(loadconfig actionConfig, Mouse mouseDetect,String imgPath) {
+    public mascot(loadconfig actionConfig, Mouse mouseDetect, String imgPath) {
         //初始化設定
         this.configList = actionConfig;
         //設定視窗初始位置
-        this.imagePath=imgPath;
+        this.imagePath = imgPath;
         mascotStage.setY(mascotenvironment.getFloor());
         mascotStage.setX(mascotenvironment.getRightWall() - 10);
-        walkAction = new Walk(mascotStage, MascotimageView, configList.getData("Walk", "Move"), animationManger);
-        runAction = new Run(mascotStage, MascotimageView, configList.getData("Run", "Move"), animationManger);
-        dashAction = new Dash(mascotStage, MascotimageView, configList.getData("Dash", "Move"), animationManger);
-        fallAction = new FallingAndBouncing(mascotStage, MascotimageView, configList.getFallingData(), configList.getData("Bouncing", "Animate"), configList.getData("Jumping", "Embedded"), animationManger, isAction);
-        dragAction = new Drag(mascotStage, MascotimageView, configList.getData("Resisting", "Embedded"), animationManger);
+        walkAction = new Walk(mascotStage, MascotimageView, configList.getData("Walk", "Move"), animationManger, imagePath);
+        runAction = new Run(mascotStage, MascotimageView, configList.getData("Run", "Move"), animationManger, imagePath);
+        dashAction = new Dash(mascotStage, MascotimageView, configList.getData("Dash", "Move"), animationManger, imagePath);
+        fallAction = new FallingAndBouncing(mascotStage, MascotimageView, configList.getFallingData(), configList.getData("Bouncing", "Animate"), configList.getData("Jumping", "Embedded"), animationManger, isAction, imagePath);
+        dragAction = new Drag(mascotStage, MascotimageView, configList.getData("Resisting", "Embedded"), animationManger, imagePath);
         actionList.add(walkAction);
         actionList.add(runAction);
         actionList.add(dashAction);
@@ -124,6 +124,7 @@ public class mascot {
         scene.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent me) {
+                /*
                 if (mascotStage.getY() == mascotenvironment.getFloor()) {
                     isAction = false;
                 }
@@ -131,19 +132,20 @@ public class mascot {
                     animationManger.StopAll();
                     MascotimageView.setImage(DefaultImage);
                 }
-                me.consume();
+                me.consume();*/
             }
         });
         scene.setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent me) {
+                /*
                 if (mascotStage.getY() == mascotenvironment.getFloor()) {
                     isAction = false;
                 }
                 if (!isAction) {
                     actionList.get(random.nextInt(3)).play(random.nextInt(20) + 1);
                 }
-                me.consume();
+                me.consume();*/
             }
         });
         scene.setOnDragDetected(new EventHandler<MouseEvent>() {

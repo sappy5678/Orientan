@@ -11,6 +11,9 @@ package orientan.mascot;
  */
 public abstract class MascotAction {
 
+    String imagePath;
+
     public abstract void play();
+
     public abstract void play(int circleTime);
 }

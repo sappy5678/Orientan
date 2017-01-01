@@ -54,7 +54,7 @@ public class ImageSetChooser {
 
         for (File f : new File(System.getProperty("user.dir") + "\\img").listFiles()) {
             ImageFile.add(f);
-            System.out.println(f);
+            //System.out.println(f);
 
         }
         Image first = new Image("file:///" + ImageFile.get(3).getPath() + "\\shime1.png");

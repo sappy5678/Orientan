@@ -23,28 +23,35 @@ import orientan.mascotEnvironment.mascotenvironment;
  *
  * @author user
  */
-public class SitWithLegsUp {
+public class SitWithLegsUp extends MascotAction {
+
     private Timeline timeline = new Timeline();
     private Image sitImage;
     private double duration;
-    public SitWithLegsUp(Stage mascotStage, ImageView MascotimageView, Action sitConfig, TimelineManger animationManger)
-    {      
+
+    public SitWithLegsUp(Stage mascotStage, ImageView MascotimageView, Action sitConfig, TimelineManger animationManger, String imgPath) {
+        this.imagePath = imgPath;
         /**/
         EventHandler onFinished = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent t) {
-                mascotStage.setY(mascotenvironment.getFloor()+12);
+                mascotStage.setY(mascotenvironment.getFloor() + 12);
             }
         };
         /**/
-        sitImage=new Image(new File(System.getProperty("user.dir") + "\\img" + sitConfig.getAnimation().get(0).getImage()).toURI().toString());
-        duration=sitConfig.getAnimation().get(0).getDuration();
-        timeline.getKeyFrames().add(new KeyFrame(Duration.ZERO,onFinished, new KeyValue(MascotimageView.imageProperty(),sitImage)));
-        timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(duration/10), new KeyValue(MascotimageView.imageProperty(),sitImage)));
+        sitImage = new Image(new File(imagePath+ sitConfig.getAnimation().get(0).getImage()).toURI().toString());
+        duration = sitConfig.getAnimation().get(0).getDuration();
+        timeline.getKeyFrames().add(new KeyFrame(Duration.ZERO, onFinished, new KeyValue(MascotimageView.imageProperty(), sitImage)));
+        timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(duration / 10), new KeyValue(MascotimageView.imageProperty(), sitImage)));
         timeline.setCycleCount(1);
     }
-    public void play()
-    {
-        
+
+    public void play() {
+
         timeline.play();
+    }
+
+    @Override
+    public void play(int circleTime) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

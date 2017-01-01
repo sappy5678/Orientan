@@ -62,32 +62,9 @@ public class Orientan extends Application {
         /**/
 //      
 
-        //選擇寵物
-        String PetPath = "";
-        //Thread waitchooser = Thread.currentThread();
-        //ImageSetChooser chooser = new ImageSetChooser();
-        //
-        //Thread chooserThread = new Thread(chooser);
-        //chooserThread.start();
-        //ExecutorService.submit(chooser);
-        System.out.println("Waiting for b to complete...");
-/*
-        try {
-            chooserThread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
-chooserThread.join();*/
-        //PetPath = chooser.getPath();
-        System.out.println(PetPath);
-        //選擇寵物結束
         //建立滑鼠監控
         Mouse mouseDetect = new Mouse();
-        //Thread g=new Thread(new ImageSetChooser());
-        //g.start();
-        //ExecutorService.submit(g);
-        //mascot m = new mascot(config, mouseDetect);
         AddMascotService addMascot=new AddMascotService(mouseDetect,config);
         addMascot.start();
         // Notifications.create().title("Orientan Status").text("Orientan Start to Run").showInformation();

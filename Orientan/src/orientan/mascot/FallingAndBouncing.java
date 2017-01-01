@@ -24,7 +24,7 @@ import orientan.mascotEnvironment.mascotenvironment;
  *
  * @author zp
  */
-public class FallingAndBouncing {
+public class FallingAndBouncing extends MascotAction {
 
     private double RegistanceY = 0; //y方向阻力
     private double RegistanceX = 0; //x方向阻力
@@ -43,22 +43,24 @@ public class FallingAndBouncing {
     private Image jumpImage;
     private Image BouncingImage;
     private Image FallOnFloorImage;
-    private Image StandImage = new Image(new File(System.getProperty("user.dir") + "\\img" + "/shime1.png").toURI().toString());
+    private Image StandImage;
     private double fallRegistanceY = 0;
     private double ReboundCoefficientX = 0.5;
     private boolean noCeiling = false;
     private boolean isaction;
     private boolean isBouncing = true;
 
-    public FallingAndBouncing(Stage InmascotStage, ImageView InMascotimageView, FallingData InFallConfig, Action BouncingConfig, Action JumpConfig, TimelineManger InanimationManger, boolean isAction) {
+    public FallingAndBouncing(Stage InmascotStage, ImageView InMascotimageView, FallingData InFallConfig, Action BouncingConfig, Action JumpConfig, TimelineManger InanimationManger, boolean isAction, String imgPath) {
         this.isaction = isAction;
         this.mascotStage = InmascotStage;
         this.MascotimageView = InMascotimageView;
         this.BouncingConfig = BouncingConfig;
-        fallImage = new Image(new File(System.getProperty("user.dir") + "\\img" + InFallConfig.getFallingAction().getAnimation().get(0).getImage()).toURI().toString());
-        jumpImage = new Image(new File(System.getProperty("user.dir") + "\\img" + JumpConfig.getAnimation().get(0).getImage()).toURI().toString());
-        BouncingImage = new Image(new File(System.getProperty("user.dir") + "\\img" + BouncingConfig.getAnimation().get(1).getImage()).toURI().toString());
-        FallOnFloorImage = new Image(new File(System.getProperty("user.dir") + "\\img" + BouncingConfig.getAnimation().get(0).getImage()).toURI().toString());
+        this.imagePath = imgPath;
+        StandImage = new Image(new File(imagePath + "/shime1.png").toURI().toString());
+        fallImage = new Image(new File(imagePath + InFallConfig.getFallingAction().getAnimation().get(0).getImage()).toURI().toString());
+        jumpImage = new Image(new File(imagePath + JumpConfig.getAnimation().get(0).getImage()).toURI().toString());
+        BouncingImage = new Image(new File(imagePath + BouncingConfig.getAnimation().get(1).getImage()).toURI().toString());
+        FallOnFloorImage = new Image(new File(imagePath + BouncingConfig.getAnimation().get(0).getImage()).toURI().toString());
         RegistanceX = InFallConfig.getRegistanceX();  //0.1
         RegistanceY = InFallConfig.getRegistanceY();  //0.1
         Gravity = InFallConfig.getGravity() / 10;  //0.25
@@ -202,5 +204,15 @@ public class FallingAndBouncing {
         fallRegistanceY = RegistanceY;
         fallTimeline.play();
         isaction = false;
+    }
+
+    @Override
+    public void play() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void play(int circleTime) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

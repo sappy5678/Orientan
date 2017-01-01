@@ -23,37 +23,40 @@ import orientan.mascotEnvironment.mascotenvironment;
  *
  * @author user
  */
-public class SitAndDangleLegs {
+public class SitAndDangleLegs extends MascotAction {
+
     private Timeline timeline = new Timeline();
     private ArrayList<Image> image = new ArrayList<Image>();
     private double time = 0;
     private double duration = 0;
-    public SitAndDangleLegs(Stage mascotStage, ImageView MascotimageView, Action SitAndSpinHeadActionConfig, TimelineManger animationManger)
-    {
+
+    public SitAndDangleLegs(Stage mascotStage, ImageView MascotimageView, Action SitAndSpinHeadActionConfig, TimelineManger animationManger, String imgPath) {
+        this.imagePath = imgPath;
         EventHandler onFinished = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent t) {
-                mascotStage.setY(mascotenvironment.getFloor()+12);
+                mascotStage.setY(mascotenvironment.getFloor() + 12);
             }
         };
-        mascotStage.setY(mascotenvironment.getFloor()+12);
+        mascotStage.setY(mascotenvironment.getFloor() + 12);
         duration = SitAndSpinHeadActionConfig.getAnimation().get(0).getDuration() / 10;
         for (int i = 0; i < SitAndSpinHeadActionConfig.getAnimation().size(); i++) {
             //image.add(new Image(new File(System.getProperty("user.dir") + "\\img" + Walk.getAnimation().get(i).getImage()).toURI().toString()));
-            image.add(new Image(new File(System.getProperty("user.dir") + "\\img" + SitAndSpinHeadActionConfig.getAnimation().get(i).getImage()).toURI().toString()));
+            image.add(new Image(new File(imagePath + SitAndSpinHeadActionConfig.getAnimation().get(i).getImage()).toURI().toString()));
         }
         for (int i = 0; i < SitAndSpinHeadActionConfig.getAnimation().size(); i++) {
             if (i == 0) {
-                timeline.getKeyFrames().add(new KeyFrame(Duration.ZERO,onFinished, new KeyValue(MascotimageView.imageProperty(), image.get(i))));
+                timeline.getKeyFrames().add(new KeyFrame(Duration.ZERO, onFinished, new KeyValue(MascotimageView.imageProperty(), image.get(i))));
                 continue;
             }
-            timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(time = time + (double) SitAndSpinHeadActionConfig.getAnimation().get(i - 1).getDuration() / 10),onFinished, new KeyValue(MascotimageView.imageProperty(), image.get(i))));
+            timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(time = time + (double) SitAndSpinHeadActionConfig.getAnimation().get(i - 1).getDuration() / 10), onFinished, new KeyValue(MascotimageView.imageProperty(), image.get(i))));
             if (i == SitAndSpinHeadActionConfig.getAnimation().size() - 1) {
-                timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(time = time + (double) SitAndSpinHeadActionConfig.getAnimation().get(i).getDuration() / 10),onFinished, new KeyValue(MascotimageView.imageProperty(), image.get(i))));
+                timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(time = time + (double) SitAndSpinHeadActionConfig.getAnimation().get(i).getDuration() / 10), onFinished, new KeyValue(MascotimageView.imageProperty(), image.get(i))));
             }
         }
         animationManger.getTimelineList().add(timeline);
     }
-     public void play() {
+
+    public void play() {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }

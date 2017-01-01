@@ -24,7 +24,8 @@ import orientan.mascotEnvironment.mascotenvironment;
  *
  * @author zp
  */
-public class Run extends MascotAction{
+public class Run extends MascotAction {
+
     private ArrayList<Image> image = new ArrayList<Image>();
     private double time = 0;
     private double duration = 0;
@@ -32,9 +33,9 @@ public class Run extends MascotAction{
     //private double deltaY = 0;
     private Timeline timeline = new Timeline();
 
-    public Run(Stage mascotStage, ImageView MascotimageView, Action Config,TimelineManger animationManger) {
-        this.duration=Config.getAnimation().get(0).getDuration();
-        
+    public Run(Stage mascotStage, ImageView MascotimageView, Action Config, TimelineManger animationManger, String imgPath) {
+        this.duration = Config.getAnimation().get(0).getDuration();
+        this.imagePath = imgPath;
         //this.deltaX=walkConfig.getAnimation().get(0).getVelocity();
         time = 0;
         //事件監聽  
@@ -63,7 +64,7 @@ public class Run extends MascotAction{
         duration = Config.getAnimation().get(0).getDuration() / 10;
         for (int i = 0; i < Config.getAnimation().size(); i++) {
             //image.add(new Image(new File(System.getProperty("user.dir") + "\\img" + Walk.getAnimation().get(i).getImage()).toURI().toString()));
-            image.add(new Image(new File(System.getProperty("user.dir") + "\\img" + Config.getAnimation().get(i).getImage()).toURI().toString()));
+            image.add(new Image(new File(imagePath + Config.getAnimation().get(i).getImage()).toURI().toString()));
         }
         for (int i = 0; i < Config.getAnimation().size(); i++) {
             if (i == 0) {
@@ -77,15 +78,15 @@ public class Run extends MascotAction{
         }
         animationManger.getTimelineList().add(timeline);
     }
+
     public void play() {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }
+
     public void play(int circleTime) {
         timeline.setCycleCount(circleTime);
         timeline.play();
     }
-    
+
 }
-
-

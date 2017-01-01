@@ -12,17 +12,18 @@ import java.util.ArrayList;
  * @author zp
  */
 public class ActionManager {
+
     ArrayList<MascotAction> actionList = new ArrayList<MascotAction>();
-    public void add(MascotAction action)
-    {
+
+    public void add(MascotAction action) {
         actionList.add(action);
     }
-    public void add(ArrayList<MascotAction> actionlist)
-    {
+
+    public void add(ArrayList<MascotAction> actionlist) {
         actionList.addAll(actionlist);
     }
-    public void run()
-    {
-        
+
+    public void run() {
+
     }
 }

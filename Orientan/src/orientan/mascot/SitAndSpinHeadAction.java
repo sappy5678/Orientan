@@ -24,19 +24,20 @@ import orientan.mascotEnvironment.mascotenvironment;
  *
  * @author user
  */
-public class SitAndSpinHeadAction {
+public class SitAndSpinHeadAction extends MascotAction {
 
     private Timeline timeline = new Timeline();
     private ArrayList<Image> image = new ArrayList<Image>();
     private double time = 0;
     private double duration = 0;
 
-    public SitAndSpinHeadAction(Stage mascotStage, ImageView MascotimageView, Action SitAndSpinHeadActionConfig, TimelineManger animationManger) {
-        //生成時間軸
+    public SitAndSpinHeadAction(Stage mascotStage, ImageView MascotimageView, Action SitAndSpinHeadActionConfig, TimelineManger animationManger, String imgPath) {
+        this.imagePath = imgPath;
+//生成時間軸
         duration = SitAndSpinHeadActionConfig.getAnimation().get(0).getDuration() / 10;
         for (int i = 0; i < SitAndSpinHeadActionConfig.getAnimation().size(); i++) {
             //image.add(new Image(new File(System.getProperty("user.dir") + "\\img" + Walk.getAnimation().get(i).getImage()).toURI().toString()));
-            image.add(new Image(new File(System.getProperty("user.dir") + "\\img" + SitAndSpinHeadActionConfig.getAnimation().get(i).getImage()).toURI().toString()));
+            image.add(new Image(new File(imagePath+ SitAndSpinHeadActionConfig.getAnimation().get(i).getImage()).toURI().toString()));
         }
         for (int i = 0; i < SitAndSpinHeadActionConfig.getAnimation().size(); i++) {
             if (i == 0) {

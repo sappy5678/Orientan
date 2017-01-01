@@ -55,6 +55,7 @@ import orientan.mascotEnvironment.mascotenvironment;
  */
 public class mascot {
 
+    private String imagePath;
     private TimelineManger animationManger = new TimelineManger();
     private loadconfig configList;
     private Stage mascotStage = new Stage();
@@ -72,10 +73,11 @@ public class mascot {
     //private double mascotdeltaY = 0.02;
     //private Time currentTime;
 
-    public mascot(loadconfig actionConfig, Mouse mouseDetect) {
+    public mascot(loadconfig actionConfig, Mouse mouseDetect,String imgPath) {
         //初始化設定
         this.configList = actionConfig;
         //設定視窗初始位置
+        this.imagePath=imgPath;
         mascotStage.setY(mascotenvironment.getFloor());
         mascotStage.setX(mascotenvironment.getRightWall() - 10);
         walkAction = new Walk(mascotStage, MascotimageView, configList.getData("Walk", "Move"), animationManger);

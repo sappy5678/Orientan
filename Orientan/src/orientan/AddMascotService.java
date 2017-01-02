@@ -28,6 +28,7 @@ import orientan.ImageSetChooser.ImageSetChooser;
 import orientan.config.loadconfig;
 import orientan.mascot.mascot;
 import orientan.mascotEnvironment.Mouse;
+import orientan.mascotEnvironment.mascotenvironment;
 
 /**
  *
@@ -37,13 +38,15 @@ public class AddMascotService extends Thread {
 
     private Mouse mouseDetect;
     private loadconfig config;
+    private String Path;
    // private List<File> ImageFile = new ArrayList<File>();
     //private String path = "";
    // private Stage ImageChooserStage=new Stage();
     private ImageSetChooser imageChooser=new ImageSetChooser();
-    public AddMascotService(Mouse Inmouse, loadconfig Inconfig) {
+    public AddMascotService(Mouse Inmouse, loadconfig Inconfig,String imgPath) {
         this.mouseDetect = Inmouse;
         this.config = Inconfig;
+        Path=imgPath;
     }
     @Override
     public void run() {
@@ -52,11 +55,16 @@ public class AddMascotService extends Thread {
             @Override
             public void run() {
                 imageChooser.run();
-                mascot m = new mascot(config, mouseDetect,imageChooser.getPath());
+                Path=imageChooser.getPath();
+                mascotenvironment.setImage(new Image(new File(Path+ "\\shime1.png").toURI().toString()));
+                mascot m = new mascot(config, mouseDetect,Path);
 
             }
         });
     }
-
+    public String returnPath()
+    {
+        return Path;
+    }
 
 }

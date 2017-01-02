@@ -30,12 +30,14 @@ import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import javafx.event.EventHandler;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import org.controlsfx.control.*;
 import orientan.ImageSetChooser.ImageSetChooser;
 import orientan.config.loadconfig;
 import orientan.mascot.mascot;
 import orientan.mascotEnvironment.Mouse;
+import orientan.mascotEnvironment.mascotenvironment;
 
 /**
  *
@@ -44,7 +46,7 @@ import orientan.mascotEnvironment.Mouse;
 public class Orientan extends Application {
 
     Properties properties = new Properties();
-
+    String imageSetPath;
     @Override
     public void start(Stage stage) throws Exception {
         //Parent root = FXMLLoader.load(getClass().getResource("OrientanFXMLDocument.fxml"));
@@ -62,11 +64,14 @@ public class Orientan extends Application {
         /**/
 //      
 
-
+        //建立桌寵環境參數
+  
         //建立滑鼠監控
         Mouse mouseDetect = new Mouse();
-        AddMascotService addMascot=new AddMascotService(mouseDetect,config);
+        AddMascotService addMascot=new AddMascotService(mouseDetect,config,imageSetPath);
         addMascot.start();
+        //imageSetPath=addMascot.returnPath();
+       // mascotenvironment.setImage(new Image(new File(imageSetPath+ "\\shime1.png").toURI().toString()));
         // Notifications.create().title("Orientan Status").text("Orientan Start to Run").showInformation();
     }
 

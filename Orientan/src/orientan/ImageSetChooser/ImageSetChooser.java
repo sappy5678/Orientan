@@ -19,6 +19,7 @@ import javafx.scene.control.Button;
 
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
@@ -39,6 +40,8 @@ public class ImageSetChooser {
     private List<File> ImageFile = new ArrayList<File>();
     private String path = "";
     private Stage ImageChooserStage;
+    private List<Image> ImageChoose = new ArrayList<Image>();
+    private List<ImageView> ImageChooseView = new ArrayList<ImageView>();
     //private Thread MainThread;
 
     public ImageSetChooser() {
@@ -52,43 +55,62 @@ public class ImageSetChooser {
 
     public void run() {
 
+        int i = 0;
         for (File f : new File(System.getProperty("user.dir") + "\\img").listFiles()) {
             ImageFile.add(f);
+            Image tempimage = new Image("file:///" + ImageFile.get(i).getPath() + "\\shime1.png");
+            ImageChoose.add(tempimage);
+            ImageView tempview = new ImageView(ImageChoose.get(i));
+            ImageChooseView.add(tempview);
             //System.out.println(f);
+            i++;
 
         }
-        Image first = new Image("file:///" + ImageFile.get(3).getPath() + "\\shime1.png");
+        /*Image first = new Image("file:///" + ImageFile.get(3).getPath() + "\\shime1.png");
         ImageView iv1 = new ImageView(first);
 
         Image second = new Image("file:///" + ImageFile.get(4).getPath() + "\\shime1.png");
-        ImageView iv2 = new ImageView(second);
+        ImageView iv2 = new ImageView(second);*/
+        ScrollPane scroll = new ScrollPane();
+        scroll.setPrefSize(115, 700);
+        scroll.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         ToggleGroup group = new ToggleGroup();
+        RadioButton[] choose = new RadioButton[ImageFile.size()];
+        for (int j = 0; j < ImageFile.size(); j++) {
+            choose[j] = new RadioButton(ImageFile.get(j).getName().toString());
+            choose[j].setUserData(ImageFile.get(j).getPath());
+            choose[j].setSelected(false);
+            choose[j].setToggleGroup(group);
+            choose[j].setMinSize(10, 20);
+        }
         //RadioButton[] choose = new RadioButton[2];
-        RadioButton chose_one = new RadioButton(ImageFile.get(3).getName().toString());
+        /*RadioButton chose_one = new RadioButton(ImageFile.get(3).getName().toString());
         chose_one.setUserData(ImageFile.get(3).getPath());
         chose_one.setSelected(false);
         chose_one.setToggleGroup(group);
-        /*chose_one.selectedProperty().addListener(new ChangeListener<Boolean>() {
+        chose_one.selectedProperty().addListener(new ChangeListener<Boolean>() {
             public void changed(ObservableValue<? extends Boolean> ov,
                     Boolean old_val, Boolean new_val) {
                 System.out.println("chose one chose");
             }
 
-        });*/
+        });
         chose_one.setMinSize(10, 20);
         RadioButton chose_two = new RadioButton(ImageFile.get(4).getName().toString());
         chose_two.setUserData(ImageFile.get(4).getPath());
         chose_two.setToggleGroup(group);
-        /*chose_two.setSelected(false);
+        chose_two.setSelected(false);
         chose_two.selectedProperty().addListener(new ChangeListener<Boolean>() {
             public void changed(ObservableValue<? extends Boolean> ov,
                     Boolean old_val, Boolean new_val) {
                 System.out.println("chose two chose");
             }
 
-        });*/
+        });
         chose_two.setMinSize(10, 20);
         //決定是哪一隻角色
+         */
         Button set = new Button("Set");
         set.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -106,19 +128,26 @@ public class ImageSetChooser {
                         System.out.println(group.getSelectedToggle().getUserData());
                     }
                 });
-        HBox hb1 = new HBox();
-        HBox hb2 = new HBox();
-        hb1.getChildren().addAll(chose_one, iv1);
-        hb2.getChildren().addAll(chose_two, iv2);
+        VBox vb = new VBox();
+
+        for (int k = 1; k < choose.length; k++) {
+            HBox temphb = new HBox();
+            temphb.getChildren().addAll(choose[k], ImageChooseView.get(k));
+            vb.getChildren().add(temphb);
+
+        }
+
 
         /*choose[0] = chose_one;
         choose[1] = chose_two;*/
         //StackPane root = new StackPane();  
-        VBox vb = new VBox();
         /*vb.getChildren().addAll(chose_one, chose_two);
         vb.getChildren().add(set);*/
-        vb.getChildren().addAll(hb1, hb2, set);
-        Scene sc = new Scene(vb, 300, 300);
+        vb.getChildren().add(set);
+        scroll.setContent(vb);
+        VBox scenebox=new VBox();
+        scenebox.getChildren().addAll(scroll);
+        Scene sc = new Scene(scenebox,300,300);
         ImageChooserStage.setX(200);
         ImageChooserStage.setY(200);
         ImageChooserStage.setTitle("chose");

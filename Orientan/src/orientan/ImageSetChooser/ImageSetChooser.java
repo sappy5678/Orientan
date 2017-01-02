@@ -15,6 +15,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.CheckBox;
@@ -26,6 +28,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -66,6 +69,14 @@ public class ImageSetChooser {
             i++;
 
         }
+        if (i == 0) {
+            final Alert alert = new Alert(AlertType.WARNING); // 實體化Alert對話框物件，並直接在建構子設定對話框的訊息類型
+            alert.setTitle("Warning: Nothing in the img"); //設定對話框視窗的標題列文字
+            alert.setHeaderText("How to fix?"); //設定對話框視窗裡的標頭文字。若設為空字串，則表示無標頭
+            alert.setContentText("Put a folder content your img(shime image),and named the folder with the character's name"); //設定對話框的訊息文字
+            alert.showAndWait(); //顯示對話框，並等待對話框被關閉時才繼續執行之後的程式
+            System.exit(0);
+        }
         /*Image first = new Image("file:///" + ImageFile.get(3).getPath() + "\\shime1.png");
         ImageView iv1 = new ImageView(first);
 
@@ -79,11 +90,14 @@ public class ImageSetChooser {
         RadioButton[] choose = new RadioButton[ImageFile.size()];
         for (int j = 0; j < ImageFile.size(); j++) {
             choose[j] = new RadioButton(ImageFile.get(j).getName().toString());
-            choose[j].setUserData(ImageFile.get(j).getPath());
+            choose[j].setUserData(ImageFile.get(j).getPath());  
             choose[j].setSelected(false);
             choose[j].setToggleGroup(group);
             choose[j].setMinSize(10, 20);
         }
+        //預設選項
+        choose[1].setSelected(true);
+        choose[1].requestFocus();
         //RadioButton[] choose = new RadioButton[2];
         /*RadioButton chose_one = new RadioButton(ImageFile.get(3).getName().toString());
         chose_one.setUserData(ImageFile.get(3).getPath());
@@ -143,11 +157,14 @@ public class ImageSetChooser {
         //StackPane root = new StackPane();  
         /*vb.getChildren().addAll(chose_one, chose_two);
         vb.getChildren().add(set);*/
-        vb.getChildren().add(set);
+        //vb.getChildren().add(set);
         scroll.setContent(vb);
-        VBox scenebox=new VBox();
+        VBox scenebox = new VBox();
         scenebox.getChildren().addAll(scroll);
-        Scene sc = new Scene(scenebox,300,300);
+        BorderPane borderMain = new BorderPane();
+        borderMain.setCenter(scenebox);
+        borderMain.setBottom(set);
+        Scene sc = new Scene(borderMain, 300, 300);
         ImageChooserStage.setX(200);
         ImageChooserStage.setY(200);
         ImageChooserStage.setTitle("chose");

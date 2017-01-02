@@ -59,7 +59,11 @@ public class ImageSetChooser {
     public void run() {
 
         int i = 0;
-        for (File f : new File(System.getProperty("user.dir") + "\\img").listFiles()) {
+        for (File f : new File(System.getProperty("user.dir") + "\\img").listFiles()) {     
+            if(f.getName().equals("icon"))
+            {
+                continue;
+            }
             ImageFile.add(f);
             Image tempimage = new Image("file:///" + ImageFile.get(i).getPath() + "\\shime1.png");
             ImageChoose.add(tempimage);
@@ -96,8 +100,8 @@ public class ImageSetChooser {
             choose[j].setMinSize(10, 20);
         }
         //預設選項
-        choose[1].setSelected(true);
-        choose[1].requestFocus();
+        choose[0].setSelected(true);
+        choose[0].requestFocus();
         //RadioButton[] choose = new RadioButton[2];
         /*RadioButton chose_one = new RadioButton(ImageFile.get(3).getName().toString());
         chose_one.setUserData(ImageFile.get(3).getPath());
@@ -144,7 +148,7 @@ public class ImageSetChooser {
                 });
         VBox vb = new VBox();
 
-        for (int k = 1; k < choose.length; k++) {
+        for (int k = 0; k < choose.length; k++) {
             HBox temphb = new HBox();
             temphb.getChildren().addAll(choose[k], ImageChooseView.get(k));
             vb.getChildren().add(temphb);

@@ -63,7 +63,10 @@ public class Orientan extends Application {
         loadconfig config = new loadconfig("actions");
         /**/
 //      
-
+        System.out.println("a");
+        String out="";
+        //out=RecommendPagesCrawl.Crawlrun("TestUser", 20);
+        System.out.println(out);
         //建立桌寵環境參數
   
         //建立滑鼠監控

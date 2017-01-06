@@ -48,17 +48,20 @@ public class FallingAndBouncing extends MascotAction {
     private double ReboundCoefficientX = 0.5;
     //private String ActionMode;
     //private Boolean ClimbMode;
-
+    private ActionMode actionMode;
     private boolean noCeiling = false;
+
+   
     private boolean isaction;
     private boolean isBouncing = true;
 
-    public FallingAndBouncing(Stage InmascotStage, ImageView InMascotimageView, FallingData InFallConfig, Action BouncingConfig, Action JumpConfig, TimelineManger InanimationManger, boolean isAction, String imgPath) {
+    public FallingAndBouncing(Stage InmascotStage, ImageView InMascotimageView, FallingData InFallConfig, Action BouncingConfig, Action JumpConfig, TimelineManger InanimationManger, boolean isAction, String imgPath,ActionMode InActionMode) {
         this.isaction = isAction;
         this.mascotStage = InmascotStage;
         this.MascotimageView = InMascotimageView;
         this.BouncingConfig = BouncingConfig;
         this.imagePath = imgPath;
+        this.actionMode=InActionMode;
         //this.ActionMode = InActionMode;
         //this.ClimbMode = InClimbMode;
         StandImage = new Image(new File(imagePath + "/shime1.png").toURI().toString());
@@ -170,8 +173,8 @@ public class FallingAndBouncing extends MascotAction {
                     falldeltaY = Gravity;
                     fallTimeline.stop();
                     bouncingTimeline.play();
-                    
-                    //System.out.println(ActionMode);
+                    actionMode.setActionMode(1);
+                    //System.out.println(actionMode.getActionMode());
                 }/*
                 else if(mascotStage.getY() >= mascotenvironment.getFloor()&&oldY!=0)
                 {
@@ -216,7 +219,9 @@ public class FallingAndBouncing extends MascotAction {
     public void setNoCeiling(boolean noCeiling) {
         this.noCeiling = noCeiling;
     }
-
+     public boolean isNoCeiling() {
+        return noCeiling;
+    }
     @Override
     public void play() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

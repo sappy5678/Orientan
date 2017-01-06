@@ -76,8 +76,7 @@ public class mascot {
     private Dash dashAction;
     private FallingAndBouncing fallAction;
     private Drag dragAction;
-    private static int ActionMode = 0; //(0 is falling,1 is stand ,2 is sit)
-    private Boolean ClimbMode = false;
+    private ActionMode actionMode;
     private ArrayList<MascotAction> actionList = new ArrayList<MascotAction>();
     private Random random = new Random();
     private boolean isAction = false;
@@ -87,6 +86,7 @@ public class mascot {
 
     public mascot(loadconfig actionConfig, Mouse mouseDetect, String imgPath) {
         //初始化設定
+        actionMode=new ActionMode();
         this.configList = actionConfig;
         //設定視窗初始位置
         this.imagePath = imgPath;
@@ -98,7 +98,7 @@ public class mascot {
         walkAction = new Walk(mascotStage, MascotimageView, configList.getData("Walk", "Move"), animationManger, imagePath);
         runAction = new Run(mascotStage, MascotimageView, configList.getData("Run", "Move"), animationManger, imagePath);
         dashAction = new Dash(mascotStage, MascotimageView, configList.getData("Dash", "Move"), animationManger, imagePath);
-        fallAction = new FallingAndBouncing(mascotStage, MascotimageView, configList.getFallingData(), configList.getData("Bouncing", "Animate"), configList.getData("Jumping", "Embedded"), animationManger, isAction, imagePath);
+        fallAction = new FallingAndBouncing(mascotStage, MascotimageView, configList.getFallingData(), configList.getData("Bouncing", "Animate"), configList.getData("Jumping", "Embedded"), animationManger, isAction, imagePath,actionMode);
         dragAction = new Drag(mascotStage, MascotimageView, configList.getData("Resisting", "Embedded"), animationManger, imagePath);
         actionList.add(walkAction);
         actionList.add(runAction);
@@ -109,7 +109,7 @@ public class mascot {
         mascotStage.setX(random.nextInt((int) mascotenvironment.getRightWall()) + mascotenvironment.getLeftWall());
         fallAction.setNoCeiling(true);
         fallAction.Falling(0, 0);
-        fallAction.setNoCeiling(true);
+        fallAction.setNoCeiling(false);
         //System.out.println(configList.getData("Resisting", "Embedded").getAnimation().size());
         //deltaX=Walk.getAnimation().get(0).getVelocity();
         /*按鈕測試
@@ -144,37 +144,39 @@ public class mascot {
             @Override
             public void handle(MouseEvent me) {
                 //暫停動作
-                System.out.println(ActionMode);
-                /*
-                if (!ActionMode.equals("falling")) {
+                //System.out.println(actionMode.getActionMode());
+                
+                if (actionMode.getActionMode()!=0) {
                     animationManger.StopAll();
-                    if(ActionMode.equals("stand"))     
+                    if(actionMode.getActionMode()==1)     
                         MascotimageView.setImage(DefaultStandImage);
-                    else if(ActionMode.equals("sit"))
-                        MascotimageView.setImage(DefaultSitImage);
-                 
-                }   */
-                MascotimageView.setImage(DefaultStandImage);
+                    else if(actionMode.getActionMode()==2)
+                        MascotimageView.setImage(DefaultSitImage);           
+                }   
+                //MascotimageView.setImage(DefaultStandImage);
                 me.consume();
             }
         });
         scene.setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent me) {
-
+                /*
                 if (mascotStage.getY() == mascotenvironment.getFloor()) {
                     isAction = false;
                 }
                 if (!isAction) {
+                    
+                }*/
+                if(actionMode.getActionMode()!=0)
                     actionList.get(random.nextInt(3)).play(random.nextInt(20) + 1);
-                }
                 me.consume();
             }
         });
         scene.setOnDragDetected(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent me) {
-                isAction = true;
+                //isAction = true;
+                actionMode.setActionMode(0);
                 /* drag was detected, start drag-and-drop gesture*/
                 //System.out.println("onDragDetected");
                 /* allow MOVE transfer mode */
@@ -217,10 +219,13 @@ public class mascot {
                     MenuItem webcommand = new MenuItem();
                     webcommand.setId("Web command");
                     webcommand.setText("Web Command");
+                    MenuItem noCeilingBoolean=new MenuItem();
+                    noCeilingBoolean.setId("Have/No Ceiling");
+                    noCeilingBoolean.setText("Have/No Ceiling");
                     MenuItem exit = new MenuItem();
                     exit.setId("Exit");
                     exit.setText("Exit");
-                    ContextMenu contextmenu = new ContextMenu(webcommand, exit);
+                    ContextMenu contextmenu = new ContextMenu(webcommand,noCeilingBoolean, exit);
                     contextmenu.setOnAction(new EventHandler<ActionEvent>() {
                         @Override
                         public void handle(ActionEvent event) {
@@ -267,7 +272,10 @@ public class mascot {
                                     final String[] url = new String[20];
                                     for (int i = 0; i < 20; i++) {
                                         url[i] = recommenddata.getPages().get(i).getUrl();
-                                        linkname[i] = recommenddata.getPages().get(i).getTitle();
+                                        if(recommenddata.getPages().get(i).getTitle().equals(""))
+                                            linkname[i] = recommenddata.getPages().get(i).getUrl();
+                                        else
+                                            linkname[i] = recommenddata.getPages().get(i).getTitle();
                                         System.out.println(recommenddata.getPages().get(i).getUrl());
                                         System.out.println(recommenddata.getPages().get(i).getTitle());
                                     }
@@ -347,6 +355,12 @@ public class mascot {
                                     WebRecom.setTitle("WebRecomend");
                                     WebRecom.setScene(WebRe);
                                     WebRecom.show();
+                                    break;
+                                case "Have/No Ceiling":
+                                    if(fallAction.isNoCeiling())
+                                        fallAction.setNoCeiling(false);
+                                    else
+                                        fallAction.setNoCeiling(true);
                                     break;
                                 case "Exit":
                                     System.out.println("exit");

@@ -5,10 +5,6 @@
  */
 package orientan.mascot;
 
-/**
- *
- * @author zp
- */
 import java.io.File;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -19,24 +15,28 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import orientan.config.Action;
 
-public class Sit extends MascotAction {
+/**
+ *
+ * @author zp
+ */
+public class Stand extends MascotAction {
 
     private Timeline timeline = new Timeline();
-    private Image sitImage;
+    private Image standImage;
     private double duration;
 
-    public void sit(Stage mascotStage, ImageView MascotimageView, Action sitConfig, TimelineManger animationManger, String imgPath) {
+    public void stand(Stage mascotStage, ImageView MascotimageView, Action sitConfig, TimelineManger animationManger, String imgPath) {
         this.imagePath = imgPath;
-        sitImage = new Image(new File(imagePath + sitConfig.getAnimation().get(0).getImage()).toURI().toString());
+        standImage = new Image(new File(imagePath + sitConfig.getAnimation().get(0).getImage()).toURI().toString());
         duration = sitConfig.getAnimation().get(0).getDuration();
-        timeline.getKeyFrames().add(new KeyFrame(Duration.ZERO, new KeyValue(MascotimageView.imageProperty(), sitImage)));
-        timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(duration / 10), new KeyValue(MascotimageView.imageProperty(), sitImage)));
+        timeline.getKeyFrames().add(new KeyFrame(Duration.ZERO, new KeyValue(MascotimageView.imageProperty(), standImage)));
+        timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(duration / 10), new KeyValue(MascotimageView.imageProperty(), standImage)));
     }
-    public void setToSit(ImageView MascotimageView)
+    public void setToStand(ImageView MascotimageView)
     {
-        MascotimageView.setImage(this.sitImage);
+        MascotimageView.setImage(this.standImage);
     }
-  @Override
+   @Override
     public void play() {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();

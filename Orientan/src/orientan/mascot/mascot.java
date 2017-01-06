@@ -56,16 +56,19 @@ import orientan.mascotEnvironment.mascotenvironment;
 public class mascot {
 
     private String imagePath;
-    private TimelineManger animationManger ;
+    private TimelineManger animationManger;
     private loadconfig configList;
     private Stage mascotStage = new Stage();
-    private Image DefaultImage;
-    private ImageView MascotimageView = new ImageView(DefaultImage);
+    private Image DefaultStandImage;
+    private Image DefaultSitImage;
+    private ImageView MascotimageView = new ImageView(DefaultStandImage);
     private Walk walkAction;
     private Run runAction;
     private Dash dashAction;
     private FallingAndBouncing fallAction;
     private Drag dragAction;
+    private static int ActionMode = 0; //(0 is falling,1 is stand ,2 is sit)
+    private Boolean ClimbMode = false;
     private ArrayList<MascotAction> actionList = new ArrayList<MascotAction>();
     private Random random = new Random();
     private boolean isAction = false;
@@ -78,8 +81,9 @@ public class mascot {
         this.configList = actionConfig;
         //設定視窗初始位置
         this.imagePath = imgPath;
-        this.animationManger= new TimelineManger(imagePath);
-        this.DefaultImage= new Image(new File(imagePath + "\\shime1.png").toURI().toString());
+        this.animationManger = new TimelineManger(imagePath);
+        this.DefaultStandImage = new Image(new File(imagePath + "\\shime1.png").toURI().toString());
+        DefaultSitImage = new Image(new File(imagePath + "/shime11.png").toURI().toString());
         mascotStage.setY(mascotenvironment.getFloor());
         mascotStage.setX(mascotenvironment.getRightWall() - 10);
         walkAction = new Walk(mascotStage, MascotimageView, configList.getData("Walk", "Move"), animationManger, imagePath);
@@ -90,9 +94,13 @@ public class mascot {
         actionList.add(walkAction);
         actionList.add(runAction);
         actionList.add(dashAction);
-
-        actionList.get(random.nextInt(3)).play(random.nextInt(20) + 1);
-
+        //開始的random
+        //actionList.get(random.nextInt(3)).play(random.nextInt(20) + 1);
+        mascotStage.setY(-500);
+        mascotStage.setX(random.nextInt((int) mascotenvironment.getRightWall()) + mascotenvironment.getLeftWall());
+        fallAction.setNoCeiling(true);
+        fallAction.Falling(0, 0);
+        fallAction.setNoCeiling(true);
         //System.out.println(configList.getData("Resisting", "Embedded").getAnimation().size());
         //deltaX=Walk.getAnimation().get(0).getVelocity();
         /*按鈕測試
@@ -126,21 +134,25 @@ public class mascot {
         scene.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent me) {
-                
-                if (mascotStage.getY() == mascotenvironment.getFloor()) {
-                    isAction = false;
-                }
-                if (!isAction) {
+                //暫停動作
+                System.out.println(ActionMode);
+                /*
+                if (!ActionMode.equals("falling")) {
                     animationManger.StopAll();
-                    MascotimageView.setImage(DefaultImage);
-                }
+                    if(ActionMode.equals("stand"))     
+                        MascotimageView.setImage(DefaultStandImage);
+                    else if(ActionMode.equals("sit"))
+                        MascotimageView.setImage(DefaultSitImage);
+                 
+                }   */
+                MascotimageView.setImage(DefaultStandImage);
                 me.consume();
             }
         });
         scene.setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent me) {
-                
+
                 if (mascotStage.getY() == mascotenvironment.getFloor()) {
                     isAction = false;
                 }

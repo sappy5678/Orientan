@@ -46,6 +46,9 @@ public class FallingAndBouncing extends MascotAction {
     private Image StandImage;
     private double fallRegistanceY = 0;
     private double ReboundCoefficientX = 0.5;
+    //private String ActionMode;
+    //private Boolean ClimbMode;
+
     private boolean noCeiling = false;
     private boolean isaction;
     private boolean isBouncing = true;
@@ -56,6 +59,8 @@ public class FallingAndBouncing extends MascotAction {
         this.MascotimageView = InMascotimageView;
         this.BouncingConfig = BouncingConfig;
         this.imagePath = imgPath;
+        //this.ActionMode = InActionMode;
+        //this.ClimbMode = InClimbMode;
         StandImage = new Image(new File(imagePath + "/shime1.png").toURI().toString());
         fallImage = new Image(new File(imagePath + InFallConfig.getFallingAction().getAnimation().get(0).getImage()).toURI().toString());
         jumpImage = new Image(new File(imagePath + JumpConfig.getAnimation().get(0).getImage()).toURI().toString());
@@ -165,6 +170,8 @@ public class FallingAndBouncing extends MascotAction {
                     falldeltaY = Gravity;
                     fallTimeline.stop();
                     bouncingTimeline.play();
+                    
+                    //System.out.println(ActionMode);
                 }/*
                 else if(mascotStage.getY() >= mascotenvironment.getFloor()&&oldY!=0)
                 {
@@ -204,6 +211,10 @@ public class FallingAndBouncing extends MascotAction {
         fallRegistanceY = RegistanceY;
         fallTimeline.play();
         isaction = false;
+    }
+
+    public void setNoCeiling(boolean noCeiling) {
+        this.noCeiling = noCeiling;
     }
 
     @Override

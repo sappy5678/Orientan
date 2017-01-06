@@ -30,7 +30,7 @@ public class SitAndLookAtMouse extends MascotAction {
     public SitAndLookAtMouse(Stage mascotStage, ImageView MascotimageView, Action SitAndLookAtMouseConfig, TimelineManger animationManger, Mouse mouseDetect, String imgPath) {
         this.imagePath = imgPath;
         //未完成
-        sitImage = new Image(new File(imagePath+ SitAndLookAtMouseConfig.getAnimation().get(0).getImage()).toURI().toString());
+        sitImage = new Image(new File(imagePath + SitAndLookAtMouseConfig.getAnimation().get(0).getImage()).toURI().toString());
         duration = SitAndLookAtMouseConfig.getAnimation().get(0).getDuration();
         timeline.getKeyFrames().add(new KeyFrame(Duration.ZERO, new KeyValue(MascotimageView.imageProperty(), sitImage)));
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(duration / 10), new KeyValue(MascotimageView.imageProperty(), sitImage)));
@@ -39,11 +39,13 @@ public class SitAndLookAtMouse extends MascotAction {
 
     @Override
     public void play() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
     }
 
     @Override
     public void play(int circleTime) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        timeline.setCycleCount(circleTime);
+        timeline.play();
     }
 }

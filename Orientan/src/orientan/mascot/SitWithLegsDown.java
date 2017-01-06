@@ -43,12 +43,15 @@ public class SitWithLegsDown extends MascotAction {
         timeline.setCycleCount(1);
     }
 
+  @Override
     public void play() {
+        timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }
 
     @Override
     public void play(int circleTime) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        timeline.setCycleCount(circleTime);
+        timeline.play();
     }
 }

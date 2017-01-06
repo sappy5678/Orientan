@@ -72,10 +72,13 @@ public class Dash extends MascotAction{
         }
         animationManger.getTimelineList().add(timeline);
     }
+   @Override
     public void play() {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }
+
+    @Override
     public void play(int circleTime) {
         timeline.setCycleCount(circleTime);
         timeline.play();

@@ -96,6 +96,10 @@ public class OAuth {
 	      // run commands
 	      tokenInfo(credential.getAccessToken());
 	      userInfo();
+              header("Obtaining User Profile Information");
+	    Userinfoplus userinfo = oauth2.userinfo().get().execute();
+            System.out.println("*********************"+userinfo.getId());
+	  
               
 	      // success!
 	      return;
@@ -119,7 +123,7 @@ public class OAuth {
 	  private static void userInfo() throws IOException {
 	    header("Obtaining User Profile Information");
 	    Userinfoplus userinfo = oauth2.userinfo().get().execute();
-	    System.out.println(userinfo.toPrettyString());
+	    System.out.println("*********************"+userinfo.getId());
 	  }
 
 	  static void header(String name) {

@@ -56,10 +56,10 @@ import orientan.mascotEnvironment.mascotenvironment;
 public class mascot {
 
     private String imagePath;
-    private TimelineManger animationManger = new TimelineManger();
+    private TimelineManger animationManger ;
     private loadconfig configList;
     private Stage mascotStage = new Stage();
-    private Image DefaultImage = new Image(new File(imagePath + "\\img\\shime1.png").toURI().toString());
+    private Image DefaultImage;
     private ImageView MascotimageView = new ImageView(DefaultImage);
     private Walk walkAction;
     private Run runAction;
@@ -78,6 +78,8 @@ public class mascot {
         this.configList = actionConfig;
         //設定視窗初始位置
         this.imagePath = imgPath;
+        this.animationManger= new TimelineManger(imagePath);
+        this.DefaultImage= new Image(new File(imagePath + "\\shime1.png").toURI().toString());
         mascotStage.setY(mascotenvironment.getFloor());
         mascotStage.setX(mascotenvironment.getRightWall() - 10);
         walkAction = new Walk(mascotStage, MascotimageView, configList.getData("Walk", "Move"), animationManger, imagePath);
@@ -124,7 +126,7 @@ public class mascot {
         scene.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent me) {
-                /*
+                
                 if (mascotStage.getY() == mascotenvironment.getFloor()) {
                     isAction = false;
                 }
@@ -132,20 +134,20 @@ public class mascot {
                     animationManger.StopAll();
                     MascotimageView.setImage(DefaultImage);
                 }
-                me.consume();*/
+                me.consume();
             }
         });
         scene.setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent me) {
-                /*
+                
                 if (mascotStage.getY() == mascotenvironment.getFloor()) {
                     isAction = false;
                 }
                 if (!isAction) {
                     actionList.get(random.nextInt(3)).play(random.nextInt(20) + 1);
                 }
-                me.consume();*/
+                me.consume();
             }
         });
         scene.setOnDragDetected(new EventHandler<MouseEvent>() {

@@ -41,6 +41,8 @@ class Drag extends MascotAction {
     public Drag(Stage mascotStage, ImageView MascotimageView, Action Config, TimelineManger animationManger, String imgPath) {
         this.timeLineManger = animationManger;
         this.imagePath = imgPath;
+        pinchedLeft3 = new Image(new File(imagePath + "/shime9.png").toURI().toString());;
+        pinchedRight3 = new Image(new File(imagePath + "/shime10.png").toURI().toString());;
         pinchedLeft2 = new Image(new File(imagePath + "/shime7.png").toURI().toString());
         pinchedRight2 = new Image(new File(imagePath + "/shime8.png").toURI().toString());
         pinchedLeft1 = new Image(new File(imagePath + "/shime5.png").toURI().toString());

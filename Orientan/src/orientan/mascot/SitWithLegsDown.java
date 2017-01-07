@@ -41,6 +41,7 @@ public class SitWithLegsDown extends MascotAction {
         timeline.getKeyFrames().add(new KeyFrame(Duration.ZERO, onFinished, new KeyValue(MascotimageView.imageProperty(), sitImage)));
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(duration / 10), new KeyValue(MascotimageView.imageProperty(), sitImage)));
         timeline.setCycleCount(1);
+        animationManger.getTimelineList().add(timeline);
     }
 
   @Override

@@ -25,12 +25,13 @@ public class Sit extends MascotAction {
     private Image sitImage;
     private double duration;
 
-    public void sit(Stage mascotStage, ImageView MascotimageView, Action sitConfig, TimelineManger animationManger, String imgPath) {
+    public Sit(Stage mascotStage, ImageView MascotimageView, Action sitConfig, TimelineManger animationManger, String imgPath) {
         this.imagePath = imgPath;
         sitImage = new Image(new File(imagePath + sitConfig.getAnimation().get(0).getImage()).toURI().toString());
         duration = sitConfig.getAnimation().get(0).getDuration();
         timeline.getKeyFrames().add(new KeyFrame(Duration.ZERO, new KeyValue(MascotimageView.imageProperty(), sitImage)));
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(duration / 10), new KeyValue(MascotimageView.imageProperty(), sitImage)));
+        animationManger.getTimelineList().add(timeline);
     }
     public void setToSit(ImageView MascotimageView)
     {

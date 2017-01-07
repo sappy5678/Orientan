@@ -173,7 +173,7 @@ public class FallingAndBouncing extends MascotAction {
                     falldeltaY = Gravity;
                     fallTimeline.stop();
                     bouncingTimeline.play();
-                    actionMode.setActionMode(1);
+                    
                     //System.out.println(actionMode.getActionMode());
                 }/*
                 else if(mascotStage.getY() >= mascotenvironment.getFloor()&&oldY!=0)
@@ -195,8 +195,9 @@ public class FallingAndBouncing extends MascotAction {
         //事件監聽  
         EventHandler BouncingOnFinished = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent t) {
-                isaction = false;
+                isaction = false;  
                 mascotStage.setY(mascotenvironment.getFloor());
+                actionMode.setActionMode(1);
             }
         };
         bouncingTimeline.getKeyFrames().add(new KeyFrame(Duration.ZERO, new KeyValue(InMascotimageView.imageProperty(), FallOnFloorImage)));

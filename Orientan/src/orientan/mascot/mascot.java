@@ -84,7 +84,7 @@ public class mascot {
     private ArrayList<MascotAction> actionList = new ArrayList<MascotAction>();
     private Random random = new Random();
     private boolean isAction = false;
-
+    private long lastTime=System.currentTimeMillis();
     //private double mascotdeltaX = 0.5;
     //private double mascotdeltaY = 0.02;
     //private Time currentTime;
@@ -172,10 +172,14 @@ public class mascot {
                 if (!isAction) {
                     
                 }*/
-                if (actionMode.getActionMode() != 0) {
+                if(System.currentTimeMillis()-lastTime>1000)
+                {
+                    lastTime=System.currentTimeMillis();
+                    if (actionMode.getActionMode() != 0) {
                     actionList.get(random.nextInt(3)).play(random.nextInt(20) + 1);
                 }
                 me.consume();
+                }       
             }
         });
         scene.setOnDragDetected(new EventHandler<MouseEvent>() {

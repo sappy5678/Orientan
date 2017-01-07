@@ -49,7 +49,8 @@ public class Mouse {
     }
 
     public void updateMouseData(MouseEvent mouseEvent) {
-        if (System.currentTimeMillis() - lastTime >= 10) {
+        //調多久偵測一次，會影響屬鼠標速度偵測
+        if (System.currentTimeMillis() - lastTime >= 5) {
             lastTime = System.currentTimeMillis();
             oldX = newX;
             oldY = newY;

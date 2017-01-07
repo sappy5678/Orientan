@@ -33,6 +33,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 /**
  *
@@ -129,6 +130,11 @@ public class ImageSetChooser {
         chose_two.setMinSize(10, 20);
         //決定是哪一隻角色
          */
+         ImageChooserStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent event) {
+                System.exit(0);
+            }
+        });
         Button set = new Button("Set");
         set.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override

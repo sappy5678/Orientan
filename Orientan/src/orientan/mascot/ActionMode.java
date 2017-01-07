@@ -19,13 +19,16 @@ public class ActionMode {
         this.ActionMode = ActionMode;
     }
 
-    public Boolean getClimbMode() {
+    public int getClimbMode() {
+        System.out.println("get: "+ClimbMode);
         return ClimbMode;
     }
 
-    public void setClimbMode(Boolean ClimbMode) {
-        this.ClimbMode = ClimbMode;
+    public void setClimbMode(int ClimbMode) {
+        System.out.println("SET: "+ClimbMode);
+        this.ClimbMode = ClimbMode;//-1 is NoCimbMode, 1 is ClimbCeiling ,2 is Climb wall
+        
     }
     private int ActionMode=0;//(0 is falling,1 is stand ,2 is sit)
-    private Boolean ClimbMode = false;
+    private int ClimbMode = -1;
 }

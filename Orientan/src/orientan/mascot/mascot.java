@@ -74,6 +74,7 @@ public class mascot {
     private Stage mascotStage = new Stage();
     private Image DefaultStandImage;
     private Image DefaultSitImage;
+    private Image DefaultClimbCeilingImage;
     private ImageView MascotimageView = new ImageView(DefaultStandImage);
     //standMode Action
     private Walk walkAction;
@@ -89,6 +90,7 @@ public class mascot {
     //fallMode Action
     private FallingAndBouncing fallAction;
     private Drag dragAction;
+    private ClimbCeiling ClimbCeilingAction;
     private ActionMode actionMode;
     private ArrayList<MascotAction> standActionList = new ArrayList<MascotAction>();
     private ArrayList<MascotAction> sitActionList = new ArrayList<MascotAction>();
@@ -108,13 +110,15 @@ public class mascot {
         this.animationManger = new TimelineManger(imagePath);
         this.DefaultStandImage = new Image(new File(imagePath + "\\shime1.png").toURI().toString());
         DefaultSitImage = new Image(new File(imagePath + "/shime11.png").toURI().toString());
+        DefaultClimbCeilingImage = new Image(new File(imagePath + "/shime25.png").toURI().toString());
         mascotStage.setY(mascotenvironment.getFloor());
         mascotStage.setX(mascotenvironment.getRightWall() - 10);
         walkAction = new Walk(mascotStage, MascotimageView, configList.getData("Walk", "Move"), animationManger, imagePath);
-        standAction=new Stand(mascotStage, MascotimageView, configList.getData("Stand", "Stay"), animationManger, imagePath);
+        standAction = new Stand(mascotStage, MascotimageView, configList.getData("Stand", "Stay"), animationManger, imagePath);
         runAction = new Run(mascotStage, MascotimageView, configList.getData("Run", "Move"), animationManger, imagePath);
         dashAction = new Dash(mascotStage, MascotimageView, configList.getData("Dash", "Move"), animationManger, imagePath);
-        fallAction = new FallingAndBouncing(mascotStage, MascotimageView, configList.getFallingData(), configList.getData("Bouncing", "Animate"), configList.getData("Jumping", "Embedded"), animationManger, isAction, imagePath, actionMode);
+        ClimbCeilingAction = new ClimbCeiling(mascotStage, MascotimageView, configList.getData("ClimbCeiling", "Move"), animationManger, imagePath);
+        fallAction = new FallingAndBouncing(mascotStage, MascotimageView, configList.getFallingData(), configList.getData("Bouncing", "Animate"), configList.getData("Jumping", "Embedded"), animationManger, isAction, imagePath, actionMode, ClimbCeilingAction);
         dragAction = new Drag(mascotStage, MascotimageView, configList.getData("Resisting", "Embedded"), animationManger, imagePath);
         standActionList.add(walkAction);
         standActionList.add(runAction);
@@ -178,6 +182,9 @@ public class mascot {
                     } else if (actionMode.getActionMode() == 2) {
                         MascotimageView.setImage(DefaultSitImage);
                     }
+                } else if (actionMode.getActionMode() == 0 && actionMode.getClimbMode() == 1) {
+                    animationManger.StopAll();
+                    MascotimageView.setImage(DefaultClimbCeilingImage);
                 }
                 //MascotimageView.setImage(DefaultStandImage);
                 me.consume();
@@ -196,15 +203,14 @@ public class mascot {
                 if (System.currentTimeMillis() - lastTime > 1000) {
                     lastTime = System.currentTimeMillis();
                     if (actionMode.getActionMode() != 0) {
-                        if(actionMode.getActionMode() == 1)
-                        {
+                        if (actionMode.getActionMode() == 1) {
                             standActionList.get(random.nextInt(3)).play(random.nextInt(20) + 1);
-                        }
-                        else if(actionMode.getActionMode()==2)
-                        {
+                        } else if (actionMode.getActionMode() == 2) {
                             sitActionList.get(random.nextInt(4)).play(random.nextInt(20) + 1);
                         }
-                       
+
+                    } else if (actionMode.getActionMode() == 0 && actionMode.getClimbMode() == 1) {
+                        ClimbCeilingAction.play(random.nextInt(20) + 1);
                     }
                     me.consume();
                 }
@@ -214,6 +220,11 @@ public class mascot {
             @Override
             public void handle(MouseEvent me) {
                 //isAction = true;
+                if (actionMode.getClimbMode() >= 0) {
+                    actionMode.setClimbMode(0);
+                } else {
+                    actionMode.setClimbMode(-1);
+                }
                 actionMode.setActionMode(0);
                 /* drag was detected, start drag-and-drop gesture*/
                 //System.out.println("onDragDetected");
@@ -262,7 +273,6 @@ public class mascot {
                     noCeilingBoolean.setId("No Ceiling");
                     noCeilingBoolean.setText("No Ceiling");
                     noCeilingBoolean.setSelected(false);
-                    noCeilingBoolean.setVisible(true);
 
                     noCeilingBoolean.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -278,6 +288,38 @@ public class mascot {
                             }
                         }
                     });
+                    CheckMenuItem ClimbMode = new CheckMenuItem();
+                    ClimbMode.setId("ClimbMode On/Off");
+                    ClimbMode.setText("ClimbMode On/Off");
+                    ClimbMode.setSelected(false);
+                    ClimbMode.setOnAction(new EventHandler<ActionEvent>() {
+                        public void handle(ActionEvent e) {
+                            System.out.println("!!");
+                            System.out.println(actionMode.getClimbMode());
+                            
+                            if (actionMode.getClimbMode() >= 0) {
+                                System.out.println("*off");
+                                actionMode.setClimbMode(-1);
+                                ClimbMode.setSelected(false);
+                            } else {
+                                System.out.println("*on");
+                                actionMode.setClimbMode(0);
+                                ClimbMode.setSelected(true);
+                            }
+                            /*
+                            switch (actionMode.getActionMode()) {
+                                case -1:
+                                    //System.out.println("on");
+                                    actionMode.setClimbMode(0);
+                                    noCeilingBoolean.setSelected(true);
+                                    break;
+                                default:
+                                    //System.out.println("off");
+                                    actionMode.setClimbMode(-1);
+                                    noCeilingBoolean.setSelected(false);
+                            }*/
+                        }
+                    });
                     MenuItem sitStandMode = new MenuItem();
                     sitStandMode.setId("sit/stand");
                     sitStandMode.setText("sit/stand");
@@ -289,7 +331,7 @@ public class mascot {
                     exit.setId("Exit");
                     exit.setText("Exit");
 
-                    ContextMenu contextmenu = new ContextMenu(webcommand, noCeilingBoolean,sitStandMode, delete, exit);
+                    ContextMenu contextmenu = new ContextMenu(webcommand, noCeilingBoolean, ClimbMode, sitStandMode, delete, exit);
 
                     contextmenu.setOnAction(
                             new EventHandler<ActionEvent>() {
@@ -430,18 +472,18 @@ public class mascot {
 
                                     break;
                                 case "sit/stand":
-                                    if(actionMode.getActionMode()==1)
-                                    {
-                                        animationManger.StopAll();
-                                        actionMode.setActionMode(2);
-                                        sitAction.play(1);
+                                    if (actionMode.getActionMode() == 1 || actionMode.getActionMode() == 2) {
+                                        if (actionMode.getActionMode() == 1) {
+                                            animationManger.StopAll();
+                                            actionMode.setActionMode(2);
+                                            sitAction.play(1);
+                                        } else if (actionMode.getActionMode() == 2) {
+                                            animationManger.StopAll();
+                                            actionMode.setActionMode(1);
+                                            standAction.play(1);
+                                        }
                                     }
-                                    else if(actionMode.getActionMode()==2)
-                                    {
-                                        animationManger.StopAll();
-                                        actionMode.setActionMode(1);
-                                        standAction.play(1);
-                                    }
+
                                     break;
                                 case "delete":
                                     MascotThreadNumberManager.deleteOneThread();

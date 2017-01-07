@@ -6,6 +6,7 @@
 package orientan.mascot;
 
 import java.io.File;
+import java.util.Random;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -25,7 +26,7 @@ import orientan.mascotEnvironment.mascotenvironment;
  * @author zp
  */
 public class FallingAndBouncing extends MascotAction {
-
+    
     private double RegistanceY = 0; //y方向阻力
     private double RegistanceX = 0; //x方向阻力
     private double Gravity = 0;   //重力加速度
@@ -50,18 +51,20 @@ public class FallingAndBouncing extends MascotAction {
     //private Boolean ClimbMode;
     private ActionMode actionMode;
     private boolean noCeiling = false;
-
-   
+    private ClimbCeiling climbCeiling;
+    private Random random=new Random();
     private boolean isaction;
     private boolean isBouncing = true;
-
-    public FallingAndBouncing(Stage InmascotStage, ImageView InMascotimageView, FallingData InFallConfig, Action BouncingConfig, Action JumpConfig, TimelineManger InanimationManger, boolean isAction, String imgPath,ActionMode InActionMode) {
+    
+    public FallingAndBouncing(Stage InmascotStage, ImageView InMascotimageView, FallingData InFallConfig, Action BouncingConfig, Action JumpConfig, TimelineManger InanimationManger, boolean isAction, String imgPath, ActionMode InActionMode, ClimbCeiling InClimbCeiling) {
         this.isaction = isAction;
         this.mascotStage = InmascotStage;
         this.MascotimageView = InMascotimageView;
         this.BouncingConfig = BouncingConfig;
         this.imagePath = imgPath;
-        this.actionMode=InActionMode;
+        this.actionMode = InActionMode;
+        this.climbCeiling = InClimbCeiling;
+
         //this.ActionMode = InActionMode;
         //this.ClimbMode = InClimbMode;
         StandImage = new Image(new File(imagePath + "/shime1.png").toURI().toString());
@@ -81,7 +84,7 @@ public class FallingAndBouncing extends MascotAction {
                 if (falldeltaY - initialVelocityY > 0) {
                     fallRegistanceY = Math.abs(RegistanceY);
                     MascotimageView.setImage(fallImage);
-
+                    
                 } else if (falldeltaY - initialVelocityY < 0) {
                     fallRegistanceY = Math.abs(RegistanceY) * -1;
                     if (isBouncing) {
@@ -129,8 +132,17 @@ public class FallingAndBouncing extends MascotAction {
 
                     if (mascotStage.getY() + falldeltaY - initialVelocityY - fallRegistanceY <= mascotenvironment.getCeiling() && !noCeiling) {
                         mascotStage.setY(mascotenvironment.getCeiling());
-                        falldeltaY = Gravity;
-                        initialVelocityY = 0;
+                        if (InActionMode.getClimbMode() != -1) {
+                            mascotStage.setY(mascotenvironment.getCeiling()-mascotenvironment.getImageHeight()/3);
+                            InActionMode.setClimbMode(1);
+                            InanimationManger.StopAll();
+                            climbCeiling.play(random.nextInt(20)+1);
+                            // climbCeiling
+                        } else {
+                            falldeltaY = Gravity;
+                            initialVelocityY = 0;
+                        }
+                        
                     } else {
                         mascotStage.setY(mascotStage.getY() + falldeltaY - initialVelocityY - fallRegistanceY);
                     }
@@ -141,7 +153,7 @@ public class FallingAndBouncing extends MascotAction {
                 }
                 //x的部分
                 if (initialVelocityX != 0) {
-
+                    
                     if (Math.abs(initialVelocityX) - falldeltaX <= 0) {
                         //此註解是為了讓等於0的權利給是否繼續反彈的y方法上
                         //initialVelocityX = 0;
@@ -173,7 +185,7 @@ public class FallingAndBouncing extends MascotAction {
                     falldeltaY = Gravity;
                     fallTimeline.stop();
                     bouncingTimeline.play();
-                    
+
                     //System.out.println(actionMode.getActionMode());
                 }/*
                 else if(mascotStage.getY() >= mascotenvironment.getFloor()&&oldY!=0)
@@ -195,9 +207,16 @@ public class FallingAndBouncing extends MascotAction {
         //事件監聽  
         EventHandler BouncingOnFinished = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent t) {
-                isaction = false;  
+                isaction = false;
                 mascotStage.setY(mascotenvironment.getFloor());
                 actionMode.setActionMode(1);
+                if(InActionMode.getClimbMode()>=0)
+                {
+                    InActionMode.setClimbMode(0);
+                }
+                else
+                   InActionMode.setClimbMode(-1); 
+                
             }
         };
         bouncingTimeline.getKeyFrames().add(new KeyFrame(Duration.ZERO, new KeyValue(InMascotimageView.imageProperty(), FallOnFloorImage)));
@@ -206,7 +225,7 @@ public class FallingAndBouncing extends MascotAction {
         bouncingTimeline.setCycleCount(1);
         InanimationManger.getTimelineList().add(bouncingTimeline);
     }
-
+    
     public void Falling(double InoldX, double InoldY) {
         initialVelocityX = (InoldX) / 3;
         //使之y軸往上為正
@@ -216,18 +235,20 @@ public class FallingAndBouncing extends MascotAction {
         fallTimeline.play();
         isaction = false;
     }
-
+    
     public void setNoCeiling(boolean noCeiling) {
         this.noCeiling = noCeiling;
     }
-     public boolean isNoCeiling() {
+    
+    public boolean isNoCeiling() {
         return noCeiling;
     }
+    
     @Override
     public void play() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
     public void play(int circleTime) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

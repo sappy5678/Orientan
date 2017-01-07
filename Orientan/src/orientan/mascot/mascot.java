@@ -111,7 +111,7 @@ public class mascot {
         mascotStage.setY(mascotenvironment.getFloor());
         mascotStage.setX(mascotenvironment.getRightWall() - 10);
         walkAction = new Walk(mascotStage, MascotimageView, configList.getData("Walk", "Move"), animationManger, imagePath);
-        standAction=new Stand(mascotStage, MascotimageView, configList.getData("Stand", "Stay"), animationManger, imagePath);
+        standAction = new Stand(mascotStage, MascotimageView, configList.getData("Stand", "Stay"), animationManger, imagePath);
         runAction = new Run(mascotStage, MascotimageView, configList.getData("Run", "Move"), animationManger, imagePath);
         dashAction = new Dash(mascotStage, MascotimageView, configList.getData("Dash", "Move"), animationManger, imagePath);
         fallAction = new FallingAndBouncing(mascotStage, MascotimageView, configList.getFallingData(), configList.getData("Bouncing", "Animate"), configList.getData("Jumping", "Embedded"), animationManger, isAction, imagePath, actionMode);
@@ -196,15 +196,12 @@ public class mascot {
                 if (System.currentTimeMillis() - lastTime > 1000) {
                     lastTime = System.currentTimeMillis();
                     if (actionMode.getActionMode() != 0) {
-                        if(actionMode.getActionMode() == 1)
-                        {
+                        if (actionMode.getActionMode() == 1) {
                             standActionList.get(random.nextInt(3)).play(random.nextInt(20) + 1);
-                        }
-                        else if(actionMode.getActionMode()==2)
-                        {
+                        } else if (actionMode.getActionMode() == 2) {
                             sitActionList.get(random.nextInt(4)).play(random.nextInt(20) + 1);
                         }
-                       
+
                     }
                     me.consume();
                 }
@@ -289,7 +286,7 @@ public class mascot {
                     exit.setId("Exit");
                     exit.setText("Exit");
 
-                    ContextMenu contextmenu = new ContextMenu(webcommand, noCeilingBoolean,sitStandMode, delete, exit);
+                    ContextMenu contextmenu = new ContextMenu(webcommand, noCeilingBoolean, sitStandMode, delete, exit);
 
                     contextmenu.setOnAction(
                             new EventHandler<ActionEvent>() {
@@ -396,15 +393,33 @@ public class mascot {
 
                                         templink.setOnMouseEntered((MouseEvent mouseevent) -> {
                                             Stage tempst = new Stage();
+                                            tempst.initStyle(StageStyle.TRANSPARENT);
                                             StackPane tempWebroot = new StackPane();
                                             Scene tempweb = new Scene(tempWebroot);
                                             WebView tempwebView = new WebView();
                                             WebEngine tempengine = new WebEngine();
                                             tempengine = tempwebView.getEngine();
                                             mouseDetect.updateMouseData(mouseevent);
-
-                                            tempst.setX(mouseDetect.getNewX() + 30);
-                                            tempst.setY(mouseDetect.getNewY() + 20);
+                                            Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+                                            /* primScreenBounds.getMinX();
+                                            primScreenBounds.getMaxX();*/
+                                            tempst.setHeight(primScreenBounds.getMaxY()/2-10);
+                                            tempst.setWidth(primScreenBounds.getMaxX()/2);
+                                            System.out.println(tempst.getWidth());
+                                            if (mouseDetect.getNewX() + tempst.getWidth() > primScreenBounds.getMaxX()) {
+                                                tempst.setWidth(mouseDetect.getNewX() - 20);
+                                                tempst.setX(mouseDetect.getNewX() - tempst.getWidth() - 30);
+                                            } else {
+                                                tempst.setWidth(primScreenBounds.getMaxX() - 30);
+                                                tempst.setX(mouseDetect.getNewX()+30);
+                                            }
+                                            if (mouseDetect.getNewY() + tempst.getHeight() > primScreenBounds.getMaxY()) {
+                                                tempst.setHeight(mouseDetect.getNewY() - 10);
+                                                tempst.setY(mouseDetect.getNewY() - tempst.getHeight()-10 - 20);
+                                            } else {
+                                                tempst.setHeight(primScreenBounds.getMaxY()-10 - 20);
+                                                tempst.setY(mouseDetect.getNewY()+20);
+                                            }
                                             tempengine.load(tempurl);
                                             tempWebroot.getChildren().add(tempwebView);
                                             tempst.setTitle("預覽");
@@ -430,14 +445,11 @@ public class mascot {
 
                                     break;
                                 case "sit/stand":
-                                    if(actionMode.getActionMode()==1)
-                                    {
+                                    if (actionMode.getActionMode() == 1) {
                                         animationManger.StopAll();
                                         actionMode.setActionMode(2);
                                         sitAction.play(1);
-                                    }
-                                    else if(actionMode.getActionMode()==2)
-                                    {
+                                    } else if (actionMode.getActionMode() == 2) {
                                         animationManger.StopAll();
                                         actionMode.setActionMode(1);
                                         standAction.play(1);

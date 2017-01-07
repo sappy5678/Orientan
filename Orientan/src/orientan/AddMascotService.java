@@ -58,7 +58,6 @@ public class AddMascotService extends Thread {
                 Path=imageChooser.getPath();
                 mascotenvironment.setImage(new Image(new File(Path+ "\\shime1.png").toURI().toString()));
                 mascot m = new mascot(config, mouseDetect,Path);
-
             }
         });
     }

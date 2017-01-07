@@ -25,12 +25,13 @@ public class Stand extends MascotAction {
     private Image standImage;
     private double duration;
 
-    public void stand(Stage mascotStage, ImageView MascotimageView, Action sitConfig, TimelineManger animationManger, String imgPath) {
+    public Stand(Stage mascotStage, ImageView MascotimageView, Action sitConfig, TimelineManger animationManger, String imgPath) {
         this.imagePath = imgPath;
         standImage = new Image(new File(imagePath + sitConfig.getAnimation().get(0).getImage()).toURI().toString());
         duration = sitConfig.getAnimation().get(0).getDuration();
         timeline.getKeyFrames().add(new KeyFrame(Duration.ZERO, new KeyValue(MascotimageView.imageProperty(), standImage)));
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(duration / 10), new KeyValue(MascotimageView.imageProperty(), standImage)));
+        animationManger.getTimelineList().add(timeline);
     }
     public void setToStand(ImageView MascotimageView)
     {

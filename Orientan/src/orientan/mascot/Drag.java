@@ -117,8 +117,8 @@ class Drag extends MascotAction {
                 .add(new KeyFrame(Duration.seconds(2), new KeyValue(MascotimageView.imageProperty(), pinchedCenter)));
         resistingTimeline.setCycleCount(Timeline.INDEFINITE);
 
-        animationManger.getTimelineList()
-                .add(resistingTimeline);
+        animationManger.getTimelineList().add(resistingTimeline);
+                
     }
 
     public void ResistingAndDrag(Mouse mouseDetect) {

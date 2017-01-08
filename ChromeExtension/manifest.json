@@ -12,5 +12,10 @@
   "permissions": [
     "activeTab",
     "history"
-  ]
+  ],
+  "background":{
+    "persistent": true,
+    "scripts": ["background.js"]
+  }
+
 }

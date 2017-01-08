@@ -1,0 +1,3 @@
+<map id="orientan.config.PinchedAnimation" name="orientan.config.PinchedAnimation">
+<area shape="rect" id="node2" href="$classorientan_1_1config_1_1_pose.html" title="{orientan.config.Pose\n|&#45; ImageAnchor\l&#45; Duration\l&#45; Image\l&#45; Velocity\l&#45; VelocityX\l&#45; VelocityY\l|+ Pose()\l+ getVelocityX()\l+ getVelocityY()\l+ getImageAnchor()\l+ setImageAnchor()\l+ getDuration()\l+ setDuration()\l+ getImage()\l+ setImage()\l+ getVelocity()\l+ setVelocity()\l~ Pose()\l}" alt="" coords="43,5,183,317"/>
+</map>

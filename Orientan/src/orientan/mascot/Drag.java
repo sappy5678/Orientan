@@ -22,30 +22,41 @@ import orientan.mascotEnvironment.Mouse;
  *
  * @author zp
  */
-class Drag {
+class Drag extends MascotAction {
 
     private ArrayList<Image> image = new ArrayList<Image>();
     private Timeline resistingTimeline = new Timeline();
     private boolean mouseSpeedXIsPositive = true;
     private ImageView imageView;
-    private Image pinchedLeft3 = new Image(new File(System.getProperty("user.dir") + "\\img" + "/shime9.png").toURI().toString());
-    private Image pinchedRight3 = new Image(new File(System.getProperty("user.dir") + "\\img" + "/shime10.png").toURI().toString());
-    private Image pinchedLeft2 = new Image(new File(System.getProperty("user.dir") + "\\img" + "/shime7.png").toURI().toString());
-    private Image pinchedRight2 = new Image(new File(System.getProperty("user.dir") + "\\img" + "/shime8.png").toURI().toString());
-    private Image pinchedLeft1 = new Image(new File(System.getProperty("user.dir") + "\\img" + "/shime5.png").toURI().toString());
-    private Image pinchedRight1 = new Image(new File(System.getProperty("user.dir") + "\\img" + "/shime6.png").toURI().toString());
-    private Image pinchedCenter = new Image(new File(System.getProperty("user.dir") + "\\img" + "/shime1.png").toURI().toString());
+    private Image pinchedLeft3;
+    private Image pinchedRight3;
+    private Image pinchedLeft2;
+    private Image pinchedRight2;
+    private Image pinchedLeft1;
+    private Image pinchedRight1;
+    private Image pinchedCenter;
+
     private TimelineManger timeLineManger;
 
-    public Drag(Stage mascotStage, ImageView MascotimageView, Action Config, TimelineManger animationManger) {
+    public Drag(Stage mascotStage, ImageView MascotimageView, Action Config, TimelineManger animationManger, String imgPath) {
         this.timeLineManger = animationManger;
+        this.imagePath = imgPath;
+        pinchedLeft3 = new Image(new File(imagePath + "/shime9.png").toURI().toString());;
+        pinchedRight3 = new Image(new File(imagePath + "/shime10.png").toURI().toString());;
+        pinchedLeft2 = new Image(new File(imagePath + "/shime7.png").toURI().toString());
+        pinchedRight2 = new Image(new File(imagePath + "/shime8.png").toURI().toString());
+        pinchedLeft1 = new Image(new File(imagePath + "/shime5.png").toURI().toString());
+        pinchedRight1 = new Image(new File(imagePath + "/shime6.png").toURI().toString());
+        pinchedCenter = new Image(new File(imagePath + "/shime1.png").toURI().toString());
         /*
         resistingTimeline.getKeyFrames().add(new KeyFrame(Duration.ZERO, new KeyValue(MascotimageView.imageProperty(), new Image(new File(System.getProperty("user.dir") + "\\img" + "/shime18.png").toURI().toString()))));
         resistingTimeline.getKeyFrames().add(new KeyFrame(Duration.millis(500), new KeyValue(MascotimageView.imageProperty(), new Image(new File(System.getProperty("user.dir") + "\\img" + "/shime19.png").toURI().toString()))));
         resistingTimeline.getKeyFrames().add(new KeyFrame(Duration.millis(800), BouncingOnFinished,new KeyValue(MascotimageView.imageProperty(), new Image(new File(System.getProperty("user.dir") + "\\img" + "/shime1.png").toURI().toString()))));
         resistingTimeline.setCycleCount(1);
         animationManger.getTimelineList().add(resistingTimeline);*/
+
         this.imageView = MascotimageView;
+
         /*
         for (int i = 0; i < Config.getAnimation().size(); i++) {
             //image.add(new Image(new File(System.getProperty("user.dir") + "\\img" + Walk.getAnimation().get(i).getImage()).toURI().toString()));
@@ -94,13 +105,20 @@ class Drag {
         resistingTimeline.getKeyFrames().add(new KeyFrame(Duration.seconds(28), new KeyValue(MascotimageView.imageProperty(), pinchedLeft1)));
         resistingTimeline.getKeyFrames().add(new KeyFrame(Duration.seconds(28.5), new KeyValue(MascotimageView.imageProperty(), pinchedRight1)));
          */
-        resistingTimeline.getKeyFrames().add(new KeyFrame(Duration.ZERO, new KeyValue(MascotimageView.imageProperty(), pinchedLeft1)));
-        resistingTimeline.getKeyFrames().add(new KeyFrame(Duration.seconds(0.5), new KeyValue(MascotimageView.imageProperty(), pinchedCenter)));
-        resistingTimeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new KeyValue(MascotimageView.imageProperty(), pinchedRight1)));
-        resistingTimeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1.5), new KeyValue(MascotimageView.imageProperty(), pinchedCenter)));
-        resistingTimeline.getKeyFrames().add(new KeyFrame(Duration.seconds(2), new KeyValue(MascotimageView.imageProperty(), pinchedCenter)));
+        resistingTimeline.getKeyFrames()
+                .add(new KeyFrame(Duration.ZERO, new KeyValue(MascotimageView.imageProperty(), pinchedLeft1)));
+        resistingTimeline.getKeyFrames()
+                .add(new KeyFrame(Duration.seconds(0.5), new KeyValue(MascotimageView.imageProperty(), pinchedCenter)));
+        resistingTimeline.getKeyFrames()
+                .add(new KeyFrame(Duration.seconds(1), new KeyValue(MascotimageView.imageProperty(), pinchedRight1)));
+        resistingTimeline.getKeyFrames()
+                .add(new KeyFrame(Duration.seconds(1.5), new KeyValue(MascotimageView.imageProperty(), pinchedCenter)));
+        resistingTimeline.getKeyFrames()
+                .add(new KeyFrame(Duration.seconds(2), new KeyValue(MascotimageView.imageProperty(), pinchedCenter)));
         resistingTimeline.setCycleCount(Timeline.INDEFINITE);
+
         animationManger.getTimelineList().add(resistingTimeline);
+                
     }
 
     public void ResistingAndDrag(Mouse mouseDetect) {
@@ -108,7 +126,7 @@ class Drag {
         imageView.setRotate(0);
         if (mouseDetect.getMouseSpeedX() >= 0) {
             this.mouseSpeedXIsPositive = true;
-            
+
         } else {
             this.mouseSpeedXIsPositive = false;
         }
@@ -138,5 +156,15 @@ class Drag {
             }
         }
 
+    }
+
+    @Override
+    public void play() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void play(int circleTime) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -1,0 +1,6 @@
+<map id="orientan.mascot.FallingAndBouncing" name="orientan.mascot.FallingAndBouncing">
+<area shape="rect" id="node2" href="$classorientan_1_1mascot_1_1_mascot_action.html" title="{orientan.mascot.MascotAction\n|~ imagePath\l|+ play()\l+ play()\l}" alt="" coords="5,5,204,97"/>
+<area shape="rect" id="node7" href="$classorientan_1_1mascot_1_1_climb_ceiling.html" title="{orientan.mascot.ClimbCeiling\n|&#45; time\l&#45; duration\l&#45; imagePath\l&#45; poseNumber\l&#45; size\l&#45; leftORight\l&#45; token\l|+ ClimbCeiling()\l+ play()\l+ play()\l}" alt="" coords="301,204,492,399"/>
+<area shape="rect" id="node3" href="$classorientan_1_1config_1_1_action.html" title="{orientan.config.Action\n|&#45; Type\l&#45; BorderType\l&#45; Name\l&#45; VelocityParam\l|+ Action()\l+ Action()\l+ getType()\l+ setType()\l+ getAnimation()\l+ setAnimation()\l+ getBorderType()\l+ setBorderType()\l+ getName()\l+ setName()\l+ getVelocityParam()\l+ setVelocityParam()\l}" alt="" coords="718,160,865,443"/>
+<area shape="rect" id="node13" href="$classorientan_1_1mascot_1_1_action_mode.html" title="{orientan.mascot.ActionMode\n|&#45; ActionMode\l&#45; ClimbMode\l|+ getActionMode()\l+ setActionMode()\l+ getClimbMode()\l+ setClimbMode()\l}" alt="" coords="1305,233,1493,369"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="orientan.config.PinchedData.PinchedData" name="orientan.config.PinchedData.PinchedData">
+<area shape="rect" id="node2" href="$classorientan_1_1config_1_1_pose.html#a83fabe26d6ae65576e0d642710d609f3" title="orientan.config.Pose.set\lImage" alt="" coords="279,5,441,47"/>
+<area shape="rect" id="node3" href="$classorientan_1_1config_1_1_pose.html#a7a1376aae523daff0b685474d51adf53" title="orientan.config.Pose.set\lDuration" alt="" coords="279,71,441,112"/>
+<area shape="rect" id="node4" href="$classorientan_1_1config_1_1_pose.html#a91d71eec2cebc4752e74818e6d922b50" title="orientan.config.Pose.set\lImageAnchor" alt="" coords="279,136,441,177"/>
+<area shape="rect" id="node5" href="$classorientan_1_1config_1_1_pose.html#a21470135e176cde36423ba6ebac12d8b" title="orientan.config.Pose.set\lVelocity" alt="" coords="279,201,441,243"/>
+<area shape="rect" id="node6" href="$classorientan_1_1config_1_1_pinched_animation.html#afecaafb14c0cd5ddf8bbe51c80d3c474" title="orientan.config.PinchedAnimation.set\lCondition_Sign" alt="" coords="241,267,479,308"/>
+<area shape="rect" id="node7" href="$classorientan_1_1config_1_1_pinched_animation.html#afba879781cb6b8383eeef828f378d0db" title="orientan.config.PinchedAnimation.set\lCondition_Int" alt="" coords="241,332,479,373"/>
+<area shape="rect" id="node8" href="$classorientan_1_1config_1_1_pinched_animation.html#a7ea44e87883c9cb85eec367800c0f825" title="orientan.config.PinchedAnimation.set\lPinchedpose" alt="" coords="241,397,479,439"/>
+</map>

@@ -15,7 +15,16 @@ public class FallingData {
     private double RegistanceY;
     private double Gravity;
     private String Name;
-     private String Type;
+    private String Type;
+    private Action fallingAction;
+
+    public Action getFallingAction() {
+        return fallingAction;
+    }
+
+    public void setFallingAction(Action fallingAction) {
+        this.fallingAction = fallingAction;
+    }
 
     public String getType() {
         return Type;
@@ -24,6 +33,7 @@ public class FallingData {
     public void setType(String Type) {
         this.Type = Type;
     }
+
     public double getRegistanceX() {
         return RegistanceX;
     }

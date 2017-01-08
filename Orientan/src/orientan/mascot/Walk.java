@@ -33,9 +33,9 @@ public class Walk extends MascotAction {
     //private double deltaY = 0;
     private Timeline timeline = new Timeline();
 
-    public Walk(Stage mascotStage, ImageView MascotimageView, Action walkConfig, TimelineManger animationManger) {
+    public Walk(Stage mascotStage, ImageView MascotimageView, Action walkConfig, TimelineManger animationManger, String imgPath) {
         this.duration = walkConfig.getAnimation().get(0).getDuration();
-
+        this.imagePath = imgPath;
         //this.deltaX=walkConfig.getAnimation().get(0).getVelocity();
         time = 0;
         //事件監聽  
@@ -61,11 +61,11 @@ public class Walk extends MascotAction {
                 mascotStage.setX((mascotStage.getX() + deltaX));
             }
         };
-
+        //時間軸生成
         duration = walkConfig.getAnimation().get(0).getDuration() / 10;
         for (int i = 0; i < walkConfig.getAnimation().size(); i++) {
             //image.add(new Image(new File(System.getProperty("user.dir") + "\\img" + Walk.getAnimation().get(i).getImage()).toURI().toString()));
-            image.add(new Image(new File(System.getProperty("user.dir") + "\\img" + walkConfig.getAnimation().get(i).getImage()).toURI().toString()));
+            image.add(new Image(new File(imagePath + walkConfig.getAnimation().get(i).getImage()).toURI().toString()));
         }
         for (int i = 0; i < walkConfig.getAnimation().size(); i++) {
             if (i == 0) {

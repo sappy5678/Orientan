@@ -1,0 +1,19 @@
+<map id="orientan.mascot.FallingAndBouncing.FallingAndBouncing" name="orientan.mascot.FallingAndBouncing.FallingAndBouncing">
+<area shape="rect" id="node2" href="$classorientan_1_1config_1_1_falling_data.html#a146f561db897f8a9c24f4858377253f6" title="orientan.config.FallingData.get\lFallingAction" alt="" coords="311,5,509,47"/>
+<area shape="rect" id="node3" href="$classorientan_1_1config_1_1_action.html#a2dd2dc0a0ef8ea2b571f287908fb974c" title="orientan.config.Action.get\lAnimation" alt="" coords="325,71,495,112"/>
+<area shape="rect" id="node4" href="$classorientan_1_1config_1_1_falling_data.html#a89e5c423b7ce1c7a83085604f8c7848c" title="orientan.config.FallingData.get\lRegistanceX" alt="" coords="311,136,509,177"/>
+<area shape="rect" id="node5" href="$classorientan_1_1config_1_1_falling_data.html#a149f0936f287682aa87317567be487a1" title="orientan.config.FallingData.get\lRegistanceY" alt="" coords="311,201,509,243"/>
+<area shape="rect" id="node6" href="$classorientan_1_1config_1_1_falling_data.html#ac683f91b4e27454394d1815d7732853c" title="orientan.config.FallingData.get\lGravity" alt="" coords="311,267,509,308"/>
+<area shape="rect" id="node7" href="$classorientan_1_1mascot_environment_1_1mascotenvironment.html#a6d31110102eb742e7305bd890fb24ac0" title="orientan.mascotEnvironment.mascotenvironment.get\lFloor" alt="" coords="248,332,572,373"/>
+<area shape="rect" id="node8" href="$classorientan_1_1mascot_environment_1_1mascotenvironment.html#a084159ded643875ff8a370823ef66a18" title="orientan.mascotEnvironment.mascotenvironment.get\lCeiling" alt="" coords="248,397,572,439"/>
+<area shape="rect" id="node9" href="$classorientan_1_1mascot_1_1_action_mode.html#a051473472c18a4191e6e85e02c90306c" title="orientan.mascot.ActionMode.get\lClimbMode" alt="" coords="305,463,515,504"/>
+<area shape="rect" id="node10" href="$classorientan_1_1mascot_environment_1_1mascotenvironment.html#a2464d395428a9c2558f43df0356e63b0" title="orientan.mascotEnvironment.mascotenvironment.get\lImageHeight" alt="" coords="248,528,572,569"/>
+<area shape="rect" id="node11" href="$classorientan_1_1mascot_1_1_action_mode.html#a9c000af12bedfa16dc3d5dd08a45cc31" title="orientan.mascot.ActionMode.set\lClimbMode" alt="" coords="305,593,515,635"/>
+<area shape="rect" id="node12" href="$classorientan_1_1mascot_1_1_timeline_manger.html#a57bd6146aea322d1239cff55f7dc8065" title="orientan.mascot.Timeline\lManger.StopAll" alt="" coords="327,659,493,700"/>
+<area shape="rect" id="node13" href="$classorientan_1_1mascot_1_1_climb_ceiling.html#a1cbfaf78dd9bae8f43e9483beb39e1e7" title="orientan.mascot.ClimbCeiling.play" alt="" coords="301,725,519,751"/>
+<area shape="rect" id="node14" href="$classorientan_1_1mascot_environment_1_1mascotenvironment.html#a4feb107b98ce4059c987ddce5af66216" title="orientan.mascotEnvironment.mascotenvironment.get\lLeftWall" alt="" coords="248,776,572,817"/>
+<area shape="rect" id="node15" href="$classorientan_1_1mascot_environment_1_1mascotenvironment.html#aa87e88d5da90a92934e74c9fd4bfff7a" title="orientan.mascotEnvironment.mascotenvironment.get\lRightWall" alt="" coords="248,841,572,883"/>
+<area shape="rect" id="node16" href="$classorientan_1_1mascot_1_1_timeline_manger.html#a081297e5fadadebec82c50a229964fa1" title="orientan.mascot.Timeline\lManger.getTimelineList" alt="" coords="327,907,493,948"/>
+<area shape="rect" id="node17" href="$classorientan_1_1mascot_1_1_action_mode.html#af64cce6d9183e889a3480021b896b732" title="orientan.mascot.ActionMode.set\lActionMode" alt="" coords="305,972,515,1013"/>
+<area shape="rect" id="node18" href="$classorientan_1_1mascot_1_1_action_mode.html#acf73baa39aa6e85d66f5a251ee6cddc6" title="orientan.mascot.ActionMode.\lActionMode" alt="" coords="620,972,812,1013"/>
+</map>

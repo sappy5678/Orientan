@@ -5,6 +5,8 @@
  */
 package orientan;
 
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import java.awt.AWTException;
 import java.awt.Button;
 import java.awt.PopupMenu;
@@ -27,12 +29,16 @@ import java.util.ResourceBundle;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import org.controlsfx.control.*;
+import orientan.ImageSetChooser.ImageSetChooser;
 import orientan.config.loadconfig;
 import orientan.mascot.mascot;
 import orientan.mascotEnvironment.Mouse;
+import orientan.mascotEnvironment.mascotenvironment;
 
 /**
  *
@@ -41,6 +47,10 @@ import orientan.mascotEnvironment.Mouse;
 public class Orientan extends Application {
 
     Properties properties = new Properties();
+    private String imageSetPath;
+    private Mouse mouseDetect;
+    private loadconfig config;
+    private AddMascotService addMascot;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -55,13 +65,24 @@ public class Orientan extends Application {
         properties = getConfig();
         setIcon(stage);
         //取得動作設定檔(actions)
-        loadconfig config=new loadconfig("actions");
-      /**/
-//
+        config = new loadconfig("actions");
+        /**/
+//      
+        System.out.println("a");
+        String out = "";
+        //out=RecommendPagesCrawl.Crawlrun("TestUser", 20);
+        System.out.println(out);
+        //建立桌寵環境參數
+
         //建立滑鼠監控
-        Mouse mouseDetect=new Mouse();
-        mascot m=new mascot(config,mouseDetect);
-        //Notifications.create().title("Orientan Status").text("Orientan Start to Run").showInformation();
+        mouseDetect = new Mouse();
+        MascotThreadNumberManager.addOneThread();
+        addMascot = new AddMascotService(mouseDetect, config, imageSetPath);
+        addMascot.start();
+           
+        //imageSetPath=addMascot.returnPath();
+        // mascotenvironment.setImage(new Image(new File(imageSetPath+ "\\shime1.png").toURI().toString()));
+        // Notifications.create().title("Orientan Status").text("Orientan Start to Run").showInformation();
     }
 
     /**
@@ -89,29 +110,75 @@ public class Orientan extends Application {
                     // execute default action of the application
                     String cmd = e.getActionCommand();
                     // exit 離開
-                    if(cmd == SystemTrayMenu.getString("exit"))
-                    {
+                    if (cmd == SystemTrayMenu.getString("exit")) {
                         System.out.println(e);
                         System.exit(0);
+
+                    }
+                }
+
+            };
+            ActionListener addMascotlistener = new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    // execute default action of the application
+                    String cmd = e.getActionCommand();
+                    System.out.println(cmd);
+                    // exit 離開
+                    /*
+                    switch (cmd) {
+                        case "add a mascot": {
+                            //new Thread(new AddMascotService(mouseDetect, config, imageSetPath)).start();
+                            break;
+                        }
+                        case SystemTrayMenu.getString("exit"): {
+                            System.out.println(e);
+                            System.exit(0);
+                            break;
+                        }
+                    }*/
+                    if (cmd.equals(SystemTrayMenu.getString("exit"))) {
+                        System.out.println(e);
+                        System.exit(0);
+
+                    } else if (cmd.equals(SystemTrayMenu.getString("Add_mascot"))) {
+                        System.out.println("Add_mascot");
+                        MascotThreadNumberManager.addOneThread();
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                
+                                new Thread(new AddMascotService(mouseDetect, config, imageSetPath)).start();
+
+                            }
+
+                            //AddMascotService addMascot2 = new AddMascotService(mouseDetect, config, imageSetPath);
+                            //addMascot2.run();
+                        });
                         
                     }
                 }
 
             };
-
             // create a popup menu
             PopupMenu popup = new PopupMenu();
             // create menu item for the default action
-            java.awt.MenuItem test = new java.awt.MenuItem(SystemTrayMenu.getString("exit"));
-            popup.addActionListener(listener);
-            popup.add(test);
 
+            java.awt.MenuItem exit = new java.awt.MenuItem(SystemTrayMenu.getString("exit"));
+            java.awt.MenuItem Add_mascot = new java.awt.MenuItem(SystemTrayMenu.getString("Add_mascot"));
+
+            popup.addActionListener(addMascotlistener);
+            //popup.add(test);
+            // java.awt.MenuItem setNewMascot = new java.awt.MenuItem(SystemTrayMenu.getString("Add_mascot"));
+            popup.add(Add_mascot);
+            popup.add(exit);
+
+            //popup.add(setNewMascot);
             /// ... add other items
             // construct a TrayIcon
             trayIcon = new TrayIcon(image, "Orientan", popup);
 
             // set the TrayIcon properties
-            trayIcon.addActionListener(listener);
+            trayIcon.addActionListener(addMascotlistener);
 
             // ...
             // add the tray image

@@ -1,0 +1,4 @@
+<map id="orientan.mascot.SitAndLookAtMouse" name="orientan.mascot.SitAndLookAtMouse">
+<area shape="rect" id="node2" href="$classorientan_1_1mascot_1_1_mascot_action.html" title="{orientan.mascot.MascotAction\n|~ imagePath\l|+ play()\l+ play()\l}" alt="" coords="5,115,204,207"/>
+<area shape="rect" id="node3" href="$classorientan_1_1mascot_environment_1_1_mouse.html" title="{orientan.mascotEnvironment.\lMouse\n|&#45; lastTime\l&#45; newX\l&#45; newY\l&#45; oldX\l&#45; oldY\l&#45; speedPowTwo\l&#45; speedXIsPositive\l&#45; mouseSpeedX\l&#45; speedYIsPositive\l&#45; mouseSpeedY\l|+ isSpeedXIsPositive()\l+ getMouseSpeedX()\l+ isSpeedYIsPositive()\l+ getMouseSpeedY()\l+ getNewX()\l+ getNewY()\l+ updateMouseData()\l}" alt="" coords="228,5,419,317"/>
+</map>

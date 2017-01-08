@@ -55,16 +55,16 @@ public class Action {
     private ArrayList<Pose> Animation = new ArrayList<Pose>();
     private String BorderType;
     private String Name;
+    private double VelocityParam;
 
-    public Action()
-    {
-        this.Type="";
-        this.BorderType="";
-        this.Name="";
+    public Action() {
+        this.Type = "";
+        this.BorderType = "";
+        this.Name = "";
     }
 
     public Action(JSONObject anaction) throws JSONException {
-         this.Type = anaction.get("Type").toString();
+        this.Type = anaction.get("Type").toString();
         Type listType = new TypeToken<ArrayList<Pose>>() {
         }.getType();
         Gson gson = new Gson();
@@ -72,19 +72,29 @@ public class Action {
         if (check == null) {
             Animation = gson.fromJson(anaction.getJSONObject("Animation").getJSONArray("Pose").toString(), listType);
         } else {
-        //直接加入ArrayList
-        Pose cha = new Pose();
-        cha.setImage(anaction.getJSONObject("Animation").getJSONObject("Pose").getString("Image"));
-        cha.setDuration(anaction.getJSONObject("Animation").getJSONObject("Pose").getInt("Duration"));
-        cha.setImageAnchor(anaction.getJSONObject("Animation").getJSONObject("Pose").getString("ImageAnchor"));
-        cha.setVelocity(anaction.getJSONObject("Animation").getJSONObject("Pose").getString("Velocity"));
+            //直接加入ArrayList
+            Pose cha = new Pose();
+            cha.setImage(anaction.getJSONObject("Animation").getJSONObject("Pose").getString("Image"));
+            cha.setDuration(anaction.getJSONObject("Animation").getJSONObject("Pose").getInt("Duration"));
+            cha.setImageAnchor(anaction.getJSONObject("Animation").getJSONObject("Pose").getString("ImageAnchor"));
+            cha.setVelocity(anaction.getJSONObject("Animation").getJSONObject("Pose").getString("Velocity"));
 
-        Animation.add(cha);
-        
+            Animation.add(cha);
+
         }
         //System.out.println(anaction.getJSONObject("Animation").getJSONArray("Pose").toString());
-        if(anaction.optString("BorderType")!=null)
+        double testVelocityParam;
+        testVelocityParam = anaction.optDouble("VelocityParam");
+        if (!(Double.isNaN(testVelocityParam))) {
+            this.VelocityParam=testVelocityParam;
+            //System.out.println(this.getVelocityParam());
+        }
+        String testBordertype;
+        testBordertype=anaction.optString("BorderType");
+        if (!(testBordertype.isEmpty())) {
+            //System.out.println(testBordertype);
             this.BorderType = anaction.get("BorderType").toString();
+        }
         this.Name = anaction.get("Name").toString();
 
     }
@@ -120,4 +130,13 @@ public class Action {
     public void setName(String Name) {
         this.Name = Name;
     }
+
+    public double getVelocityParam() {
+        return VelocityParam;
+    }
+
+    public void setVelocityParam(double VelocityParam) {
+        this.VelocityParam = VelocityParam;
+    }
+
 }

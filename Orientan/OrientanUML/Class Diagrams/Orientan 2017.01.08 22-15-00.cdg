@@ -270,7 +270,21 @@
         <Method name="run" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="ActionManager" package="orientan.mascot" visibility="public" xPosition="920.0" yPosition="420.0">
+    <Class name="Localelanguage" package="orientan" visibility="public" isFinal="true" xPosition="920.0" yPosition="420.0">
+      <Fields>
+        <Field name="language" type="String" visibility="private" isStatic="true"/>
+        <Field name="currentLocale" type="Locale" visibility="private" isStatic="true"/>
+        <Field name="SystemTrayMenu" type="ResourceBundle" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getStringLocalelanguage" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="key"/>
+        </Method>
+        <Method name="selectLanguage" returnType="void" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="ActionManager" package="orientan.mascot" visibility="public" xPosition="1220.0" yPosition="420.0">
       <Fields>
         <Field name="actionList" type="ArrayList&lt;MascotAction&gt;" visibility="package"/>
       </Fields>
@@ -285,7 +299,7 @@
         <Method name="run" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="ActionMode" package="orientan.mascot" visibility="public" xPosition="1220.0" yPosition="420.0">
+    <Class name="ActionMode" package="orientan.mascot" visibility="public" xPosition="1520.0" yPosition="420.0">
       <Fields>
         <Field name="ActionMode" type="int" visibility="private"/>
         <Field name="ClimbMode" type="int" visibility="private"/>
@@ -302,7 +316,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="ClimbCeiling" package="orientan.mascot" visibility="public" xPosition="1520.0" yPosition="420.0">
+    <Class name="ClimbCeiling" package="orientan.mascot" visibility="public" xPosition="1820.0" yPosition="420.0">
       <Fields>
         <Field name="timeline" type="Timeline" visibility="private"/>
         <Field name="image" type="ArrayList&lt;Image&gt;" visibility="private"/>
@@ -331,7 +345,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Dash" package="orientan.mascot" visibility="public" xPosition="1820.0" yPosition="420.0">
+    <Class name="Dash" package="orientan.mascot" visibility="public" xPosition="2120.0" yPosition="420.0">
       <Fields>
         <Field name="image" type="ArrayList&lt;Image&gt;" visibility="private"/>
         <Field name="time" type="double" visibility="private"/>
@@ -355,7 +369,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Drag" package="orientan.mascot" visibility="public" xPosition="2120.0" yPosition="420.0">
+    <Class name="Drag" package="orientan.mascot" visibility="public" xPosition="20.0" yPosition="820.0">
       <Fields>
         <Field name="image" type="ArrayList&lt;Image&gt;" visibility="private"/>
         <Field name="resistingTimeline" type="Timeline" visibility="private"/>
@@ -389,7 +403,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="FallingAndBouncing" package="orientan.mascot" visibility="public" xPosition="20.0" yPosition="820.0">
+    <Class name="FallingAndBouncing" package="orientan.mascot" visibility="public" xPosition="320.0" yPosition="820.0">
       <Fields>
         <Field name="RegistanceY" type="double" visibility="private"/>
         <Field name="RegistanceX" type="double" visibility="private"/>
@@ -447,7 +461,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="mascot" package="orientan.mascot" visibility="public" xPosition="320.0" yPosition="820.0">
+    <Class name="mascot" package="orientan.mascot" visibility="public" xPosition="620.0" yPosition="820.0">
       <Fields>
         <Field name="imagePath" type="String" visibility="private"/>
         <Field name="animationManger" type="TimelineManger" visibility="private"/>
@@ -475,6 +489,11 @@
         <Field name="random" type="Random" visibility="private"/>
         <Field name="isAction" type="boolean" visibility="private"/>
         <Field name="lastTime" type="long" visibility="private"/>
+        <Field name="RecommendPagesNumber" type="String" visibility="private"/>
+        <Field name="DeafaultRecomned" type="Boolean" visibility="private"/>
+        <Field name="DeafaultRecomnedID" type="Boolean" visibility="private"/>
+        <Field name="gson" type="Gson" visibility="private"/>
+        <Field name="recommenddata" type="RecommendData" visibility="private"/>
       </Fields>
       <Constructors>
         <Constructor visibility="public">
@@ -485,7 +504,7 @@
       </Constructors>
       <Methods/>
     </Class>
-    <Class name="MascotAction" package="orientan.mascot" visibility="public" isAbstract="true" xPosition="620.0" yPosition="820.0">
+    <Class name="MascotAction" package="orientan.mascot" visibility="public" isAbstract="true" xPosition="920.0" yPosition="820.0">
       <Fields>
         <Field name="imagePath" type="String" visibility="package"/>
       </Fields>
@@ -497,7 +516,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Run" package="orientan.mascot" visibility="public" xPosition="920.0" yPosition="820.0">
+    <Class name="Run" package="orientan.mascot" visibility="public" xPosition="1220.0" yPosition="820.0">
       <Fields>
         <Field name="image" type="ArrayList&lt;Image&gt;" visibility="private"/>
         <Field name="time" type="double" visibility="private"/>
@@ -521,7 +540,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Sit" package="orientan.mascot" visibility="public" xPosition="1220.0" yPosition="820.0">
+    <Class name="Sit" package="orientan.mascot" visibility="public" xPosition="1520.0" yPosition="820.0">
       <Fields>
         <Field name="timeline" type="Timeline" visibility="private"/>
         <Field name="sitImage" type="Image" visibility="private"/>
@@ -546,7 +565,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="SitAndDangleLegs" package="orientan.mascot" visibility="public" xPosition="1520.0" yPosition="820.0">
+    <Class name="SitAndDangleLegs" package="orientan.mascot" visibility="public" xPosition="1820.0" yPosition="820.0">
       <Fields>
         <Field name="timeline" type="Timeline" visibility="private"/>
         <Field name="image" type="ArrayList&lt;Image&gt;" visibility="private"/>
@@ -569,7 +588,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="SitAndLookAtMouse" package="orientan.mascot" visibility="public" xPosition="1820.0" yPosition="820.0">
+    <Class name="SitAndLookAtMouse" package="orientan.mascot" visibility="public" xPosition="2120.0" yPosition="820.0">
       <Fields>
         <Field name="timeline" type="Timeline" visibility="private"/>
         <Field name="sitImage" type="Image" visibility="private"/>
@@ -593,7 +612,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="SitAndSpinHeadAction" package="orientan.mascot" visibility="public" xPosition="2120.0" yPosition="820.0">
+    <Class name="SitAndSpinHeadAction" package="orientan.mascot" visibility="public" xPosition="20.0" yPosition="1220.0">
       <Fields>
         <Field name="timeline" type="Timeline" visibility="private"/>
         <Field name="image" type="ArrayList&lt;Image&gt;" visibility="private"/>
@@ -616,7 +635,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="SitWithLegsDown" package="orientan.mascot" visibility="public" xPosition="20.0" yPosition="1220.0">
+    <Class name="SitWithLegsDown" package="orientan.mascot" visibility="public" xPosition="320.0" yPosition="1220.0">
       <Fields>
         <Field name="timeline" type="Timeline" visibility="private"/>
         <Field name="sitImage" type="Image" visibility="private"/>
@@ -638,7 +657,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="SitWithLegsUp" package="orientan.mascot" visibility="public" xPosition="320.0" yPosition="1220.0">
+    <Class name="SitWithLegsUp" package="orientan.mascot" visibility="public" xPosition="620.0" yPosition="1220.0">
       <Fields>
         <Field name="timeline" type="Timeline" visibility="private"/>
         <Field name="sitImage" type="Image" visibility="private"/>
@@ -660,7 +679,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Stand" package="orientan.mascot" visibility="public" xPosition="620.0" yPosition="1220.0">
+    <Class name="Stand" package="orientan.mascot" visibility="public" xPosition="920.0" yPosition="1220.0">
       <Fields>
         <Field name="timeline" type="Timeline" visibility="private"/>
         <Field name="standImage" type="Image" visibility="private"/>
@@ -685,7 +704,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="TimelineManger" package="orientan.mascot" visibility="public" xPosition="920.0" yPosition="1220.0">
+    <Class name="TimelineManger" package="orientan.mascot" visibility="public" xPosition="1220.0" yPosition="1220.0">
       <Fields>
         <Field name="imgPath" type="String" visibility="private"/>
         <Field name="standDefaultImage" type="Image" visibility="private"/>
@@ -702,7 +721,7 @@
         <Method name="StopAll" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Walk" package="orientan.mascot" visibility="public" xPosition="1220.0" yPosition="1220.0">
+    <Class name="Walk" package="orientan.mascot" visibility="public" xPosition="1520.0" yPosition="1220.0">
       <Fields>
         <Field name="image" type="ArrayList&lt;Image&gt;" visibility="private"/>
         <Field name="time" type="double" visibility="private"/>
@@ -726,7 +745,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="mascotenvironment" package="orientan.mascotEnvironment" visibility="public" isFinal="true" xPosition="1520.0" yPosition="1220.0">
+    <Class name="mascotenvironment" package="orientan.mascotEnvironment" visibility="public" isFinal="true" xPosition="1820.0" yPosition="1220.0">
       <Fields>
         <Field name="primScreenBounds" type="Rectangle2D" visibility="private" isStatic="true"/>
         <Field name="image" type="Image" visibility="package" isStatic="true"/>
@@ -749,7 +768,7 @@
         <Method name="getCeiling" returnType="double" visibility="public" isStatic="true"/>
       </Methods>
     </Class>
-    <Class name="Mouse" package="orientan.mascotEnvironment" visibility="public" xPosition="1820.0" yPosition="1220.0">
+    <Class name="Mouse" package="orientan.mascotEnvironment" visibility="public" xPosition="2120.0" yPosition="1220.0">
       <Fields>
         <Field name="lastTime" type="long" visibility="private"/>
         <Field name="newX" type="double" visibility="private"/>
@@ -775,7 +794,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="MascotThreadNumberManager" package="orientan" visibility="public" isFinal="true" xPosition="2120.0" yPosition="1220.0">
+    <Class name="MascotThreadNumberManager" package="orientan" visibility="public" isFinal="true" xPosition="20.0" yPosition="1620.0">
       <Fields>
         <Field name="threadNumber" type="int" visibility="private" isStatic="true"/>
       </Fields>
@@ -786,7 +805,7 @@
         <Method name="isZero" returnType="Boolean" visibility="public" isStatic="true"/>
       </Methods>
     </Class>
-    <Class name="OAuth" package="orientan.OAuth" visibility="public" xPosition="20.0" yPosition="1620.0">
+    <Class name="OAuth" package="orientan.OAuth" visibility="public" xPosition="320.0" yPosition="1620.0">
       <Fields>
         <Field name="APPLICATION_NAME" type="String" visibility="private" isStatic="true" isFinal="true"/>
         <Field name="DATA_STORE_DIR" type="java.io.File" visibility="private" isStatic="true" isFinal="true"/>
@@ -797,22 +816,22 @@
         <Field name="oauth2" type="Oauth2" visibility="private" isStatic="true"/>
         <Field name="clientSecrets" type="GoogleClientSecrets" visibility="private" isStatic="true"/>
       </Fields>
-      <Constructors/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
       <Methods>
         <Method name="authorize" returnType="Credential" visibility="private" isStatic="true"/>
-        <Method name="main" returnType="void" visibility="public" isStatic="true">
-          <Argument type="String[]" name="args"/>
-        </Method>
         <Method name="tokenInfo" returnType="void" visibility="private" isStatic="true">
           <Argument type="String" name="accessToken"/>
         </Method>
         <Method name="userInfo" returnType="void" visibility="private" isStatic="true"/>
+        <Method name="getUserId" returnType="String" visibility="public" isStatic="true"/>
         <Method name="header" returnType="void" visibility="package" isStatic="true">
           <Argument type="String" name="name"/>
         </Method>
       </Methods>
     </Class>
-    <Class name="Orientan" package="orientan" visibility="public" xPosition="320.0" yPosition="1620.0">
+    <Class name="Orientan" package="orientan" visibility="public" xPosition="620.0" yPosition="1620.0">
       <Fields>
         <Field name="properties" type="Properties" visibility="package"/>
         <Field name="imageSetPath" type="String" visibility="private"/>
@@ -835,7 +854,7 @@
         <Method name="settingLog" returnType="void" visibility="private"/>
       </Methods>
     </Class>
-    <Class name="OrientanFXMLDocumentController" package="orientan" visibility="public" xPosition="620.0" yPosition="1620.0">
+    <Class name="OrientanFXMLDocumentController" package="orientan" visibility="public" xPosition="920.0" yPosition="1620.0">
       <Fields>
         <Field name="label" type="Label" visibility="private"/>
       </Fields>
@@ -850,11 +869,11 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="RecommendData" package="orientan.RecommendPages" visibility="public" isFinal="true" xPosition="920.0" yPosition="1620.0">
+    <Class name="RecommendData" package="orientan.RecommendPages" visibility="public" isFinal="true" xPosition="1220.0" yPosition="1620.0">
       <Fields>
-        <Field name="descript" type="String" visibility="private"/>
         <Field name="statusCode" type="int" visibility="private"/>
         <Field name="pages" type="List&lt;RecommendPageData&gt;" visibility="private"/>
+        <Field name="descript" type="String" visibility="private"/>
       </Fields>
       <Constructors/>
       <Methods>
@@ -867,12 +886,13 @@
           <Argument type="int" name="statusCode"/>
         </Method>
         <Method name="getPages" returnType="List&lt;RecommendPageData&gt;" visibility="public"/>
+        <Method name="getPagesSize" returnType="int" visibility="public"/>
         <Method name="setPages" returnType="void" visibility="public">
           <Argument type="List&lt;RecommendPageData&gt;" name="pages"/>
         </Method>
       </Methods>
     </Class>
-    <Class name="RecommendPageData" package="orientan.RecommendPages" visibility="public" xPosition="1220.0" yPosition="1620.0">
+    <Class name="RecommendPageData" package="orientan.RecommendPages" visibility="public" xPosition="1520.0" yPosition="1620.0">
       <Fields>
         <Field name="title" type="String" visibility="private"/>
         <Field name="url" type="String" visibility="private"/>
@@ -899,7 +919,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="RecommendPagesCrawl" package="orientan.RecommendPages" visibility="public" isFinal="true" xPosition="1520.0" yPosition="1620.0">
+    <Class name="RecommendPagesCrawl" package="orientan.RecommendPages" visibility="public" isFinal="true" xPosition="1820.0" yPosition="1620.0">
       <Fields>
         <Field name="apiURL" type="String" visibility="private" isStatic="true"/>
       </Fields>
@@ -913,71 +933,72 @@
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <IsRelation name="is" source="orientan.mascot.SitAndDangleLegs" target="orientan.mascot.MascotAction"/>
-    <HasRelation name="Animation" source="orientan.config.ResistingData" target="orientan.config.Pose" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Pose&gt;"/>
-    <UseRelation source="orientan.OrientanFXMLDocumentController" target="orientan.config.Action" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="configList" source="orientan.mascot.mascot" target="orientan.config.loadconfig" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="orientan.config.Action" target="orientan.config.Pose" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="sitWithLegsUpAction" source="orientan.mascot.mascot" target="orientan.mascot.SitWithLegsUp" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="walkAction" source="orientan.mascot.mascot" target="orientan.mascot.Walk" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="orientan.RecommendPages.RecommendData" target="orientan.RecommendPages.RecommendPageData" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="orientan.config.loadconfig" target="orientan.config.PinchedData" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="dashAction" source="orientan.mascot.mascot" target="orientan.mascot.Dash" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="orientan.mascotEnvironment.Mouse" target="orientan.mascotEnvironment.Mouse" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="actionList" source="orientan.mascot.ActionManager" target="orientan.mascot.MascotAction" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;MascotAction&gt;"/>
-    <IsRelation name="is" source="orientan.mascot.ClimbCeiling" target="orientan.mascot.MascotAction"/>
     <HasRelation name="animationManger" source="orientan.mascot.mascot" target="orientan.mascot.TimelineManger" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="orientan.config.ResistingData" target="orientan.config.Pose" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="fallAction" source="orientan.mascot.mascot" target="orientan.mascot.FallingAndBouncing" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="orientan.mascot.SitWithLegsDown" target="orientan.mascot.MascotAction"/>
-    <HasRelation name="falling_data" source="orientan.config.loadconfig" target="orientan.config.FallingData" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="sitAndDangleLegsAction" source="orientan.mascot.mascot" target="orientan.mascot.SitAndDangleLegs" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="orientan.mascot.Drag" target="orientan.mascot.MascotAction"/>
-    <HasRelation name="pages" source="orientan.RecommendPages.RecommendData" target="orientan.RecommendPages.RecommendPageData" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;RecommendPageData&gt;"/>
-    <HasRelation name="actionMode" source="orientan.mascot.FallingAndBouncing" target="orientan.mascot.ActionMode" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="dashAction" source="orientan.mascot.mascot" target="orientan.mascot.Dash" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="standActionList" source="orientan.mascot.mascot" target="orientan.mascot.MascotAction" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;MascotAction&gt;"/>
-    <HasRelation name="Animation" source="orientan.config.Action" target="orientan.config.Pose" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Pose&gt;"/>
-    <HasRelation name="timeLineManger" source="orientan.mascot.Drag" target="orientan.mascot.TimelineManger" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="sitWithLegsDownAction" source="orientan.mascot.mascot" target="orientan.mascot.SitWithLegsDown" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="mouseDetect" source="orientan.mascot.SitAndLookAtMouse" target="orientan.mascotEnvironment.Mouse" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="orientan.config.loadconfig" target="orientan.config.Action" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="orientan.config.FallingData" target="orientan.config.Action" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="climbCeiling" source="orientan.mascot.FallingAndBouncing" target="orientan.mascot.ClimbCeiling" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="mouseDetect" source="orientan.Orientan" target="orientan.mascotEnvironment.Mouse" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="orientan.mascot.Run" target="orientan.mascot.MascotAction"/>
-    <HasRelation name="sitAndSpinHeadAction" source="orientan.mascot.mascot" target="orientan.mascot.SitAndSpinHeadAction" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="addMascot" source="orientan.Orientan" target="orientan.AddMascotService" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="orientan.mascot.FallingAndBouncing" target="orientan.mascot.MascotAction"/>
-    <IsRelation name="is" source="orientan.mascot.Dash" target="orientan.mascot.MascotAction"/>
-    <HasRelation name="sitAction" source="orientan.mascot.mascot" target="orientan.mascot.Sit" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="pinchedpose" source="orientan.config.PinchedAnimation" target="orientan.config.Pose" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="orientan.config.PinchedData" target="orientan.config.PinchedAnimation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="sitActionList" source="orientan.mascot.mascot" target="orientan.mascot.MascotAction" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;MascotAction&gt;"/>
-    <HasRelation name="runAction" source="orientan.mascot.mascot" target="orientan.mascot.Run" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="orientan.mascot.Sit" target="orientan.mascot.MascotAction"/>
-    <HasRelation name="config" source="orientan.AddMascotService" target="orientan.config.loadconfig" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="orientan.mascot.Stand" target="orientan.mascot.MascotAction"/>
-    <HasRelation name="Action_List" source="orientan.config.loadconfig" target="orientan.config.Action" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Action&gt;"/>
-    <IsRelation name="is" source="orientan.mascot.Walk" target="orientan.mascot.MascotAction"/>
-    <HasRelation name="pinched_data" source="orientan.config.loadconfig" target="orientan.config.PinchedData" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="orientan.mascot.SitAndLookAtMouse" target="orientan.mascot.MascotAction"/>
-    <HasRelation name="config" source="orientan.Orientan" target="orientan.config.loadconfig" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="Animation" source="orientan.config.PinchedData" target="orientan.config.PinchedAnimation" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;PinchedAnimation&gt;"/>
-    <HasRelation name="actionMode" source="orientan.mascot.mascot" target="orientan.mascot.ActionMode" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="mouseDetect" source="orientan.AddMascotService" target="orientan.mascotEnvironment.Mouse" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="fallingAction" source="orientan.config.FallingData" target="orientan.config.Action" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="ClimbCeilingAction" source="orientan.mascot.mascot" target="orientan.mascot.ClimbCeiling" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="runAction" source="orientan.mascot.mascot" target="orientan.mascot.Run" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.SitWithLegsDown" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="fallAction" source="orientan.mascot.mascot" target="orientan.mascot.FallingAndBouncing" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="orientan.config.loadconfig" target="orientan.config.Action" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sitAction" source="orientan.mascot.mascot" target="orientan.mascot.Sit" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sitWithLegsUpAction" source="orientan.mascot.mascot" target="orientan.mascot.SitWithLegsUp" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sitAndSpinHeadAction" source="orientan.mascot.mascot" target="orientan.mascot.SitAndSpinHeadAction" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="orientan.config.ResistingData" target="orientan.config.Pose" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="orientan.config.PinchedAnimation" target="orientan.config.Pose" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="BouncingConfig" source="orientan.mascot.FallingAndBouncing" target="orientan.config.Action" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="imageChooser" source="orientan.AddMascotService" target="orientan.ImageSetChooser.ImageSetChooser" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ImageSetChooser"/>
-    <UseRelation source="orientan.mascot.ActionManager" target="orientan.mascot.MascotAction" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="dragAction" source="orientan.mascot.mascot" target="orientan.mascot.Drag" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="resisting_data" source="orientan.config.loadconfig" target="orientan.config.ResistingData" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="orientan.config.loadconfig" target="orientan.config.FallingData" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="standAction" source="orientan.mascot.mascot" target="orientan.mascot.Stand" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="orientan.mascot.SitAndSpinHeadAction" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="recommenddata" source="orientan.mascot.mascot" target="orientan.RecommendPages.RecommendData" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sitActionList" source="orientan.mascot.mascot" target="orientan.mascot.MascotAction" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;MascotAction&gt;"/>
+    <HasRelation name="mouseDetect" source="orientan.Orientan" target="orientan.mascotEnvironment.Mouse" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.SitAndDangleLegs" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="actionList" source="orientan.mascot.ActionManager" target="orientan.mascot.MascotAction" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;MascotAction&gt;"/>
+    <HasRelation name="actionMode" source="orientan.mascot.mascot" target="orientan.mascot.ActionMode" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.Stand" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="addMascot" source="orientan.Orientan" target="orientan.AddMascotService" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="timeLineManger" source="orientan.mascot.Drag" target="orientan.mascot.TimelineManger" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pinched_data" source="orientan.config.loadconfig" target="orientan.config.PinchedData" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.FallingAndBouncing" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="climbCeiling" source="orientan.mascot.FallingAndBouncing" target="orientan.mascot.ClimbCeiling" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="mouseDetect" source="orientan.AddMascotService" target="orientan.mascotEnvironment.Mouse" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ClimbCeilingAction" source="orientan.mascot.mascot" target="orientan.mascot.ClimbCeiling" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="BouncingConfig" source="orientan.mascot.FallingAndBouncing" target="orientan.config.Action" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="actionMode" source="orientan.mascot.FallingAndBouncing" target="orientan.mascot.ActionMode" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <IsRelation name="is" source="orientan.mascot.SitWithLegsUp" target="orientan.mascot.MascotAction"/>
     <UseRelation source="orientan.mascot.Drag" target="orientan.mascotEnvironment.Mouse" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sitWithLegsDownAction" source="orientan.mascot.mascot" target="orientan.mascot.SitWithLegsDown" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="config" source="orientan.Orientan" target="orientan.config.loadconfig" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.ClimbCeiling" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="fallingAction" source="orientan.config.FallingData" target="orientan.config.Action" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.Sit" target="orientan.mascot.MascotAction"/>
+    <UseRelation source="orientan.mascotEnvironment.Mouse" target="orientan.mascotEnvironment.Mouse" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="orientan.mascot.ActionManager" target="orientan.mascot.MascotAction" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pages" source="orientan.RecommendPages.RecommendData" target="orientan.RecommendPages.RecommendPageData" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;RecommendPageData&gt;"/>
+    <HasRelation name="Animation" source="orientan.config.ResistingData" target="orientan.config.Pose" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Pose&gt;"/>
+    <IsRelation name="is" source="orientan.mascot.Run" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="pinchedpose" source="orientan.config.PinchedAnimation" target="orientan.config.Pose" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="Action_List" source="orientan.config.loadconfig" target="orientan.config.Action" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Action&gt;"/>
+    <UseRelation source="orientan.OrientanFXMLDocumentController" target="orientan.config.Action" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="orientan.config.PinchedData" target="orientan.config.PinchedAnimation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.SitAndSpinHeadAction" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="walkAction" source="orientan.mascot.mascot" target="orientan.mascot.Walk" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="orientan.config.Action" target="orientan.config.Pose" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="orientan.config.loadconfig" target="orientan.config.FallingData" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="orientan.config.loadconfig" target="orientan.config.PinchedData" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="standAction" source="orientan.mascot.mascot" target="orientan.mascot.Stand" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.SitAndLookAtMouse" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="Animation" source="orientan.config.Action" target="orientan.config.Pose" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Pose&gt;"/>
+    <HasRelation name="falling_data" source="orientan.config.loadconfig" target="orientan.config.FallingData" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="orientan.RecommendPages.RecommendData" target="orientan.RecommendPages.RecommendPageData" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="resisting_data" source="orientan.config.loadconfig" target="orientan.config.ResistingData" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="configList" source="orientan.mascot.mascot" target="orientan.config.loadconfig" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.Walk" target="orientan.mascot.MascotAction"/>
     <UseRelation source="orientan.config.loadconfig" target="orientan.config.ResistingData" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.Drag" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="mouseDetect" source="orientan.mascot.SitAndLookAtMouse" target="orientan.mascotEnvironment.Mouse" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sitAndDangleLegsAction" source="orientan.mascot.mascot" target="orientan.mascot.SitAndDangleLegs" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="config" source="orientan.AddMascotService" target="orientan.config.loadconfig" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.Dash" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="imageChooser" source="orientan.AddMascotService" target="orientan.ImageSetChooser.ImageSetChooser" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ImageSetChooser"/>
   </ClassDiagramRelations>
 </ClassDiagram>

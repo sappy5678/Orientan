@@ -13,10 +13,10 @@ import java.util.List;
  * @author ASUS
  */
 public final class RecommendData {
-    private  String descript;
+
     private  int statusCode;
     private List<RecommendPageData> pages=new ArrayList<RecommendPageData>();
-
+    private  String descript;
     public String getDescript() {
         return descript;
     }
@@ -36,7 +36,10 @@ public final class RecommendData {
     public List<RecommendPageData> getPages() {
         return pages;
     }
-
+    public int getPagesSize()
+    {
+        return pages.size();
+    }
     public void setPages(List<RecommendPageData> pages) {
         this.pages = pages;
     }

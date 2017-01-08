@@ -30,6 +30,7 @@ var searchData=
   ['getnewx',['getNewX',['../classorientan_1_1mascot_environment_1_1_mouse.html#aa0580822dcdb6a902d3858597bd2c5c6',1,'orientan::mascotEnvironment::Mouse']]],
   ['getnewy',['getNewY',['../classorientan_1_1mascot_environment_1_1_mouse.html#a74a1efcec3614318ec2ac209bd1f481e',1,'orientan::mascotEnvironment::Mouse']]],
   ['getpages',['getPages',['../classorientan_1_1_recommend_pages_1_1_recommend_data.html#ab97024c554564c760364d22f6a07da86',1,'orientan::RecommendPages::RecommendData']]],
+  ['getpagessize',['getPagesSize',['../classorientan_1_1_recommend_pages_1_1_recommend_data.html#ae648d4f5000ede75de0c84364ffc2720',1,'orientan::RecommendPages::RecommendData']]],
   ['getpath',['getPath',['../classorientan_1_1_image_set_chooser_1_1_image_set_chooser.html#af2a0fcd3ae9c1d121c9a831898e338ed',1,'orientan::ImageSetChooser::ImageSetChooser']]],
   ['getpinched_5fdata',['getPinched_data',['../classorientan_1_1config_1_1loadconfig.html#a6e8562fce5f4a82ff87dfb2ea53485ef',1,'orientan::config::loadconfig']]],
   ['getpinchedpose',['getPinchedpose',['../classorientan_1_1config_1_1_pinched_animation.html#ae30926e304b61c75bf767c21a4d09b97',1,'orientan::config::PinchedAnimation']]],
@@ -39,13 +40,16 @@ var searchData=
   ['getresisting_5fdata',['getResisting_data',['../classorientan_1_1config_1_1loadconfig.html#aeebd1c61846d0ee08a57c10612817e45',1,'orientan::config::loadconfig']]],
   ['getrightwall',['getRightWall',['../classorientan_1_1mascot_environment_1_1mascotenvironment.html#aa87e88d5da90a92934e74c9fd4bfff7a',1,'orientan::mascotEnvironment::mascotenvironment']]],
   ['getstatuscode',['getStatusCode',['../classorientan_1_1_recommend_pages_1_1_recommend_data.html#a01f2bb05e362d3272fd931b198715a65',1,'orientan::RecommendPages::RecommendData']]],
+  ['getstringlocalelanguage',['getStringLocalelanguage',['../classorientan_1_1_localelanguage.html#ae91f6d53bce76b5394c265a93535410d',1,'orientan::Localelanguage']]],
   ['gettimelinelist',['getTimelineList',['../classorientan_1_1mascot_1_1_timeline_manger.html#a081297e5fadadebec82c50a229964fa1',1,'orientan::mascot::TimelineManger']]],
   ['gettitle',['getTitle',['../classorientan_1_1_recommend_pages_1_1_recommend_page_data.html#a9a82d696e94c1c596c53d56c49ca13fa',1,'orientan::RecommendPages::RecommendPageData']]],
   ['gettype',['getType',['../classorientan_1_1config_1_1_action.html#acec924ab8530f9e2e065bdfd82fde81f',1,'orientan.config.Action.getType()'],['../classorientan_1_1config_1_1_falling_data.html#a0c230780270ce312e009ba0a4ad25815',1,'orientan.config.FallingData.getType()'],['../classorientan_1_1config_1_1_pinched_data.html#acf79a143954b4385031ddce0f44a4783',1,'orientan.config.PinchedData.getType()'],['../classorientan_1_1config_1_1_resisting_data.html#af656a48539ce9f030af89d16c128a29d',1,'orientan.config.ResistingData.getType()']]],
   ['geturl',['getUrl',['../classorientan_1_1_recommend_pages_1_1_recommend_page_data.html#ac1ea1e3b38ee051d36bc739bbcc10df7',1,'orientan::RecommendPages::RecommendPageData']]],
+  ['getuserid',['getUserId',['../classorientan_1_1_o_auth_1_1_o_auth.html#a2f7d474c649da8fd07570bce3a04c2b2',1,'orientan::OAuth::OAuth']]],
   ['getvelocity',['getVelocity',['../classorientan_1_1config_1_1_pose.html#a496ec5d6fc75421616dd81a84eac57a9',1,'orientan::config::Pose']]],
   ['getvelocityparam',['getVelocityParam',['../classorientan_1_1config_1_1_action.html#ab93305863c0bade51477b348a87cbf0f',1,'orientan::config::Action']]],
   ['getvelocityx',['getVelocityX',['../classorientan_1_1config_1_1_pose.html#a6e2d9d4f6f7411c3dcb02e62000ab2a8',1,'orientan::config::Pose']]],
   ['getvelocityy',['getVelocityY',['../classorientan_1_1config_1_1_pose.html#a025552e2bbcfd6a8dc0b27b8b18bc590',1,'orientan::config::Pose']]],
-  ['gravity',['Gravity',['../classorientan_1_1config_1_1_falling_data.html#afac7475c2375700af030ab0f84be2de1',1,'orientan.config.FallingData.Gravity()'],['../classorientan_1_1mascot_1_1_falling_and_bouncing.html#abae07e8a4b4c2d06481ae05da31d6ee5',1,'orientan.mascot.FallingAndBouncing.Gravity()']]]
+  ['gravity',['Gravity',['../classorientan_1_1config_1_1_falling_data.html#afac7475c2375700af030ab0f84be2de1',1,'orientan.config.FallingData.Gravity()'],['../classorientan_1_1mascot_1_1_falling_and_bouncing.html#abae07e8a4b4c2d06481ae05da31d6ee5',1,'orientan.mascot.FallingAndBouncing.Gravity()']]],
+  ['gson',['gson',['../classorientan_1_1mascot_1_1mascot.html#ad30e4758efc3511376565ca80be1b4d9',1,'orientan::mascot::mascot']]]
 ];

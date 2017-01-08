@@ -18,5 +18,6 @@ var searchData=
   ['standactionlist',['standActionList',['../classorientan_1_1mascot_1_1mascot.html#a0f63409e27c24afb46f6363c3baaefd0',1,'orientan::mascot::mascot']]],
   ['standdefaultimage',['standDefaultImage',['../classorientan_1_1mascot_1_1_timeline_manger.html#af118e678870442cf2e9fd5ef0ba53a6d',1,'orientan::mascot::TimelineManger']]],
   ['standimage',['StandImage',['../classorientan_1_1mascot_1_1_falling_and_bouncing.html#a98e32503428da3aea7c411abe58259fa',1,'orientan.mascot.FallingAndBouncing.StandImage()'],['../classorientan_1_1mascot_1_1_stand.html#a1f103e6bc874aabd3435084aabf4bd57',1,'orientan.mascot.Stand.standImage()']]],
-  ['statuscode',['statusCode',['../classorientan_1_1_recommend_pages_1_1_recommend_data.html#ac4a3a909bea657f5852bc557be266b9a',1,'orientan::RecommendPages::RecommendData']]]
+  ['statuscode',['statusCode',['../classorientan_1_1_recommend_pages_1_1_recommend_data.html#ac4a3a909bea657f5852bc557be266b9a',1,'orientan::RecommendPages::RecommendData']]],
+  ['systemtraymenu',['SystemTrayMenu',['../classorientan_1_1_localelanguage.html#ac8f167f9003fff17a023e1ab7218edec',1,'orientan::Localelanguage']]]
 ];

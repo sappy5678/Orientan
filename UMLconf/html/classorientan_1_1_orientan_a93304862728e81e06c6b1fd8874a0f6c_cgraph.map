@@ -1,6 +1,8 @@
 <map id="orientan.Orientan.start" name="orientan.Orientan.start">
-<area shape="rect" id="node2" href="$classorientan_1_1_orientan.html#a7aaba0d4db8c92a1851ad36191c9a859" title="orientan.Orientan.settingLog" alt="" coords="204,5,389,32"/>
-<area shape="rect" id="node3" href="$classorientan_1_1_orientan.html#aee3f1b8dfe04c9c2a8970a5b761f537a" title="orientan.Orientan.getConfig" alt="" coords="207,56,386,83"/>
-<area shape="rect" id="node4" href="$classorientan_1_1_orientan.html#a07d9593bc6cc4f0e0356239049e91abb" title="orientan.Orientan.setIcon" alt="" coords="213,107,380,133"/>
-<area shape="rect" id="node5" href="$classorientan_1_1_mascot_thread_number_manager.html#adc2f085e110b8bbc22f65b30c3bf7fb4" title="orientan.MascotThreadNumber\lManager.addOneThread" alt="" coords="437,125,636,166"/>
+<area shape="rect" id="node2" href="$classorientan_1_1_orientan.html#a7aaba0d4db8c92a1851ad36191c9a859" title="orientan.Orientan.settingLog" alt="" coords="212,5,397,32"/>
+<area shape="rect" id="node3" href="$classorientan_1_1_localelanguage.html#afa77dc9ed8910737ed6a44de3f5faf0e" title="orientan.Localelanguage.select\lLanguage" alt="" coords="204,57,405,98"/>
+<area shape="rect" id="node4" href="$classorientan_1_1_orientan.html#aee3f1b8dfe04c9c2a8970a5b761f537a" title="orientan.Orientan.getConfig" alt="" coords="215,123,394,149"/>
+<area shape="rect" id="node5" href="$classorientan_1_1_orientan.html#a07d9593bc6cc4f0e0356239049e91abb" title="orientan.Orientan.setIcon" alt="" coords="221,173,388,200"/>
+<area shape="rect" id="node7" href="$classorientan_1_1_mascot_thread_number_manager.html#adc2f085e110b8bbc22f65b30c3bf7fb4" title="orientan.MascotThreadNumber\lManager.addOneThread" alt="" coords="453,217,652,258"/>
+<area shape="rect" id="node6" href="$classorientan_1_1_localelanguage.html#ae91f6d53bce76b5394c265a93535410d" title="orientan.Localelanguage.get\lStringLocalelanguage" alt="" coords="461,151,645,193"/>
 </map>

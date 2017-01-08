@@ -59,7 +59,9 @@ public class Orientan extends Application {
         // set log type
         // 設定log的類別
         settingLog();
-
+        Localelanguage.selectLanguage();
+        //給thread緩衝時間
+        //Thread.sleep(2000);
         // get config in orientan 
         //  取得設定檔 在  orientan 底下
         properties = getConfig();
@@ -89,6 +91,8 @@ public class Orientan extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        //System.out.println(ResourceBundle.getBundle("Test", Locale.getDefault()).getString("test"));
         launch(args);
     }
 
@@ -96,7 +100,7 @@ public class Orientan extends Application {
     // set System tray icon
     private void setIcon(Stage stage) throws UnsupportedEncodingException {
         Locale currentLocale = Locale.getDefault();
-        ResourceBundle SystemTrayMenu = ResourceBundle.getBundle("messages", currentLocale);
+        //ResourceBundle SystemTrayMenu = ResourceBundle.getBundle("messages", currentLocale);
         TrayIcon trayIcon = null;
         if (SystemTray.isSupported()) {
             // get the SystemTray instance
@@ -110,7 +114,7 @@ public class Orientan extends Application {
                     // execute default action of the application
                     String cmd = e.getActionCommand();
                     // exit 離開
-                    if (cmd == SystemTrayMenu.getString("exit")) {
+                    if (cmd == Localelanguage.getStringLocalelanguage("exit")) {
                         System.out.println(e);
                         System.exit(0);
 
@@ -136,11 +140,11 @@ public class Orientan extends Application {
                             break;
                         }
                     }*/
-                    if (cmd.equals(SystemTrayMenu.getString("exit"))) {
+                    if (cmd.equals(Localelanguage.getStringLocalelanguage("exit"))) {
                         System.out.println(e);
                         System.exit(0);
 
-                    } else if (cmd.equals(SystemTrayMenu.getString("Add_mascot"))) {
+                    } else if (cmd.equals(Localelanguage.getStringLocalelanguage("Add_mascot"))) {
                         System.out.println("Add_mascot");
                         MascotThreadNumberManager.addOneThread();
                         Platform.runLater(new Runnable() {
@@ -163,8 +167,8 @@ public class Orientan extends Application {
             PopupMenu popup = new PopupMenu();
             // create menu item for the default action
 
-            java.awt.MenuItem exit = new java.awt.MenuItem(SystemTrayMenu.getString("exit"));
-            java.awt.MenuItem Add_mascot = new java.awt.MenuItem(SystemTrayMenu.getString("Add_mascot"));
+            java.awt.MenuItem exit = new java.awt.MenuItem(Localelanguage.getStringLocalelanguage("exit"));
+            java.awt.MenuItem Add_mascot = new java.awt.MenuItem(Localelanguage.getStringLocalelanguage("Add_mascot"));
 
             popup.addActionListener(addMascotlistener);
             //popup.add(test);

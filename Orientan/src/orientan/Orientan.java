@@ -60,6 +60,8 @@ public class Orientan extends Application {
         // 設定log的類別
         settingLog();
         Localelanguage.selectLanguage();
+        //給thread緩衝時間
+        //Thread.sleep(2000);
         // get config in orientan 
         //  取得設定檔 在  orientan 底下
         properties = getConfig();

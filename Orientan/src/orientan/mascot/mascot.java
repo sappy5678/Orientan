@@ -103,7 +103,7 @@ public class mascot {
     private boolean isAction = false;
     private long lastTime = System.currentTimeMillis();
     private String RecommendPagesNumber = null;
-    private Boolean DeafaultRecomned = false;
+    private Boolean DeafaultRecomned = true;
     private Boolean DeafaultRecomnedID = true;
     private Gson gson = new Gson();
     private RecommendData recommenddata = new RecommendData();

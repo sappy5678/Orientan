@@ -23,13 +23,16 @@ import javafx.scene.image.ImageView;
 public final class Localelanguage {
 
     private static String language = null;
-
+    private static Locale currentLocale = Locale.getDefault();
+    private static ResourceBundle SystemTrayMenu= ResourceBundle.getBundle("messages", currentLocale);
     //private static String key = null;
     public static String getStringLocalelanguage(String key) {
-        return ResourceBundle.getBundle(language, Locale.getDefault()).getString(key);
+        //return ResourceBundle.getBundle(language, Locale.getDefault()).getString(key);
+        return SystemTrayMenu.getString(key);
     }
 
     public static void selectLanguage() {
+        /*
         //修復javafx thread的問題
         Platform.setImplicitExit(false);
         //
@@ -47,10 +50,8 @@ public final class Localelanguage {
             }
             //檔名篩選
             /*
-            if(!f.getName().substring(0, startIndex-1).equals("default")||!f.getName().substring(0, startIndex-1).equals("Default"))
-            {
-                continue;
-            }*/
+            //if(!f.getName().substring(0, startIndex-1).equals("default")||!f.getName().substring(0, startIndex-1).equals("Default"))
+
             //取檔名
             fname.add(f.getName().substring(0, startIndex - 1));
             //System.out.println(f);
@@ -73,6 +74,6 @@ public final class Localelanguage {
             System.out.println("您取消了選擇，期待您下次使用");
             System.exit(0);
         }
-    
+    */
     }
 }

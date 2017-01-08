@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['main',['main',['../classorientan_1_1_o_auth_1_1_o_auth.html#a545c0736e95648313add512847f7d95e',1,'orientan.OAuth.OAuth.main()'],['../classorientan_1_1_orientan.html#a00a1d6cc86f00ee1a1f5987d14c06652',1,'orientan.Orientan.main()']]],
+  ['main',['main',['../classorientan_1_1_orientan.html#a00a1d6cc86f00ee1a1f5987d14c06652',1,'orientan::Orientan']]],
   ['mascot',['mascot',['../classorientan_1_1mascot_1_1mascot.html',1,'orientan::mascot']]],
-  ['mascot',['Mascot',['../classorientan_1_1config_1_1_json___to___class.html#a6b8c8c2a32ee7af4e125ab7bc5fa67ce',1,'orientan.config.Json_To_Class.Mascot()'],['../classorientan_1_1mascot_1_1mascot.html#a66c996c45f976e46b76f2b2845670b42',1,'orientan.mascot.mascot.mascot()']]],
+  ['mascot',['mascot',['../classorientan_1_1mascot_1_1mascot.html#a66c996c45f976e46b76f2b2845670b42',1,'orientan.mascot.mascot.mascot()'],['../classorientan_1_1config_1_1_json___to___class.html#a6b8c8c2a32ee7af4e125ab7bc5fa67ce',1,'orientan.config.Json_To_Class.Mascot()']]],
   ['mascot_2ejava',['mascot.java',['../mascot_8java.html',1,'']]],
   ['mascotaction',['MascotAction',['../classorientan_1_1mascot_1_1_mascot_action.html',1,'orientan::mascot']]],
   ['mascotaction_2ejava',['MascotAction.java',['../_mascot_action_8java.html',1,'']]],

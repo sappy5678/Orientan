@@ -1,7 +1,7 @@
 var searchData=
 [
   ['pages',['pages',['../classorientan_1_1_recommend_pages_1_1_recommend_data.html#aa58125e6ba8684040b4e7fae213565c0',1,'orientan::RecommendPages::RecommendData']]],
-  ['path',['path',['../classorientan_1_1_image_set_chooser_1_1_image_set_chooser.html#afb6400c2db342f69a60248b1e2fbc681',1,'orientan.ImageSetChooser.ImageSetChooser.path()'],['../classorientan_1_1_add_mascot_service.html#a69a62fa03254f37b1eb0a0b32868f8ea',1,'orientan.AddMascotService.Path()']]],
+  ['path',['Path',['../classorientan_1_1_add_mascot_service.html#a69a62fa03254f37b1eb0a0b32868f8ea',1,'orientan.AddMascotService.Path()'],['../classorientan_1_1_image_set_chooser_1_1_image_set_chooser.html#afb6400c2db342f69a60248b1e2fbc681',1,'orientan.ImageSetChooser.ImageSetChooser.path()']]],
   ['pinched_5fdata',['pinched_data',['../classorientan_1_1config_1_1loadconfig.html#a77bd12c96c7e4e375b1a596955bd1973',1,'orientan::config::loadconfig']]],
   ['pinchedanimation',['PinchedAnimation',['../classorientan_1_1config_1_1_pinched_animation.html#ae8578bada4cf47f774e9ce3d30b19d52',1,'orientan::config::PinchedAnimation']]],
   ['pinchedanimation',['PinchedAnimation',['../classorientan_1_1config_1_1_pinched_animation.html',1,'orientan::config']]],

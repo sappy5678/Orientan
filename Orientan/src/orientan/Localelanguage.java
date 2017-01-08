@@ -23,8 +23,9 @@ import javafx.scene.image.ImageView;
 public final class Localelanguage {
 
     private static String language = null;
+    //private static Locale currentLocale = Locale.getDefault();
     private static Locale currentLocale = Locale.getDefault();
-    private static ResourceBundle SystemTrayMenu= ResourceBundle.getBundle("messages", currentLocale);
+    private static ResourceBundle SystemTrayMenu= ResourceBundle.getBundle("properties.messages", currentLocale);
     //private static String key = null;
     public static String getStringLocalelanguage(String key) {
         //return ResourceBundle.getBundle(language, Locale.getDefault()).getString(key);

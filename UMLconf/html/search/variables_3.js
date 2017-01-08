@@ -3,6 +3,8 @@ var searchData=
   ['dashaction',['dashAction',['../classorientan_1_1mascot_1_1mascot.html#a450e77273a7301a382da10ee780f7fc9',1,'orientan::mascot::mascot']]],
   ['data_5fstore_5fdir',['DATA_STORE_DIR',['../classorientan_1_1_o_auth_1_1_o_auth.html#afdb79140c6cc39e5955f5861034ecf41',1,'orientan::OAuth::OAuth']]],
   ['datastorefactory',['dataStoreFactory',['../classorientan_1_1_o_auth_1_1_o_auth.html#aa5ff07306e92cdc79886440b72f4df67',1,'orientan::OAuth::OAuth']]],
+  ['deafaultrecomned',['DeafaultRecomned',['../classorientan_1_1mascot_1_1mascot.html#a8abd04c58c0dfaa55652a35b563cf4d7',1,'orientan::mascot::mascot']]],
+  ['deafaultrecomnedid',['DeafaultRecomnedID',['../classorientan_1_1mascot_1_1mascot.html#a774d53bc620cf5a61747e4500b770126',1,'orientan::mascot::mascot']]],
   ['defaultclimbceilingimage',['DefaultClimbCeilingImage',['../classorientan_1_1mascot_1_1mascot.html#ab953b8c619f95e48514cfa2d8e7af282',1,'orientan::mascot::mascot']]],
   ['defaultsitimage',['DefaultSitImage',['../classorientan_1_1mascot_1_1mascot.html#a1a1dc5317db5282a89dcf6c00e2511bf',1,'orientan::mascot::mascot']]],
   ['defaultstandimage',['DefaultStandImage',['../classorientan_1_1mascot_1_1mascot.html#af27e1420d291cd191caeac5767b5c44e',1,'orientan::mascot::mascot']]],

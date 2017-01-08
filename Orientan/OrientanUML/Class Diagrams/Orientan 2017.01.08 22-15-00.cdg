@@ -933,72 +933,72 @@
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <HasRelation name="timeLineManger" source="orientan.mascot.Drag" target="orientan.mascot.TimelineManger" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="imageChooser" source="orientan.AddMascotService" target="orientan.ImageSetChooser.ImageSetChooser" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ImageSetChooser"/>
-    <UseRelation source="orientan.config.loadconfig" target="orientan.config.PinchedData" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="recommenddata" source="orientan.mascot.mascot" target="orientan.RecommendPages.RecommendData" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="orientan.config.FallingData" target="orientan.config.Action" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="orientan.mascot.Dash" target="orientan.mascot.MascotAction"/>
-    <UseRelation source="orientan.RecommendPages.RecommendData" target="orientan.RecommendPages.RecommendPageData" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="animationManger" source="orientan.mascot.mascot" target="orientan.mascot.TimelineManger" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="sitAction" source="orientan.mascot.mascot" target="orientan.mascot.Sit" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="orientan.mascot.Walk" target="orientan.mascot.MascotAction"/>
-    <IsRelation name="is" source="orientan.mascot.Run" target="orientan.mascot.MascotAction"/>
-    <UseRelation source="orientan.config.PinchedData" target="orientan.config.PinchedAnimation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="sitWithLegsUpAction" source="orientan.mascot.mascot" target="orientan.mascot.SitWithLegsUp" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="fallAction" source="orientan.mascot.mascot" target="orientan.mascot.FallingAndBouncing" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="config" source="orientan.AddMascotService" target="orientan.config.loadconfig" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="mouseDetect" source="orientan.AddMascotService" target="orientan.mascotEnvironment.Mouse" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="orientan.mascot.SitAndDangleLegs" target="orientan.mascot.MascotAction"/>
-    <IsRelation name="is" source="orientan.mascot.SitWithLegsDown" target="orientan.mascot.MascotAction"/>
-    <UseRelation source="orientan.config.loadconfig" target="orientan.config.Action" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="dashAction" source="orientan.mascot.mascot" target="orientan.mascot.Dash" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="mouseDetect" source="orientan.Orientan" target="orientan.mascotEnvironment.Mouse" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="falling_data" source="orientan.config.loadconfig" target="orientan.config.FallingData" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="config" source="orientan.Orientan" target="orientan.config.loadconfig" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="mouseDetect" source="orientan.mascot.SitAndLookAtMouse" target="orientan.mascotEnvironment.Mouse" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="orientan.config.Action" target="orientan.config.Pose" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="Action_List" source="orientan.config.loadconfig" target="orientan.config.Action" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Action&gt;"/>
-    <HasRelation name="configList" source="orientan.mascot.mascot" target="orientan.config.loadconfig" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="sitActionList" source="orientan.mascot.mascot" target="orientan.mascot.MascotAction" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;MascotAction&gt;"/>
-    <HasRelation name="Animation" source="orientan.config.ResistingData" target="orientan.config.Pose" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Pose&gt;"/>
-    <IsRelation name="is" source="orientan.mascot.Sit" target="orientan.mascot.MascotAction"/>
-    <HasRelation name="pages" source="orientan.RecommendPages.RecommendData" target="orientan.RecommendPages.RecommendPageData" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;RecommendPageData&gt;"/>
     <HasRelation name="standActionList" source="orientan.mascot.mascot" target="orientan.mascot.MascotAction" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;MascotAction&gt;"/>
-    <HasRelation name="pinchedpose" source="orientan.config.PinchedAnimation" target="orientan.config.Pose" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="sitAndDangleLegsAction" source="orientan.mascot.mascot" target="orientan.mascot.SitAndDangleLegs" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="dragAction" source="orientan.mascot.mascot" target="orientan.mascot.Drag" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="orientan.config.loadconfig" target="orientan.config.ResistingData" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="orientan.mascot.SitAndLookAtMouse" target="orientan.mascot.MascotAction"/>
-    <UseRelation source="orientan.OrientanFXMLDocumentController" target="orientan.config.Action" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="resisting_data" source="orientan.config.loadconfig" target="orientan.config.ResistingData" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="orientan.config.FallingData" target="orientan.config.Action" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="Animation" source="orientan.config.PinchedData" target="orientan.config.PinchedAnimation" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;PinchedAnimation&gt;"/>
-    <HasRelation name="sitAndSpinHeadAction" source="orientan.mascot.mascot" target="orientan.mascot.SitAndSpinHeadAction" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="runAction" source="orientan.mascot.mascot" target="orientan.mascot.Run" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="orientan.config.loadconfig" target="orientan.config.FallingData" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="orientan.mascot.SitWithLegsUp" target="orientan.mascot.MascotAction"/>
-    <HasRelation name="fallingAction" source="orientan.config.FallingData" target="orientan.config.Action" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="orientan.mascot.FallingAndBouncing" target="orientan.mascot.MascotAction"/>
-    <HasRelation name="actionMode" source="orientan.mascot.mascot" target="orientan.mascot.ActionMode" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="orientan.mascot.Drag" target="orientan.mascotEnvironment.Mouse" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="walkAction" source="orientan.mascot.mascot" target="orientan.mascot.Walk" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="orientan.config.PinchedAnimation" target="orientan.config.Pose" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="orientan.mascot.SitAndSpinHeadAction" target="orientan.mascot.MascotAction"/>
-    <HasRelation name="BouncingConfig" source="orientan.mascot.FallingAndBouncing" target="orientan.config.Action" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="Animation" source="orientan.config.Action" target="orientan.config.Pose" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Pose&gt;"/>
-    <HasRelation name="pinched_data" source="orientan.config.loadconfig" target="orientan.config.PinchedData" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="orientan.mascot.Stand" target="orientan.mascot.MascotAction"/>
-    <UseRelation source="orientan.mascotEnvironment.Mouse" target="orientan.mascotEnvironment.Mouse" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="actionMode" source="orientan.mascot.FallingAndBouncing" target="orientan.mascot.ActionMode" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="addMascot" source="orientan.Orientan" target="orientan.AddMascotService" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="standAction" source="orientan.mascot.mascot" target="orientan.mascot.Stand" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="actionList" source="orientan.mascot.ActionManager" target="orientan.mascot.MascotAction" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;MascotAction&gt;"/>
+    <IsRelation name="is" source="orientan.mascot.SitWithLegsDown" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="fallAction" source="orientan.mascot.mascot" target="orientan.mascot.FallingAndBouncing" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="orientan.config.loadconfig" target="orientan.config.Action" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sitAction" source="orientan.mascot.mascot" target="orientan.mascot.Sit" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sitWithLegsUpAction" source="orientan.mascot.mascot" target="orientan.mascot.SitWithLegsUp" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sitAndSpinHeadAction" source="orientan.mascot.mascot" target="orientan.mascot.SitAndSpinHeadAction" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="orientan.config.ResistingData" target="orientan.config.Pose" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="orientan.mascot.ClimbCeiling" target="orientan.mascot.MascotAction"/>
-    <IsRelation name="is" source="orientan.mascot.Drag" target="orientan.mascot.MascotAction"/>
-    <HasRelation name="sitWithLegsDownAction" source="orientan.mascot.mascot" target="orientan.mascot.SitWithLegsDown" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="orientan.config.PinchedAnimation" target="orientan.config.Pose" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="dragAction" source="orientan.mascot.mascot" target="orientan.mascot.Drag" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="recommenddata" source="orientan.mascot.mascot" target="orientan.RecommendPages.RecommendData" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sitActionList" source="orientan.mascot.mascot" target="orientan.mascot.MascotAction" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;MascotAction&gt;"/>
+    <HasRelation name="mouseDetect" source="orientan.Orientan" target="orientan.mascotEnvironment.Mouse" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.SitAndDangleLegs" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="actionList" source="orientan.mascot.ActionManager" target="orientan.mascot.MascotAction" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;MascotAction&gt;"/>
+    <HasRelation name="actionMode" source="orientan.mascot.mascot" target="orientan.mascot.ActionMode" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.Stand" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="addMascot" source="orientan.Orientan" target="orientan.AddMascotService" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="timeLineManger" source="orientan.mascot.Drag" target="orientan.mascot.TimelineManger" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pinched_data" source="orientan.config.loadconfig" target="orientan.config.PinchedData" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.FallingAndBouncing" target="orientan.mascot.MascotAction"/>
     <HasRelation name="climbCeiling" source="orientan.mascot.FallingAndBouncing" target="orientan.mascot.ClimbCeiling" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="mouseDetect" source="orientan.AddMascotService" target="orientan.mascotEnvironment.Mouse" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="ClimbCeilingAction" source="orientan.mascot.mascot" target="orientan.mascot.ClimbCeiling" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="BouncingConfig" source="orientan.mascot.FallingAndBouncing" target="orientan.config.Action" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="actionMode" source="orientan.mascot.FallingAndBouncing" target="orientan.mascot.ActionMode" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.SitWithLegsUp" target="orientan.mascot.MascotAction"/>
+    <UseRelation source="orientan.mascot.Drag" target="orientan.mascotEnvironment.Mouse" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sitWithLegsDownAction" source="orientan.mascot.mascot" target="orientan.mascot.SitWithLegsDown" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="config" source="orientan.Orientan" target="orientan.config.loadconfig" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.ClimbCeiling" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="fallingAction" source="orientan.config.FallingData" target="orientan.config.Action" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.Sit" target="orientan.mascot.MascotAction"/>
+    <UseRelation source="orientan.mascotEnvironment.Mouse" target="orientan.mascotEnvironment.Mouse" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="orientan.mascot.ActionManager" target="orientan.mascot.MascotAction" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pages" source="orientan.RecommendPages.RecommendData" target="orientan.RecommendPages.RecommendPageData" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;RecommendPageData&gt;"/>
+    <HasRelation name="Animation" source="orientan.config.ResistingData" target="orientan.config.Pose" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Pose&gt;"/>
+    <IsRelation name="is" source="orientan.mascot.Run" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="pinchedpose" source="orientan.config.PinchedAnimation" target="orientan.config.Pose" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="Action_List" source="orientan.config.loadconfig" target="orientan.config.Action" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Action&gt;"/>
+    <UseRelation source="orientan.OrientanFXMLDocumentController" target="orientan.config.Action" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="orientan.config.PinchedData" target="orientan.config.PinchedAnimation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.SitAndSpinHeadAction" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="walkAction" source="orientan.mascot.mascot" target="orientan.mascot.Walk" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="orientan.config.Action" target="orientan.config.Pose" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="orientan.config.loadconfig" target="orientan.config.FallingData" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="orientan.config.loadconfig" target="orientan.config.PinchedData" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="standAction" source="orientan.mascot.mascot" target="orientan.mascot.Stand" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.SitAndLookAtMouse" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="Animation" source="orientan.config.Action" target="orientan.config.Pose" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Pose&gt;"/>
+    <HasRelation name="falling_data" source="orientan.config.loadconfig" target="orientan.config.FallingData" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="orientan.RecommendPages.RecommendData" target="orientan.RecommendPages.RecommendPageData" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="resisting_data" source="orientan.config.loadconfig" target="orientan.config.ResistingData" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="configList" source="orientan.mascot.mascot" target="orientan.config.loadconfig" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.Walk" target="orientan.mascot.MascotAction"/>
+    <UseRelation source="orientan.config.loadconfig" target="orientan.config.ResistingData" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.Drag" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="mouseDetect" source="orientan.mascot.SitAndLookAtMouse" target="orientan.mascotEnvironment.Mouse" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sitAndDangleLegsAction" source="orientan.mascot.mascot" target="orientan.mascot.SitAndDangleLegs" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="config" source="orientan.AddMascotService" target="orientan.config.loadconfig" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.Dash" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="imageChooser" source="orientan.AddMascotService" target="orientan.ImageSetChooser.ImageSetChooser" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ImageSetChooser"/>
   </ClassDiagramRelations>
 </ClassDiagram>

@@ -20,12 +20,12 @@ public class ActionMode {
     }
 
     public int getClimbMode() {
-        System.out.println("get: "+ClimbMode);
+        //System.out.println("get: "+ClimbMode);
         return ClimbMode;
     }
 
     public void setClimbMode(int ClimbMode) {
-        System.out.println("SET: "+ClimbMode);
+        //System.out.println("SET: "+ClimbMode);
         this.ClimbMode = ClimbMode;//-1 is NoCimbMode, 1 is ClimbCeiling ,2 is Climb wall
         
     }

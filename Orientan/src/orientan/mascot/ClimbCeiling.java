@@ -47,9 +47,9 @@ public class ClimbCeiling extends MascotAction {
                     MascotimageView.setRotate(0);
                 }
                 if (MascotimageView.getRotate() == 0) {
-                    leftORight = Math.abs(leftORight);
-                } else if (MascotimageView.getRotate() == 180) {
                     leftORight = Math.abs(leftORight)*-1;
+                } else if (MascotimageView.getRotate() == 180) {
+                    leftORight = Math.abs(leftORight);
                 }
                 //System.out.println(MascotimageView.getRotate());
                 mascotStage.setX(mascotStage.getX() + poseVelocity.get(poseNumber)*leftORight);

@@ -209,8 +209,10 @@ public class mascot {
                             sitActionList.get(random.nextInt(4)).play(random.nextInt(20) + 1);
                         }
 
+
                     } else if (actionMode.getActionMode() == 0 && actionMode.getClimbMode() == 1) {
                         ClimbCeilingAction.play(random.nextInt(20) + 1);
+
                     }
                     me.consume();
                 }
@@ -331,7 +333,9 @@ public class mascot {
                     exit.setId("Exit");
                     exit.setText("Exit");
 
+
                     ContextMenu contextmenu = new ContextMenu(webcommand, noCeilingBoolean, ClimbMode, sitStandMode, delete, exit);
+
 
                     contextmenu.setOnAction(
                             new EventHandler<ActionEvent>() {
@@ -438,15 +442,33 @@ public class mascot {
 
                                         templink.setOnMouseEntered((MouseEvent mouseevent) -> {
                                             Stage tempst = new Stage();
+                                            tempst.initStyle(StageStyle.TRANSPARENT);
                                             StackPane tempWebroot = new StackPane();
                                             Scene tempweb = new Scene(tempWebroot);
                                             WebView tempwebView = new WebView();
                                             WebEngine tempengine = new WebEngine();
                                             tempengine = tempwebView.getEngine();
                                             mouseDetect.updateMouseData(mouseevent);
-
-                                            tempst.setX(mouseDetect.getNewX() + 30);
-                                            tempst.setY(mouseDetect.getNewY() + 20);
+                                            Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+                                            /* primScreenBounds.getMinX();
+                                            primScreenBounds.getMaxX();*/
+                                            tempst.setHeight(primScreenBounds.getMaxY()/2-10);
+                                            tempst.setWidth(primScreenBounds.getMaxX()/2);
+                                            System.out.println(tempst.getWidth());
+                                            if (mouseDetect.getNewX() + tempst.getWidth() > primScreenBounds.getMaxX()) {
+                                                tempst.setWidth(mouseDetect.getNewX() - 20);
+                                                tempst.setX(mouseDetect.getNewX() - tempst.getWidth() - 30);
+                                            } else {
+                                                tempst.setWidth(primScreenBounds.getMaxX() - 30);
+                                                tempst.setX(mouseDetect.getNewX()+30);
+                                            }
+                                            if (mouseDetect.getNewY() + tempst.getHeight() > primScreenBounds.getMaxY()) {
+                                                tempst.setHeight(mouseDetect.getNewY() - 10);
+                                                tempst.setY(mouseDetect.getNewY() - tempst.getHeight()-10 - 20);
+                                            } else {
+                                                tempst.setHeight(primScreenBounds.getMaxY()-10 - 20);
+                                                tempst.setY(mouseDetect.getNewY()+20);
+                                            }
                                             tempengine.load(tempurl);
                                             tempWebroot.getChildren().add(tempwebView);
                                             tempst.setTitle("預覽");
@@ -472,6 +494,7 @@ public class mascot {
 
                                     break;
                                 case "sit/stand":
+
                                     if (actionMode.getActionMode() == 1 || actionMode.getActionMode() == 2) {
                                         if (actionMode.getActionMode() == 1) {
                                             animationManger.StopAll();
@@ -482,6 +505,7 @@ public class mascot {
                                             actionMode.setActionMode(1);
                                             standAction.play(1);
                                         }
+
                                     }
 
                                     break;

@@ -57,6 +57,7 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import org.json.JSONException;
 import org.json.JSONObject;
+import orientan.Localelanguage;
 import orientan.MascotThreadNumberManager;
 import orientan.OAuth.OAuth;
 import orientan.RecommendPages.RecommendData;
@@ -66,6 +67,7 @@ import orientan.config.Action;
 import orientan.config.loadconfig;
 import orientan.mascotEnvironment.Mouse;
 import orientan.mascotEnvironment.mascotenvironment;
+
 
 /**
  *
@@ -107,7 +109,7 @@ public class mascot {
     private Boolean DeafaultRecomnedID = true;
     private Gson gson = new Gson();
     private RecommendData recommenddata = new RecommendData();
-
+    private int PagesNumber=0;
     //private double mascotdeltaX = 0.5;
     //private double mascotdeltaY = 0.02;
     //private Time currentTime;
@@ -279,10 +281,10 @@ public class mascot {
                 if (mouseEventright.getButton() == MouseButton.SECONDARY) {
                     MenuItem webcommand = new MenuItem();
                     webcommand.setId("Web command");
-                    webcommand.setText("Web Command");
+                    webcommand.setText(Localelanguage.getStringLocalelanguage("Web_recommend"));
                     CheckMenuItem noCeilingBoolean = new CheckMenuItem();
                     noCeilingBoolean.setId("No Ceiling");
-                    noCeilingBoolean.setText("No Ceiling");
+                    noCeilingBoolean.setText(Localelanguage.getStringLocalelanguage("Ceiling"));
                     noCeilingBoolean.setSelected(false);
 
                     noCeilingBoolean.setOnAction(new EventHandler<ActionEvent>() {
@@ -301,7 +303,7 @@ public class mascot {
                     });
                     CheckMenuItem ClimbMode = new CheckMenuItem();
                     ClimbMode.setId("ClimbMode On/Off");
-                    ClimbMode.setText("ClimbMode On/Off");
+                    ClimbMode.setText(Localelanguage.getStringLocalelanguage("ClimbMode"));
                     ClimbMode.setSelected(false);
                     ClimbMode.setOnAction(new EventHandler<ActionEvent>() {
                         public void handle(ActionEvent e) {
@@ -333,14 +335,14 @@ public class mascot {
                     });
                     MenuItem sitStandMode = new MenuItem();
                     sitStandMode.setId("sit/stand");
-                    sitStandMode.setText("sit/stand");
+                    sitStandMode.setText(Localelanguage.getStringLocalelanguage("sit_stand"));
                     MenuItem delete = new MenuItem();
                     delete.setId("delete");
-                    delete.setText("delete");
+                    delete.setText(Localelanguage.getStringLocalelanguage("delete_key"));
                     MenuItem exit = new MenuItem();
 
                     exit.setId("Exit");
-                    exit.setText("Exit");
+                    exit.setText(Localelanguage.getStringLocalelanguage("exit"));
 
                     ContextMenu contextmenu = new ContextMenu(webcommand, noCeilingBoolean, ClimbMode, sitStandMode, delete, exit);
 
@@ -368,9 +370,9 @@ public class mascot {
                                     //網頁推薦數量視窗
                                     if (RecommendPagesNumber == null) {
                                         final ChoiceDialog<String> choiceDialog = new ChoiceDialog("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20");
-                                        choiceDialog.setTitle("推薦網頁數選擇"); //設定對話框視窗的標題列文字
-                                        choiceDialog.setHeaderText("歡迎使用推薦網頁功能，選取推薦網頁數之後我將會記住你的選擇呦~"); //設定對話框視窗裡的標頭文字。若設為空字串，則表示無標頭
-                                        choiceDialog.setContentText("請選取推薦網頁數量："); //設定對話框的訊息文字
+                                        choiceDialog.setTitle(Localelanguage.getStringLocalelanguage("recommendTitle")); //設定對話框視窗的標題列文字
+                                        choiceDialog.setHeaderText(Localelanguage.getStringLocalelanguage("recommendTitleHeaderText")); //設定對話框視窗裡的標頭文字。若設為空字串，則表示無標頭
+                                        choiceDialog.setContentText(Localelanguage.getStringLocalelanguage("recommendContentText")); //設定對話框的訊息文字
                                         choiceDialog.showAndWait(); //顯示對話框，並等待對話框被關閉時才繼續執行之後的程式
                                         try {
                                             RecommendPagesNumber = choiceDialog.getResult(); //可以直接用「choiceDialog.getResult()」來取代           
@@ -418,6 +420,12 @@ public class mascot {
                                         }
                                     }
                                     System.out.println("!!!!!!!!!!");
+                                    
+                                    //for test
+                                    if(recommenddata.getPagesSize()>=Integer.parseInt(RecommendPagesNumber))
+                                    {
+                                        PagesNumber=Integer.parseInt(RecommendPagesNumber);
+                                    }
                                     //System.out.println(recommenddata.getDescript());
                                     /*String jsondata = "{\"descript\": \"SUCESS\", \"statusCode\": 200, \"pages\": [{\"title\": \"(1) Facebook\", \"url\": \"https://www.facebook.com/\", \"id\": 1, \"descr\": \"<p>\\u00e8\\u00ab\\u008b\\u00e5\\u0095\\u009f\\u00e5\\u008b\\u0095\\u00e7\\u0080\\u008f\\u00e8\\u00a6\\u00bd\\u00e5\\u0099\\u00a8\\u00e7\\u009a\\u0084 JavaScript \\u00e6\\u0088\\u0096\\u00e6\\u0098\\u00af\\u00e5\\u008d\\u0087\\u00e7\\u00b4\\u009a\\u00e6\\u0088\\u0090\\u00e5\\u008f\\u00af\\u00e5\\u009f\\u00b7\\u00e8\\u00a1\\u008c JavaScript \\u00e7\\u009a\\u0084\\u00e7\\u0080\\u008f\\u00e8\\u00a6\\u00bd\\u00e5\\u0099\\u00a8\\u00ef\\u00bc\\u008c\\u00e4\\u00bb\\u00a5\\u00e4\\u00be\\u00bf\\u00e8\\u00a8\\u00bb\\u00e5\\u0086\\u008a Facebook\\u00e3\\u0080\\u0082</p>\"}, {\"title\": \"Roundcube Webmail :: \\u6b61\\u8fce\\u4f7f\\u7528 Roundcube Webmail\", \"url\": \"https://webmail.gandi.net/\", \"id\": 106, \"descr\": \"\\n<p></p>\\n<noscript>\\n<p>Warning: This webmail service requires Javascript! In order to use it please enable Javascript in your browser's settings.</p>\\n</noscript>\\n\"}, {\"title\": \"Google\", \"url\": \"https://www.google.com/webhp?sourceid=chrome-instant&rlz=1C1MSNA_enTW701TW701&ion=1&espv=2&ie=UTF-8\", \"id\": 2, \"descr\": \"\"}, {\"title\": \"\", \"url\": \"https://portalx.yzu.edu.tw/PortalSocialVB/FMain/DefaultPage.aspx?Menu=Default&LogExcute=Y\", \"id\": 3, \"descr\": \"\"}, {\"title\": \"\", \"url\": \"https://portalx.yzu.edu.tw/PortalSocialVB/FMain/PostWall.aspx?LogExcute=Y&Menu=Pot\", \"id\": 6, \"descr\": \"\"}, {\"title\": \"\", \"url\": \"https://portalx.yzu.edu.tw/PortalSocialVB/TMat/Materials_S.aspx?Menu=Mat\", \"id\": 8, \"descr\": \"\"}, {\"title\": \"\\u5143\\u667a\\u5927\\u5b78--\\u9928\\u85cf\\u8cc7\\u6e90\", \"url\": \"https://lib.yzu.edu.tw/ajaxYZlib/Search/SearchResult.aspx\", \"id\": 18, \"descr\": \"\"}, {\"title\": \"\", \"url\": \"https://lib.yzu.edu.tw/ajaxYZlib/PersonLogin/Default.aspx?PassURL=/UserLoan/PersonalLoan.aspx\", \"id\": 19, \"descr\": \"\"}, {\"title\": \"\", \"url\": \"https://portalx.yzu.edu.tw/PortalSocialVB/IFrameSub.aspx?SysURL=https://lib.yzu.edu.tw/ajaxYZlib/PersonLogin/Default.aspx?PassURL=/UserLoan/PersonalLoan.aspx\", \"id\": 20, \"descr\": \"\"}, {\"title\": \"DNS: sappy5678.com.tw | Cloudflare - Web Performance & Security\", \"url\": \"https://www.cloudflare.com/a/overview/sappy5678.com.tw\", \"id\": 21, \"descr\": \"\"}, {\"title\": \"portalx.yzu.edu.tw\", \"url\": \"https://portalx.yzu.edu.tw/PortalSocialVB/FMain/PostWall.aspx?Menu=New\", \"id\": 22, \"descr\": \"\"}, {\"title\": \"Pull Requests \\u00b7 sappy5678/Orientan\", \"url\": \"https://github.com/sappy5678/Orientan/pulls\", \"id\": 26, \"descr\": \"\"}, {\"title\": \"DNS: sappy5678.com.tw | Cloudflare - Web Performance & Security\", \"url\": \"https://www.cloudflare.com/a/dns/sappy5678.com.tw\", \"id\": 33, \"descr\": \"\"}, {\"title\": \"QQ\\u5e10\\u53f7\\u5b89\\u5168\\u767b\\u5f55\", \"url\": \"https://graph.qq.com/oauth/show?which=Login&display=pc&response_type=code&client_id=100270989&redirect_uri=https%3A%2F%2Fpassport.csdn.net%2Faccount%2Flogin%3Foauth_provider%3DQQProvider&state=test\", \"id\": 41, \"descr\": \"\"}, {\"title\": \"24\\u5c0f\\u6642\\u8cb7\\u5361\\u301024hbuycard\\u3011\\u8d85\\u5546\\u7e73\\u8cbb\\u81ea\\u52d5\\u767c\\u5361-steam google apple dmm \\u9322\\u5305\\u4ee3\\u78bc\\u5132\\u503c\\u79ae\\u7269\\u5361\\u514c\\u63db/\\u65e5\\u5e63\\u7f8e\\u5143\\u53f0\\u5e63\", \"url\": \"http://www.24hbuycard.com/\", \"id\": 48, \"descr\": \"\"}, {\"title\": \"Google\", \"url\": \"https://www.google.com/webhp?sourceid=chrome-instant&rlz=1C1MSNA_enTW701TW701&ion=1&espv=2&ie=UTF-8#safe=off&q=python+thread+%E6%95%99%E5%AD%B8\", \"id\": 57, \"descr\": \"\"}, {\"title\": \"24\\u5c0f\\u6642\\u8cb7\\u5361\\u301024hbuycard\\u3011\\u8d85\\u5546\\u7e73\\u8cbb\\u81ea\\u52d5\\u767c\\u5361- Steam \\u9322\\u5305\\u4ee3\\u78bc\\u5132\\u503c\\u53f0\\u5e63\\u7f8e\\u5143\\u514c\\u63db\\u6559\\u5b78Steam Wallet \\u514d\\u4fe1\\u7528\\u5361\", \"url\": \"http://www.24hbuycard.com/steam\", \"id\": 77, \"descr\": \"\"}, {\"title\":\"python multithreading wait till all threads finished - Stack Overflow\", \"url\": \"http://stackoverflow.com/questions/11968689/python-multithreading-wait-till-all-threads-finished\", \"id\": 79, \"descr\": \"\"}, {\"title\": \"mv \\u9664\\u4e86\\u81ea\\u5df1 - Google \\u641c\\u5c0b\", \"url\": \"https://www.google.com/webhp?sourceid=chrome-instant&rlz=1C1MSNA_enTW701TW701&ion=1&espv=2&ie=UTF-8#safe=off&q=mv+%E9%99%A4%E4%BA%86\", \"id\": 89, \"descr\": \"\"}, {\"title\": \"Google\", \"url\": \"https://www.google.com/webhp?sourceid=chrome-instant&rlz=1C1MSNA_enTW701TW701&ion=1&espv=2&ie=UTF-8#safe=off&q=restful+flask\", \"id\": 90, \"descr\": \"\"}]}";
                                     String a = "";*/
@@ -433,10 +441,10 @@ public class mascot {
                                         }
                                     }*/
 
-                                    Hyperlink[] link = new Hyperlink[recommenddata.getPagesSize()];
-                                    String[] linkname = new String[recommenddata.getPagesSize()];
-                                    final String[] url = new String[recommenddata.getPagesSize()];
-                                    for (int i = 0; i < recommenddata.getPagesSize(); i++) {
+                                    Hyperlink[] link = new Hyperlink[PagesNumber];
+                                    String[] linkname = new String[PagesNumber];
+                                    final String[] url = new String[PagesNumber];
+                                    for (int i = 0; i < PagesNumber; i++) {
                                         url[i] = recommenddata.getPages().get(i).getUrl();
                                         if (recommenddata.getPages().get(i).getTitle().equals("")) {
                                             linkname[i] = recommenddata.getPages().get(i).getUrl();
@@ -523,7 +531,7 @@ public class mascot {
                                             }
                                             tempengine.load(tempurl);
                                             tempWebroot.getChildren().add(tempwebView);
-                                            tempst.setTitle("預覽");
+                                            tempst.setTitle(Localelanguage.getStringLocalelanguage("preview"));
                                             tempst.setScene(tempweb);
                                             tempst.show();
                                             templink.setOnMouseExited((MouseEvent e) -> {
@@ -537,7 +545,7 @@ public class mascot {
                                     vbox.getChildren().addAll(scroll);
 
                                     // Webroot.getChildren().add(webView);
-                                    WebRecom.setTitle("WebRecomend");
+                                    WebRecom.setTitle(Localelanguage.getStringLocalelanguage("Web_recommend"));
                                     WebRecom.setScene(WebRe);
                                     WebRecom.show();
                                     break;

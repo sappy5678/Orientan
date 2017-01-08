@@ -84,7 +84,7 @@ public class OAuth {
 	    return new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
 	  }
 
-	  public static void main(String[] args) {
+	  public OAuth() {
 	    try {
 	      httpTransport = GoogleNetHttpTransport.newTrustedTransport();
 	      dataStoreFactory = new FileDataStoreFactory(DATA_STORE_DIR);
@@ -125,7 +125,10 @@ public class OAuth {
 	    Userinfoplus userinfo = oauth2.userinfo().get().execute();
 	    System.out.println("*********************"+userinfo.getId());
 	  }
-
+          public static String getUserId() throws IOException
+          {
+              return oauth2.userinfo().get().execute().getId();
+          }
 	  static void header(String name) {
 	    System.out.println();
 	    System.out.println("================== " + name + " ==================");

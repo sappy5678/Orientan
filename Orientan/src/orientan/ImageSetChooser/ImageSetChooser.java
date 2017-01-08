@@ -72,9 +72,11 @@ public class ImageSetChooser {
 
         int i = 0;
         for (File f : new File(System.getProperty("user.dir") + "\\img").listFiles()) {
+            
             if (f.getName().equals("icon")) {
                 continue;
             }
+            
             ImageFile.add(f);
             Image tempimage = new Image("file:///" + ImageFile.get(i).getPath() + "\\shime1.png");
             ImageChoose.add(tempimage);

@@ -22,7 +22,7 @@ import javafx.scene.image.ImageView;
  */
 public final class Localelanguage {
 
-    private static Boolean selectlanguageBoolean = true;
+    private static Boolean selectlanguageBoolean = false;
     private static String language = null;
     //private static Locale currentLocale = Locale.getDefault();
     private static Locale currentLocale = Locale.getDefault();
@@ -31,7 +31,7 @@ public final class Localelanguage {
     //private static String key = null;
     public static String getStringLocalelanguage(String key) {
         if(selectlanguageBoolean)
-            return ResourceBundle.getBundle(language, Locale.getDefault()).getString(key);
+            return ResourceBundle.getBundle("properties."+language, Locale.getDefault()).getString(key);
         else
             return SystemTrayMenu.getString(key);
     }

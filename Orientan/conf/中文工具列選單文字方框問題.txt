@@ -1,0 +1,3 @@
+run configªº
+VM option ¥´¤W
+-Dfile.encoding=GB18030

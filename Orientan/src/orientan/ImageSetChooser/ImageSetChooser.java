@@ -42,6 +42,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import orientan.Localelanguage;
 import orientan.MascotThreadNumberManager;
 import orientan.mascotEnvironment.mascotenvironment;
 
@@ -195,14 +196,14 @@ public class ImageSetChooser {
         //設定關閉設窗就關閉程式
         ImageChooserStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             public void handle(WindowEvent event) {
-                if(MascotThreadNumberManager.isZero())
+                if(MascotThreadNumberManager.getThreadNumber()==1)
                 {
                     System.exit(0);
                 }           
             }
         });
 
-        Button set = new Button("Set");
+        Button set = new Button(Localelanguage.getStringLocalelanguage("Set"));
         set.setFont(Font.font(30));
         set.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override

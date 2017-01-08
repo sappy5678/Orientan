@@ -42,6 +42,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import orientan.MascotThreadNumberManager;
 import orientan.mascotEnvironment.mascotenvironment;
 
 /**
@@ -194,7 +195,10 @@ public class ImageSetChooser {
         //設定關閉設窗就關閉程式
         ImageChooserStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             public void handle(WindowEvent event) {
-                System.exit(0);
+                if(MascotThreadNumberManager.isZero())
+                {
+                    System.exit(0);
+                }           
             }
         });
 
@@ -249,10 +253,10 @@ public class ImageSetChooser {
         borderMain.setCenter(box);
         borderMain.setBottom(set);
         set.setAlignment(Pos.CENTER);
-        Scene sc = new Scene(borderMain, 500, 500);
+        Scene sc = new Scene(borderMain, Screen.getPrimary().getVisualBounds().getWidth()*2/3,Screen.getPrimary().getVisualBounds().getHeight()*2/3);
         BorderPane.setAlignment(hboxButton, Pos.CENTER);
-        ImageChooserStage.setX(Screen.getPrimary().getVisualBounds().getWidth()/3);
-        ImageChooserStage.setY(Screen.getPrimary().getVisualBounds().getHeight()/3);
+        ImageChooserStage.setX(Screen.getPrimary().getVisualBounds().getWidth()/5);
+        ImageChooserStage.setY(Screen.getPrimary().getVisualBounds().getHeight()/5);
         ImageChooserStage.setTitle("chose");
         ImageChooserStage.setScene(sc);
         ImageChooserStage.showAndWait();

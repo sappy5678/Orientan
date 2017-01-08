@@ -12,18 +12,23 @@ import java.util.ArrayList;
  * @author zp
  */
 public final class MascotThreadNumberManager {
-    private static int threadNumber=0;
-    public static void addOneThread()
-    {
+
+    private static int threadNumber = 0;
+
+    public static int getThreadNumber() {
+        return threadNumber;
+    }
+
+    public static void addOneThread() {
         threadNumber++;
     }
-    public static void deleteOneThread()
-    {
+
+    public static void deleteOneThread() {
         threadNumber--;
     }
-    public static Boolean isZero()
-    {
-        return threadNumber==0;
+
+    public static Boolean isZero() {
+        return threadNumber == 0;
     }
     /*
     private static ArrayList<Thread> manager=new ArrayList<Thread>();
@@ -49,5 +54,5 @@ public final class MascotThreadNumberManager {
             
         }
     }*/
-    
+
 }

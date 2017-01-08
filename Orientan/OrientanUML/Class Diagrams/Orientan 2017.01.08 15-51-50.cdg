@@ -1,0 +1,983 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Orientan">
+  <ClassDiagramComponents>
+    <Class name="AddMascotService" package="orientan" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="mouseDetect" type="Mouse" visibility="private"/>
+        <Field name="config" type="loadconfig" visibility="private"/>
+        <Field name="Path" type="String" visibility="private"/>
+        <Field name="imageChooser" type="ImageSetChooser" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Mouse" name="Inmouse"/>
+          <Argument type="loadconfig" name="Inconfig"/>
+          <Argument type="String" name="imgPath"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="run" returnType="void" visibility="public"/>
+        <Method name="returnPath" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Action" package="orientan.config" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="Type" type="String" visibility="private"/>
+        <Field name="Animation" type="ArrayList&lt;Pose&gt;" visibility="private"/>
+        <Field name="BorderType" type="String" visibility="private"/>
+        <Field name="Name" type="String" visibility="private"/>
+        <Field name="VelocityParam" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="JSONObject" name="anaction"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getType" returnType="String" visibility="public"/>
+        <Method name="setType" returnType="void" visibility="public">
+          <Argument type="String" name="Type"/>
+        </Method>
+        <Method name="getAnimation" returnType="ArrayList&lt;Pose&gt;" visibility="public"/>
+        <Method name="setAnimation" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Pose&gt;" name="Animation"/>
+        </Method>
+        <Method name="getBorderType" returnType="String" visibility="public"/>
+        <Method name="setBorderType" returnType="void" visibility="public">
+          <Argument type="String" name="BorderType"/>
+        </Method>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="Name"/>
+        </Method>
+        <Method name="getVelocityParam" returnType="double" visibility="public"/>
+        <Method name="setVelocityParam" returnType="void" visibility="public">
+          <Argument type="double" name="VelocityParam"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="FallingData" package="orientan.config" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="RegistanceX" type="double" visibility="private"/>
+        <Field name="RegistanceY" type="double" visibility="private"/>
+        <Field name="Gravity" type="double" visibility="private"/>
+        <Field name="Name" type="String" visibility="private"/>
+        <Field name="Type" type="String" visibility="private"/>
+        <Field name="fallingAction" type="Action" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getFallingAction" returnType="Action" visibility="public"/>
+        <Method name="setFallingAction" returnType="void" visibility="public">
+          <Argument type="Action" name="fallingAction"/>
+        </Method>
+        <Method name="getType" returnType="String" visibility="public"/>
+        <Method name="setType" returnType="void" visibility="public">
+          <Argument type="String" name="Type"/>
+        </Method>
+        <Method name="getRegistanceX" returnType="double" visibility="public"/>
+        <Method name="setRegistanceX" returnType="void" visibility="public">
+          <Argument type="double" name="RegistanceX"/>
+        </Method>
+        <Method name="getRegistanceY" returnType="double" visibility="public"/>
+        <Method name="setRegistanceY" returnType="void" visibility="public">
+          <Argument type="double" name="RegistanceY"/>
+        </Method>
+        <Method name="getGravity" returnType="double" visibility="public"/>
+        <Method name="setGravity" returnType="void" visibility="public">
+          <Argument type="double" name="Gravity"/>
+        </Method>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="Name"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Json_To_Class" package="orientan.config" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="Mascot" type="JSONObject" visibility="private" isStatic="true"/>
+        <Field name="Action_List" type="JSONArray" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="Mascot_Type"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getAction_List" returnType="JSONArray" visibility="public"/>
+        <Method name="GetListLength" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="loadconfig" package="orientan.config" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="Action_List" type="ArrayList&lt;Action&gt;" visibility="private" isStatic="true"/>
+        <Field name="falling_data" type="FallingData" visibility="private" isStatic="true"/>
+        <Field name="pinched_data" type="PinchedData" visibility="private" isStatic="true"/>
+        <Field name="resisting_data" type="ResistingData" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="target"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getData" returnType="Action" visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="type"/>
+        </Method>
+        <Method name="getFallingData" returnType="FallingData" visibility="public"/>
+        <Method name="getPinched_data" returnType="PinchedData" visibility="public" isStatic="true"/>
+        <Method name="getResisting_data" returnType="ResistingData" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="PinchedAnimation" package="orientan.config" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields>
+        <Field name="condition_Sign" type="String" visibility="private"/>
+        <Field name="condition_Int" type="String" visibility="private"/>
+        <Field name="pinchedpose" type="Pose" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getPinchedpose" returnType="Pose" visibility="public"/>
+        <Method name="setPinchedpose" returnType="void" visibility="public">
+          <Argument type="Pose" name="pinchedpose"/>
+        </Method>
+        <Method name="getCondition_Sign" returnType="String" visibility="public"/>
+        <Method name="setCondition_Sign" returnType="void" visibility="public">
+          <Argument type="String" name="condition_Sign"/>
+        </Method>
+        <Method name="getCondition_Int" returnType="String" visibility="public"/>
+        <Method name="setCondition_Int" returnType="void" visibility="public">
+          <Argument type="String" name="condition_Int"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PinchedData" package="orientan.config" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields>
+        <Field name="Type" type="String" visibility="private"/>
+        <Field name="Animation" type="ArrayList&lt;PinchedAnimation&gt;" visibility="private"/>
+        <Field name="Name" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="JSONObject" name="anaction"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getType" returnType="String" visibility="public"/>
+        <Method name="getAnimation" returnType="ArrayList&lt;PinchedAnimation&gt;" visibility="public"/>
+        <Method name="getName" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Pose" package="orientan.config" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields>
+        <Field name="ImageAnchor" type="String" visibility="private"/>
+        <Field name="Duration" type="int" visibility="private"/>
+        <Field name="Image" type="String" visibility="private"/>
+        <Field name="Velocity" type="String" visibility="private"/>
+        <Field name="VelocityX" type="double" visibility="private"/>
+        <Field name="VelocityY" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="JSONObject" name="pose_data"/>
+        </Constructor>
+        <Constructor visibility="package"/>
+      </Constructors>
+      <Methods>
+        <Method name="getVelocityX" returnType="double" visibility="public"/>
+        <Method name="getVelocityY" returnType="double" visibility="public"/>
+        <Method name="getImageAnchor" returnType="String" visibility="public"/>
+        <Method name="setImageAnchor" returnType="void" visibility="public">
+          <Argument type="String" name="ImageAnchor"/>
+        </Method>
+        <Method name="getDuration" returnType="int" visibility="public"/>
+        <Method name="setDuration" returnType="void" visibility="public">
+          <Argument type="int" name="Duration"/>
+        </Method>
+        <Method name="getImage" returnType="String" visibility="public"/>
+        <Method name="setImage" returnType="void" visibility="public">
+          <Argument type="String" name="Image"/>
+        </Method>
+        <Method name="getVelocity" returnType="String" visibility="public"/>
+        <Method name="setVelocity" returnType="void" visibility="public">
+          <Argument type="String" name="Velocity"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ResistingData" package="orientan.config" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Fields>
+        <Field name="Type" type="String" visibility="private"/>
+        <Field name="Animation" type="ArrayList&lt;Pose&gt;" visibility="private"/>
+        <Field name="Name" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="JSONObject" name="anaction"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getType" returnType="String" visibility="public"/>
+        <Method name="setType" returnType="void" visibility="public">
+          <Argument type="String" name="Type"/>
+        </Method>
+        <Method name="getAnimation" returnType="ArrayList&lt;Pose&gt;" visibility="public"/>
+        <Method name="setAnimation" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Pose&gt;" name="Animation"/>
+        </Method>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="Name"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Xml_To_Json" package="orientan.config" visibility="public" xPosition="320.0" yPosition="420.0">
+      <Fields>
+        <Field name="PRETTY_PRINT_INDENT_FACTOR" type="int" visibility="private" isStatic="true"/>
+        <Field name="conf_type" type="String" visibility="private" isStatic="true"/>
+        <Field name="jsonPrettyPrintString" type="String" visibility="private" isStatic="true"/>
+        <Field name="xmlJSONObj" type="JSONObject" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="ConfType"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="readjson" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ImageSetChooser" package="orientan.ImageSetChooser" visibility="public" xPosition="620.0" yPosition="420.0">
+      <Fields>
+        <Field name="ImageFile" type="List&lt;File&gt;" visibility="private"/>
+        <Field name="path" type="String" visibility="private"/>
+        <Field name="ImageChooserStage" type="Stage" visibility="private"/>
+        <Field name="ImageChoose" type="List&lt;Image&gt;" visibility="private"/>
+        <Field name="ImageChooseView" type="List&lt;ImageView&gt;" visibility="private"/>
+        <Field name="selectedPath" type="String" visibility="private"/>
+        <Field name="hboxButton" type="HBox" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getPath" returnType="String" visibility="public"/>
+        <Method name="run" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ActionManager" package="orientan.mascot" visibility="public" xPosition="920.0" yPosition="420.0">
+      <Fields>
+        <Field name="actionList" type="ArrayList&lt;MascotAction&gt;" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="add" returnType="void" visibility="public">
+          <Argument type="MascotAction" name="action"/>
+        </Method>
+        <Method name="add" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;MascotAction&gt;" name="actionlist"/>
+        </Method>
+        <Method name="run" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ActionMode" package="orientan.mascot" visibility="public" xPosition="1220.0" yPosition="420.0">
+      <Fields>
+        <Field name="ActionMode" type="int" visibility="private"/>
+        <Field name="ClimbMode" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getActionMode" returnType="int" visibility="public"/>
+        <Method name="setActionMode" returnType="void" visibility="public">
+          <Argument type="int" name="ActionMode"/>
+        </Method>
+        <Method name="getClimbMode" returnType="int" visibility="public"/>
+        <Method name="setClimbMode" returnType="void" visibility="public">
+          <Argument type="int" name="ClimbMode"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ClimbCeiling" package="orientan.mascot" visibility="public" xPosition="1520.0" yPosition="420.0">
+      <Fields>
+        <Field name="timeline" type="Timeline" visibility="private"/>
+        <Field name="image" type="ArrayList&lt;Image&gt;" visibility="private"/>
+        <Field name="time" type="double" visibility="private"/>
+        <Field name="duration" type="double" visibility="private"/>
+        <Field name="imagePath" type="String" visibility="private"/>
+        <Field name="poseNumber" type="int" visibility="private"/>
+        <Field name="size" type="int" visibility="private"/>
+        <Field name="leftORight" type="int" visibility="private"/>
+        <Field name="token" type="String[]" visibility="private"/>
+        <Field name="poseVelocity" type="ArrayList&lt;Double&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Stage" name="mascotStage"/>
+          <Argument type="ImageView" name="MascotimageView"/>
+          <Argument type="Action" name="CimbCeilingConfig"/>
+          <Argument type="TimelineManger" name="animationManger"/>
+          <Argument type="String" name="imgPath"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="play" returnType="void" visibility="public"/>
+        <Method name="play" returnType="void" visibility="public">
+          <Argument type="int" name="circleTime"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Dash" package="orientan.mascot" visibility="public" xPosition="1820.0" yPosition="420.0">
+      <Fields>
+        <Field name="image" type="ArrayList&lt;Image&gt;" visibility="private"/>
+        <Field name="time" type="double" visibility="private"/>
+        <Field name="duration" type="double" visibility="private"/>
+        <Field name="deltaX" type="double" visibility="private"/>
+        <Field name="timeline" type="Timeline" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Stage" name="mascotStage"/>
+          <Argument type="ImageView" name="MascotimageView"/>
+          <Argument type="Action" name="Config"/>
+          <Argument type="TimelineManger" name="animationManger"/>
+          <Argument type="String" name="imgPath"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="play" returnType="void" visibility="public"/>
+        <Method name="play" returnType="void" visibility="public">
+          <Argument type="int" name="circleTime"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Drag" package="orientan.mascot" visibility="public" xPosition="2120.0" yPosition="420.0">
+      <Fields>
+        <Field name="image" type="ArrayList&lt;Image&gt;" visibility="private"/>
+        <Field name="resistingTimeline" type="Timeline" visibility="private"/>
+        <Field name="mouseSpeedXIsPositive" type="boolean" visibility="private"/>
+        <Field name="imageView" type="ImageView" visibility="private"/>
+        <Field name="pinchedLeft3" type="Image" visibility="private"/>
+        <Field name="pinchedRight3" type="Image" visibility="private"/>
+        <Field name="pinchedLeft2" type="Image" visibility="private"/>
+        <Field name="pinchedRight2" type="Image" visibility="private"/>
+        <Field name="pinchedLeft1" type="Image" visibility="private"/>
+        <Field name="pinchedRight1" type="Image" visibility="private"/>
+        <Field name="pinchedCenter" type="Image" visibility="private"/>
+        <Field name="timeLineManger" type="TimelineManger" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Stage" name="mascotStage"/>
+          <Argument type="ImageView" name="MascotimageView"/>
+          <Argument type="Action" name="Config"/>
+          <Argument type="TimelineManger" name="animationManger"/>
+          <Argument type="String" name="imgPath"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="ResistingAndDrag" returnType="void" visibility="public">
+          <Argument type="Mouse" name="mouseDetect"/>
+        </Method>
+        <Method name="play" returnType="void" visibility="public"/>
+        <Method name="play" returnType="void" visibility="public">
+          <Argument type="int" name="circleTime"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="FallingAndBouncing" package="orientan.mascot" visibility="public" xPosition="20.0" yPosition="820.0">
+      <Fields>
+        <Field name="RegistanceY" type="double" visibility="private"/>
+        <Field name="RegistanceX" type="double" visibility="private"/>
+        <Field name="Gravity" type="double" visibility="private"/>
+        <Field name="falldeltaX" type="double" visibility="private"/>
+        <Field name="falldeltaY" type="double" visibility="private"/>
+        <Field name="initialVelocityX" type="double" visibility="private"/>
+        <Field name="initialVelocityY" type="double" visibility="private"/>
+        <Field name="fallTimeline" type="Timeline" visibility="private"/>
+        <Field name="bouncingTimeline" type="Timeline" visibility="private"/>
+        <Field name="mascotStage" type="Stage" visibility="private"/>
+        <Field name="MascotimageView" type="ImageView" visibility="private"/>
+        <Field name="BouncingConfig" type="Action" visibility="private"/>
+        <Field name="imageOnFloor" type="double" visibility="private"/>
+        <Field name="fallImage" type="Image" visibility="private"/>
+        <Field name="jumpImage" type="Image" visibility="private"/>
+        <Field name="BouncingImage" type="Image" visibility="private"/>
+        <Field name="FallOnFloorImage" type="Image" visibility="private"/>
+        <Field name="StandImage" type="Image" visibility="private"/>
+        <Field name="fallRegistanceY" type="double" visibility="private"/>
+        <Field name="ReboundCoefficientX" type="double" visibility="private"/>
+        <Field name="actionMode" type="ActionMode" visibility="private"/>
+        <Field name="noCeiling" type="boolean" visibility="private"/>
+        <Field name="climbCeiling" type="ClimbCeiling" visibility="private"/>
+        <Field name="random" type="Random" visibility="private"/>
+        <Field name="isaction" type="boolean" visibility="private"/>
+        <Field name="isBouncing" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Stage" name="InmascotStage"/>
+          <Argument type="ImageView" name="InMascotimageView"/>
+          <Argument type="FallingData" name="InFallConfig"/>
+          <Argument type="Action" name="BouncingConfig"/>
+          <Argument type="Action" name="JumpConfig"/>
+          <Argument type="TimelineManger" name="InanimationManger"/>
+          <Argument type="boolean" name="isAction"/>
+          <Argument type="String" name="imgPath"/>
+          <Argument type="ActionMode" name="InActionMode"/>
+          <Argument type="ClimbCeiling" name="InClimbCeiling"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="Falling" returnType="void" visibility="public">
+          <Argument type="double" name="InoldX"/>
+          <Argument type="double" name="InoldY"/>
+        </Method>
+        <Method name="setNoCeiling" returnType="void" visibility="public">
+          <Argument type="boolean" name="noCeiling"/>
+        </Method>
+        <Method name="isNoCeiling" returnType="boolean" visibility="public"/>
+        <Method name="play" returnType="void" visibility="public"/>
+        <Method name="play" returnType="void" visibility="public">
+          <Argument type="int" name="circleTime"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="mascot" package="orientan.mascot" visibility="public" xPosition="320.0" yPosition="820.0">
+      <Fields>
+        <Field name="imagePath" type="String" visibility="private"/>
+        <Field name="animationManger" type="TimelineManger" visibility="private"/>
+        <Field name="configList" type="loadconfig" visibility="private"/>
+        <Field name="mascotStage" type="Stage" visibility="private"/>
+        <Field name="DefaultStandImage" type="Image" visibility="private"/>
+        <Field name="DefaultSitImage" type="Image" visibility="private"/>
+        <Field name="DefaultClimbCeilingImage" type="Image" visibility="private"/>
+        <Field name="MascotimageView" type="ImageView" visibility="private"/>
+        <Field name="walkAction" type="Walk" visibility="private"/>
+        <Field name="runAction" type="Run" visibility="private"/>
+        <Field name="dashAction" type="Dash" visibility="private"/>
+        <Field name="standAction" type="Stand" visibility="private"/>
+        <Field name="sitAndDangleLegsAction" type="SitAndDangleLegs" visibility="private"/>
+        <Field name="sitAndSpinHeadAction" type="SitAndSpinHeadAction" visibility="private"/>
+        <Field name="sitWithLegsDownAction" type="SitWithLegsDown" visibility="private"/>
+        <Field name="sitWithLegsUpAction" type="SitWithLegsUp" visibility="private"/>
+        <Field name="sitAction" type="Sit" visibility="private"/>
+        <Field name="fallAction" type="FallingAndBouncing" visibility="private"/>
+        <Field name="dragAction" type="Drag" visibility="private"/>
+        <Field name="ClimbCeilingAction" type="ClimbCeiling" visibility="private"/>
+        <Field name="actionMode" type="ActionMode" visibility="private"/>
+        <Field name="standActionList" type="ArrayList&lt;MascotAction&gt;" visibility="private"/>
+        <Field name="sitActionList" type="ArrayList&lt;MascotAction&gt;" visibility="private"/>
+        <Field name="random" type="Random" visibility="private"/>
+        <Field name="isAction" type="boolean" visibility="private"/>
+        <Field name="lastTime" type="long" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="loadconfig" name="actionConfig"/>
+          <Argument type="Mouse" name="mouseDetect"/>
+          <Argument type="String" name="imgPath"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="MascotAction" package="orientan.mascot" visibility="public" isAbstract="true" xPosition="620.0" yPosition="820.0">
+      <Fields>
+        <Field name="imagePath" type="String" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="play" returnType="void" visibility="public" isAbstract="true"/>
+        <Method name="play" returnType="void" visibility="public" isAbstract="true">
+          <Argument type="int" name="circleTime"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Run" package="orientan.mascot" visibility="public" xPosition="920.0" yPosition="820.0">
+      <Fields>
+        <Field name="image" type="ArrayList&lt;Image&gt;" visibility="private"/>
+        <Field name="time" type="double" visibility="private"/>
+        <Field name="duration" type="double" visibility="private"/>
+        <Field name="deltaX" type="double" visibility="private"/>
+        <Field name="timeline" type="Timeline" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Stage" name="mascotStage"/>
+          <Argument type="ImageView" name="MascotimageView"/>
+          <Argument type="Action" name="Config"/>
+          <Argument type="TimelineManger" name="animationManger"/>
+          <Argument type="String" name="imgPath"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="play" returnType="void" visibility="public"/>
+        <Method name="play" returnType="void" visibility="public">
+          <Argument type="int" name="circleTime"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Sit" package="orientan.mascot" visibility="public" xPosition="1220.0" yPosition="820.0">
+      <Fields>
+        <Field name="timeline" type="Timeline" visibility="private"/>
+        <Field name="sitImage" type="Image" visibility="private"/>
+        <Field name="duration" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Stage" name="mascotStage"/>
+          <Argument type="ImageView" name="MascotimageView"/>
+          <Argument type="Action" name="sitConfig"/>
+          <Argument type="TimelineManger" name="animationManger"/>
+          <Argument type="String" name="imgPath"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setToSit" returnType="void" visibility="public">
+          <Argument type="ImageView" name="MascotimageView"/>
+        </Method>
+        <Method name="play" returnType="void" visibility="public"/>
+        <Method name="play" returnType="void" visibility="public">
+          <Argument type="int" name="circleTime"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SitAndDangleLegs" package="orientan.mascot" visibility="public" xPosition="1520.0" yPosition="820.0">
+      <Fields>
+        <Field name="timeline" type="Timeline" visibility="private"/>
+        <Field name="image" type="ArrayList&lt;Image&gt;" visibility="private"/>
+        <Field name="time" type="double" visibility="private"/>
+        <Field name="duration" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Stage" name="mascotStage"/>
+          <Argument type="ImageView" name="MascotimageView"/>
+          <Argument type="Action" name="SitAndSpinHeadActionConfig"/>
+          <Argument type="TimelineManger" name="animationManger"/>
+          <Argument type="String" name="imgPath"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="play" returnType="void" visibility="public"/>
+        <Method name="play" returnType="void" visibility="public">
+          <Argument type="int" name="circleTime"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SitAndLookAtMouse" package="orientan.mascot" visibility="public" xPosition="1820.0" yPosition="820.0">
+      <Fields>
+        <Field name="timeline" type="Timeline" visibility="private"/>
+        <Field name="sitImage" type="Image" visibility="private"/>
+        <Field name="duration" type="double" visibility="private"/>
+        <Field name="mouseDetect" type="Mouse" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Stage" name="mascotStage"/>
+          <Argument type="ImageView" name="MascotimageView"/>
+          <Argument type="Action" name="SitAndLookAtMouseConfig"/>
+          <Argument type="TimelineManger" name="animationManger"/>
+          <Argument type="Mouse" name="mouseDetect"/>
+          <Argument type="String" name="imgPath"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="play" returnType="void" visibility="public"/>
+        <Method name="play" returnType="void" visibility="public">
+          <Argument type="int" name="circleTime"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SitAndSpinHeadAction" package="orientan.mascot" visibility="public" xPosition="2120.0" yPosition="820.0">
+      <Fields>
+        <Field name="timeline" type="Timeline" visibility="private"/>
+        <Field name="image" type="ArrayList&lt;Image&gt;" visibility="private"/>
+        <Field name="time" type="double" visibility="private"/>
+        <Field name="duration" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Stage" name="mascotStage"/>
+          <Argument type="ImageView" name="MascotimageView"/>
+          <Argument type="Action" name="SitAndSpinHeadActionConfig"/>
+          <Argument type="TimelineManger" name="animationManger"/>
+          <Argument type="String" name="imgPath"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="play" returnType="void" visibility="public"/>
+        <Method name="play" returnType="void" visibility="public">
+          <Argument type="int" name="circleTime"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SitWithLegsDown" package="orientan.mascot" visibility="public" xPosition="20.0" yPosition="1220.0">
+      <Fields>
+        <Field name="timeline" type="Timeline" visibility="private"/>
+        <Field name="sitImage" type="Image" visibility="private"/>
+        <Field name="duration" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Stage" name="mascotStage"/>
+          <Argument type="ImageView" name="MascotimageView"/>
+          <Argument type="Action" name="sitConfig"/>
+          <Argument type="TimelineManger" name="animationManger"/>
+          <Argument type="String" name="imgPath"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="play" returnType="void" visibility="public"/>
+        <Method name="play" returnType="void" visibility="public">
+          <Argument type="int" name="circleTime"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SitWithLegsUp" package="orientan.mascot" visibility="public" xPosition="320.0" yPosition="1220.0">
+      <Fields>
+        <Field name="timeline" type="Timeline" visibility="private"/>
+        <Field name="sitImage" type="Image" visibility="private"/>
+        <Field name="duration" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Stage" name="mascotStage"/>
+          <Argument type="ImageView" name="MascotimageView"/>
+          <Argument type="Action" name="sitConfig"/>
+          <Argument type="TimelineManger" name="animationManger"/>
+          <Argument type="String" name="imgPath"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="play" returnType="void" visibility="public"/>
+        <Method name="play" returnType="void" visibility="public">
+          <Argument type="int" name="circleTime"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Stand" package="orientan.mascot" visibility="public" xPosition="620.0" yPosition="1220.0">
+      <Fields>
+        <Field name="timeline" type="Timeline" visibility="private"/>
+        <Field name="standImage" type="Image" visibility="private"/>
+        <Field name="duration" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Stage" name="mascotStage"/>
+          <Argument type="ImageView" name="MascotimageView"/>
+          <Argument type="Action" name="sitConfig"/>
+          <Argument type="TimelineManger" name="animationManger"/>
+          <Argument type="String" name="imgPath"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setToStand" returnType="void" visibility="public">
+          <Argument type="ImageView" name="MascotimageView"/>
+        </Method>
+        <Method name="play" returnType="void" visibility="public"/>
+        <Method name="play" returnType="void" visibility="public">
+          <Argument type="int" name="circleTime"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="TimelineManger" package="orientan.mascot" visibility="public" xPosition="920.0" yPosition="1220.0">
+      <Fields>
+        <Field name="imgPath" type="String" visibility="private"/>
+        <Field name="standDefaultImage" type="Image" visibility="private"/>
+        <Field name="sitDefaultImage" type="Image" visibility="private"/>
+        <Field name="timelineList" type="ArrayList&lt;Timeline&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="InimgPath"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getTimelineList" returnType="ArrayList&lt;Timeline&gt;" visibility="public"/>
+        <Method name="StopAll" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Walk" package="orientan.mascot" visibility="public" xPosition="1220.0" yPosition="1220.0">
+      <Fields>
+        <Field name="image" type="ArrayList&lt;Image&gt;" visibility="private"/>
+        <Field name="time" type="double" visibility="private"/>
+        <Field name="duration" type="double" visibility="private"/>
+        <Field name="deltaX" type="double" visibility="private"/>
+        <Field name="timeline" type="Timeline" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Stage" name="mascotStage"/>
+          <Argument type="ImageView" name="MascotimageView"/>
+          <Argument type="Action" name="walkConfig"/>
+          <Argument type="TimelineManger" name="animationManger"/>
+          <Argument type="String" name="imgPath"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="play" returnType="void" visibility="public"/>
+        <Method name="play" returnType="void" visibility="public">
+          <Argument type="int" name="circleTime"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="mascotenvironment" package="orientan.mascotEnvironment" visibility="public" isFinal="true" xPosition="1520.0" yPosition="1220.0">
+      <Fields>
+        <Field name="primScreenBounds" type="Rectangle2D" visibility="private" isStatic="true"/>
+        <Field name="image" type="Image" visibility="package" isStatic="true"/>
+        <Field name="LeftWall" type="double" visibility="private" isStatic="true"/>
+        <Field name="RightWall" type="double" visibility="private" isStatic="true"/>
+        <Field name="Floor" type="double" visibility="private" isStatic="true"/>
+        <Field name="ceiling" type="double" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="setImage" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Image" name="image"/>
+        </Method>
+        <Method name="getPrimScreenBounds" returnType="Rectangle2D" visibility="public" isStatic="true"/>
+        <Method name="getImageWidth" returnType="double" visibility="public" isStatic="true"/>
+        <Method name="getImageHeight" returnType="double" visibility="public" isStatic="true"/>
+        <Method name="getLeftWall" returnType="double" visibility="public" isStatic="true"/>
+        <Method name="getRightWall" returnType="double" visibility="public" isStatic="true"/>
+        <Method name="getFloor" returnType="double" visibility="public" isStatic="true"/>
+        <Method name="getCeiling" returnType="double" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="Mouse" package="orientan.mascotEnvironment" visibility="public" xPosition="1820.0" yPosition="1220.0">
+      <Fields>
+        <Field name="lastTime" type="long" visibility="private"/>
+        <Field name="newX" type="double" visibility="private"/>
+        <Field name="newY" type="double" visibility="private"/>
+        <Field name="oldX" type="double" visibility="private"/>
+        <Field name="oldY" type="double" visibility="private"/>
+        <Field name="speedPowTwo" type="double" visibility="private"/>
+        <Field name="speedXIsPositive" type="boolean" visibility="private"/>
+        <Field name="mouseSpeedX" type="double" visibility="private"/>
+        <Field name="speedYIsPositive" type="boolean" visibility="private"/>
+        <Field name="mouseSpeedY" type="double" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="isSpeedXIsPositive" returnType="boolean" visibility="public"/>
+        <Method name="getMouseSpeedX" returnType="double" visibility="public"/>
+        <Method name="isSpeedYIsPositive" returnType="boolean" visibility="public"/>
+        <Method name="getMouseSpeedY" returnType="double" visibility="public"/>
+        <Method name="getNewX" returnType="double" visibility="public"/>
+        <Method name="getNewY" returnType="double" visibility="public"/>
+        <Method name="updateMouseData" returnType="void" visibility="public">
+          <Argument type="MouseEvent" name="mouseEvent"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MascotThreadNumberManager" package="orientan" visibility="public" isFinal="true" xPosition="2120.0" yPosition="1220.0">
+      <Fields>
+        <Field name="threadNumber" type="int" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="addOneThread" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="deleteOneThread" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="isZero" returnType="Boolean" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="OAuth" package="orientan.OAuth" visibility="public" xPosition="20.0" yPosition="1620.0">
+      <Fields>
+        <Field name="APPLICATION_NAME" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="DATA_STORE_DIR" type="java.io.File" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="dataStoreFactory" type="FileDataStoreFactory" visibility="private" isStatic="true"/>
+        <Field name="httpTransport" type="HttpTransport" visibility="private" isStatic="true"/>
+        <Field name="JSON_FACTORY" type="JsonFactory" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SCOPES" type="List&lt;String&gt;" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="oauth2" type="Oauth2" visibility="private" isStatic="true"/>
+        <Field name="clientSecrets" type="GoogleClientSecrets" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="authorize" returnType="Credential" visibility="private" isStatic="true"/>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+        <Method name="tokenInfo" returnType="void" visibility="private" isStatic="true">
+          <Argument type="String" name="accessToken"/>
+        </Method>
+        <Method name="userInfo" returnType="void" visibility="private" isStatic="true"/>
+        <Method name="header" returnType="void" visibility="package" isStatic="true">
+          <Argument type="String" name="name"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Orientan" package="orientan" visibility="public" xPosition="320.0" yPosition="1620.0">
+      <Fields>
+        <Field name="properties" type="Properties" visibility="package"/>
+        <Field name="imageSetPath" type="String" visibility="private"/>
+        <Field name="mouseDetect" type="Mouse" visibility="private"/>
+        <Field name="config" type="loadconfig" visibility="private"/>
+        <Field name="addMascot" type="AddMascotService" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="start" returnType="void" visibility="public">
+          <Argument type="Stage" name="stage"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+        <Method name="setIcon" returnType="void" visibility="private">
+          <Argument type="Stage" name="stage"/>
+        </Method>
+        <Method name="getConfig" returnType="Properties" visibility="private"/>
+        <Method name="settingLog" returnType="void" visibility="private"/>
+      </Methods>
+    </Class>
+    <Class name="OrientanFXMLDocumentController" package="orientan" visibility="public" xPosition="620.0" yPosition="1620.0">
+      <Fields>
+        <Field name="label" type="Label" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="handleButtonAction" returnType="void" visibility="private">
+          <Argument type="ActionEvent" name="event"/>
+        </Method>
+        <Method name="initialize" returnType="void" visibility="public">
+          <Argument type="URL" name="url"/>
+          <Argument type="ResourceBundle" name="rb"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="RecommendData" package="orientan.RecommendPages" visibility="public" isFinal="true" xPosition="920.0" yPosition="1620.0">
+      <Fields>
+        <Field name="descript" type="String" visibility="private"/>
+        <Field name="statusCode" type="int" visibility="private"/>
+        <Field name="pages" type="List&lt;RecommendPageData&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getDescript" returnType="String" visibility="public"/>
+        <Method name="setDescript" returnType="void" visibility="public">
+          <Argument type="String" name="descript"/>
+        </Method>
+        <Method name="getStatusCode" returnType="int" visibility="public"/>
+        <Method name="setStatusCode" returnType="void" visibility="public">
+          <Argument type="int" name="statusCode"/>
+        </Method>
+        <Method name="getPages" returnType="List&lt;RecommendPageData&gt;" visibility="public"/>
+        <Method name="setPages" returnType="void" visibility="public">
+          <Argument type="List&lt;RecommendPageData&gt;" name="pages"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="RecommendPageData" package="orientan.RecommendPages" visibility="public" xPosition="1220.0" yPosition="1620.0">
+      <Fields>
+        <Field name="title" type="String" visibility="private"/>
+        <Field name="url" type="String" visibility="private"/>
+        <Field name="id" type="int" visibility="private"/>
+        <Field name="descr" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getTitle" returnType="String" visibility="public"/>
+        <Method name="setTitle" returnType="void" visibility="public">
+          <Argument type="String" name="title"/>
+        </Method>
+        <Method name="getUrl" returnType="String" visibility="public"/>
+        <Method name="setUrl" returnType="void" visibility="public">
+          <Argument type="String" name="url"/>
+        </Method>
+        <Method name="getId" returnType="int" visibility="public"/>
+        <Method name="setId" returnType="void" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="getDescr" returnType="String" visibility="public"/>
+        <Method name="setDescr" returnType="void" visibility="public">
+          <Argument type="String" name="descr"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="RecommendPagesCrawl" package="orientan.RecommendPages" visibility="public" isFinal="true" xPosition="1520.0" yPosition="1620.0">
+      <Fields>
+        <Field name="apiURL" type="String" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="Crawlrun" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="userName"/>
+          <Argument type="Integer" name="pagesNumber"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="orientan.mascot.SitAndDangleLegs" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="Animation" source="orientan.config.ResistingData" target="orientan.config.Pose" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Pose&gt;"/>
+    <UseRelation source="orientan.OrientanFXMLDocumentController" target="orientan.config.Action" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="configList" source="orientan.mascot.mascot" target="orientan.config.loadconfig" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="orientan.config.Action" target="orientan.config.Pose" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sitWithLegsUpAction" source="orientan.mascot.mascot" target="orientan.mascot.SitWithLegsUp" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="walkAction" source="orientan.mascot.mascot" target="orientan.mascot.Walk" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="orientan.RecommendPages.RecommendData" target="orientan.RecommendPages.RecommendPageData" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="orientan.config.loadconfig" target="orientan.config.PinchedData" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="dashAction" source="orientan.mascot.mascot" target="orientan.mascot.Dash" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="orientan.mascotEnvironment.Mouse" target="orientan.mascotEnvironment.Mouse" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="actionList" source="orientan.mascot.ActionManager" target="orientan.mascot.MascotAction" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;MascotAction&gt;"/>
+    <IsRelation name="is" source="orientan.mascot.ClimbCeiling" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="animationManger" source="orientan.mascot.mascot" target="orientan.mascot.TimelineManger" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="orientan.config.ResistingData" target="orientan.config.Pose" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="fallAction" source="orientan.mascot.mascot" target="orientan.mascot.FallingAndBouncing" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.SitWithLegsDown" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="falling_data" source="orientan.config.loadconfig" target="orientan.config.FallingData" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sitAndDangleLegsAction" source="orientan.mascot.mascot" target="orientan.mascot.SitAndDangleLegs" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.Drag" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="pages" source="orientan.RecommendPages.RecommendData" target="orientan.RecommendPages.RecommendPageData" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;RecommendPageData&gt;"/>
+    <HasRelation name="actionMode" source="orientan.mascot.FallingAndBouncing" target="orientan.mascot.ActionMode" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="standActionList" source="orientan.mascot.mascot" target="orientan.mascot.MascotAction" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;MascotAction&gt;"/>
+    <HasRelation name="Animation" source="orientan.config.Action" target="orientan.config.Pose" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Pose&gt;"/>
+    <HasRelation name="timeLineManger" source="orientan.mascot.Drag" target="orientan.mascot.TimelineManger" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sitWithLegsDownAction" source="orientan.mascot.mascot" target="orientan.mascot.SitWithLegsDown" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="mouseDetect" source="orientan.mascot.SitAndLookAtMouse" target="orientan.mascotEnvironment.Mouse" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="orientan.config.loadconfig" target="orientan.config.Action" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="orientan.config.FallingData" target="orientan.config.Action" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="climbCeiling" source="orientan.mascot.FallingAndBouncing" target="orientan.mascot.ClimbCeiling" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="mouseDetect" source="orientan.Orientan" target="orientan.mascotEnvironment.Mouse" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.Run" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="sitAndSpinHeadAction" source="orientan.mascot.mascot" target="orientan.mascot.SitAndSpinHeadAction" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="addMascot" source="orientan.Orientan" target="orientan.AddMascotService" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.FallingAndBouncing" target="orientan.mascot.MascotAction"/>
+    <IsRelation name="is" source="orientan.mascot.Dash" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="sitAction" source="orientan.mascot.mascot" target="orientan.mascot.Sit" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pinchedpose" source="orientan.config.PinchedAnimation" target="orientan.config.Pose" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="orientan.config.PinchedData" target="orientan.config.PinchedAnimation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sitActionList" source="orientan.mascot.mascot" target="orientan.mascot.MascotAction" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;MascotAction&gt;"/>
+    <HasRelation name="runAction" source="orientan.mascot.mascot" target="orientan.mascot.Run" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.Sit" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="config" source="orientan.AddMascotService" target="orientan.config.loadconfig" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.Stand" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="Action_List" source="orientan.config.loadconfig" target="orientan.config.Action" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Action&gt;"/>
+    <IsRelation name="is" source="orientan.mascot.Walk" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="pinched_data" source="orientan.config.loadconfig" target="orientan.config.PinchedData" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.SitAndLookAtMouse" target="orientan.mascot.MascotAction"/>
+    <HasRelation name="config" source="orientan.Orientan" target="orientan.config.loadconfig" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="Animation" source="orientan.config.PinchedData" target="orientan.config.PinchedAnimation" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;PinchedAnimation&gt;"/>
+    <HasRelation name="actionMode" source="orientan.mascot.mascot" target="orientan.mascot.ActionMode" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="mouseDetect" source="orientan.AddMascotService" target="orientan.mascotEnvironment.Mouse" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="fallingAction" source="orientan.config.FallingData" target="orientan.config.Action" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ClimbCeilingAction" source="orientan.mascot.mascot" target="orientan.mascot.ClimbCeiling" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="orientan.config.PinchedAnimation" target="orientan.config.Pose" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="BouncingConfig" source="orientan.mascot.FallingAndBouncing" target="orientan.config.Action" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="imageChooser" source="orientan.AddMascotService" target="orientan.ImageSetChooser.ImageSetChooser" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ImageSetChooser"/>
+    <UseRelation source="orientan.mascot.ActionManager" target="orientan.mascot.MascotAction" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="dragAction" source="orientan.mascot.mascot" target="orientan.mascot.Drag" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="resisting_data" source="orientan.config.loadconfig" target="orientan.config.ResistingData" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="orientan.config.loadconfig" target="orientan.config.FallingData" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="standAction" source="orientan.mascot.mascot" target="orientan.mascot.Stand" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="orientan.mascot.SitAndSpinHeadAction" target="orientan.mascot.MascotAction"/>
+    <IsRelation name="is" source="orientan.mascot.SitWithLegsUp" target="orientan.mascot.MascotAction"/>
+    <UseRelation source="orientan.mascot.Drag" target="orientan.mascotEnvironment.Mouse" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="orientan.config.loadconfig" target="orientan.config.ResistingData" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

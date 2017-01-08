@@ -1,0 +1,8 @@
+<map id="orientan.mascotEnvironment.mascotenvironment.getRightWall" name="orientan.mascotEnvironment.mascotenvironment.getRightWall">
+<area shape="rect" id="node2" href="$classorientan_1_1mascot_1_1_climb_ceiling.html#a121c236d982e4c2d5843fe6886c467dd" title="orientan.mascot.ClimbCeiling.\lClimbCeiling" alt="" coords="385,5,579,47"/>
+<area shape="rect" id="node3" href="$classorientan_1_1mascot_1_1_dash.html#a0674d14f6050ba204b05596b11ed3eaf" title="orientan.mascot.Dash.Dash" alt="" coords="391,71,573,98"/>
+<area shape="rect" id="node4" href="$classorientan_1_1mascot_1_1_falling_and_bouncing.html#ad34527f62b6acbab8498b03e6c133b55" title="orientan.mascot.FallingAnd\lBouncing.FallingAndBouncing" alt="" coords="385,123,579,164"/>
+<area shape="rect" id="node5" href="$classorientan_1_1mascot_1_1mascot.html#a66c996c45f976e46b76f2b2845670b42" title="orientan.mascot.mascot.mascot" alt="" coords="377,189,587,215"/>
+<area shape="rect" id="node6" href="$classorientan_1_1mascot_1_1_run.html#a440475b006572543a52dfea531e5fce1" title="orientan.mascot.Run.Run" alt="" coords="397,239,567,266"/>
+<area shape="rect" id="node7" href="$classorientan_1_1mascot_1_1_walk.html#ac013f0d23f8210242546f11593618111" title="orientan.mascot.Walk.Walk" alt="" coords="391,290,573,317"/>
+</map>

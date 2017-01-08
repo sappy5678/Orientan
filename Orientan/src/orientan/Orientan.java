@@ -5,7 +5,10 @@
  */
 package orientan;
 
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import java.awt.AWTException;
+import java.awt.Button;
 import java.awt.PopupMenu;
 import java.awt.SystemTray;
 import java.awt.Toolkit;
@@ -27,7 +30,16 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
+import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import org.controlsfx.control.*;
+import orientan.ImageSetChooser.ImageSetChooser;
+import orientan.config.loadconfig;
+import orientan.mascot.mascot;
+import orientan.mascotEnvironment.Mouse;
+import orientan.mascotEnvironment.mascotenvironment;
 
 /**
  *
@@ -36,31 +48,52 @@ import org.controlsfx.control.*;
 public class Orientan extends Application {
 
     Properties properties = new Properties();
+    private String imageSetPath;
+    private Mouse mouseDetect;
+    private loadconfig config;
+    private AddMascotService addMascot;
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("OrientanFXMLDocument.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("OrientanFXMLDocument.fxml"));
 
         // set log type
         // 設定log的類別
         settingLog();
-
+        Localelanguage.selectLanguage();
+        //給thread緩衝時間
+        //Thread.sleep(2000);
         // get config in orientan 
         //  取得設定檔 在  orientan 底下
         properties = getConfig();
-
-        Scene scene = new Scene(root);
         setIcon(stage);
-        stage.initStyle(StageStyle.UTILITY);
-        stage.setScene(scene);
-        stage.show();
-        Notifications.create().title("Orientan Status").text("Orientan Start to Run").showInformation();
+        //取得動作設定檔(actions)
+        config = new loadconfig("actions");
+        /**/
+//      
+        System.out.println("a");
+        String out = "";
+        //out=RecommendPagesCrawl.Crawlrun("TestUser", 20);
+        System.out.println(out);
+        //建立桌寵環境參數
+
+        //建立滑鼠監控
+        mouseDetect = new Mouse();
+        MascotThreadNumberManager.addOneThread();
+        addMascot = new AddMascotService(mouseDetect, config, imageSetPath);
+        addMascot.start();
+           
+        //imageSetPath=addMascot.returnPath();
+        // mascotenvironment.setImage(new Image(new File(imageSetPath+ "\\shime1.png").toURI().toString()));
+        // Notifications.create().title("Orientan Status").text("Orientan Start to Run").showInformation();
     }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        //System.out.println(ResourceBundle.getBundle("Test", Locale.getDefault()).getString("test"));
         launch(args);
     }
 
@@ -68,7 +101,7 @@ public class Orientan extends Application {
     // set System tray icon
     private void setIcon(Stage stage) throws UnsupportedEncodingException {
         Locale currentLocale = Locale.getDefault();
-        ResourceBundle SystemTrayMenu = ResourceBundle.getBundle("messages", currentLocale);
+        //ResourceBundle SystemTrayMenu = ResourceBundle.getBundle("messages", currentLocale);
         TrayIcon trayIcon = null;
         if (SystemTray.isSupported()) {
             // get the SystemTray instance
@@ -81,32 +114,80 @@ public class Orientan extends Application {
                 public void actionPerformed(ActionEvent e) {
                     // execute default action of the application
                     String cmd = e.getActionCommand();
-                    System.out.println(i18nConvert(SystemTrayMenu.getString("exit")));
+
                     // exit 離開
-                    if(cmd.equals( i18nConvert(SystemTrayMenu.getString("exit"))))
-                    {
+
+                    if (cmd == Localelanguage.getStringLocalelanguage("exit")) {
+
                         System.out.println(e);
                         System.exit(0);
+
+                    }
+                }
+
+            };
+            ActionListener addMascotlistener = new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    // execute default action of the application
+                    String cmd = e.getActionCommand();
+                    System.out.println(cmd);
+                    // exit 離開
+                    /*
+                    switch (cmd) {
+                        case "add a mascot": {
+                            //new Thread(new AddMascotService(mouseDetect, config, imageSetPath)).start();
+                            break;
+                        }
+                        case SystemTrayMenu.getString("exit"): {
+                            System.out.println(e);
+                            System.exit(0);
+                            break;
+                        }
+                    }*/
+                    if (cmd.equals(Localelanguage.getStringLocalelanguage("exit"))) {
+                        System.out.println(e);
+                        System.exit(0);
+
+                    } else if (cmd.equals(Localelanguage.getStringLocalelanguage("Add_mascot"))) {
+                        System.out.println("Add_mascot");
+                        MascotThreadNumberManager.addOneThread();
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                
+                                new Thread(new AddMascotService(mouseDetect, config, imageSetPath)).start();
+
+                            }
+
+                            //AddMascotService addMascot2 = new AddMascotService(mouseDetect, config, imageSetPath);
+                            //addMascot2.run();
+                        });
                         
                     }
                 }
 
             };
-
             // create a popup menu
             PopupMenu popup = new PopupMenu();
             // create menu item for the default action
-            System.out.println(i18nConvert(SystemTrayMenu.getString("exit")));
-            java.awt.MenuItem test = new java.awt.MenuItem(i18nConvert(SystemTrayMenu.getString("exit")));
-            popup.addActionListener(listener);
-            popup.add(test);
 
+
+            java.awt.MenuItem exit = new java.awt.MenuItem(Localelanguage.getStringLocalelanguage("exit"));
+            java.awt.MenuItem Add_mascot = new java.awt.MenuItem(Localelanguage.getStringLocalelanguage("Add_mascot"));
+
+            popup.addActionListener(addMascotlistener);
+            //popup.add(test);
+            // java.awt.MenuItem setNewMascot = new java.awt.MenuItem(SystemTrayMenu.getString("Add_mascot"));
+            popup.add(Add_mascot);
+            popup.add(exit);
+
+            //popup.add(setNewMascot);
             /// ... add other items
             // construct a TrayIcon
             trayIcon = new TrayIcon(image, "Orientan", popup);
 
             // set the TrayIcon properties
-            trayIcon.addActionListener(listener);
+            trayIcon.addActionListener(addMascotlistener);
 
             // ...
             // add the tray image

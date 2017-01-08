@@ -47,5 +47,10 @@ Temporary Items
 .apdisk
 /Orientan/nbproject/private/
 /Orientan/dist/
+<<<<<<< HEAD
 /Orientan/build/
 ChromeExtension.pem
+=======
+Orientan/build/classes/orientan/mascot/Fall$1.class
+Orientan/build/classes/orientan/mascot/Fall$1.class
+>>>>>>> ed42b9c4e033f4dda78b1a077b5a26781db279c8

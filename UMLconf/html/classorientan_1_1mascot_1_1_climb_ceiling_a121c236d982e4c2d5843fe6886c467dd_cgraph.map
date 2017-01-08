@@ -1,0 +1,6 @@
+<map id="orientan.mascot.ClimbCeiling.ClimbCeiling" name="orientan.mascot.ClimbCeiling.ClimbCeiling">
+<area shape="rect" id="node2" href="$classorientan_1_1mascot_environment_1_1mascotenvironment.html#a4feb107b98ce4059c987ddce5af66216" title="orientan.mascotEnvironment.mascotenvironment.get\lLeftWall" alt="" coords="248,5,572,47"/>
+<area shape="rect" id="node3" href="$classorientan_1_1mascot_environment_1_1mascotenvironment.html#aa87e88d5da90a92934e74c9fd4bfff7a" title="orientan.mascotEnvironment.mascotenvironment.get\lRightWall" alt="" coords="248,71,572,112"/>
+<area shape="rect" id="node4" href="$classorientan_1_1config_1_1_action.html#a2dd2dc0a0ef8ea2b571f287908fb974c" title="orientan.config.Action.get\lAnimation" alt="" coords="325,136,495,177"/>
+<area shape="rect" id="node5" href="$classorientan_1_1mascot_1_1_timeline_manger.html#a081297e5fadadebec82c50a229964fa1" title="orientan.mascot.Timeline\lManger.getTimelineList" alt="" coords="327,201,493,243"/>
+</map>

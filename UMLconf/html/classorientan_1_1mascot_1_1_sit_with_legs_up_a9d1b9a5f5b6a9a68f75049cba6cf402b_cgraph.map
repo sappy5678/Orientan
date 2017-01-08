@@ -1,0 +1,5 @@
+<map id="orientan.mascot.SitWithLegsUp.SitWithLegsUp" name="orientan.mascot.SitWithLegsUp.SitWithLegsUp">
+<area shape="rect" id="node2" href="$classorientan_1_1mascot_environment_1_1mascotenvironment.html#a6d31110102eb742e7305bd890fb24ac0" title="orientan.mascotEnvironment.mascotenvironment.get\lFloor" alt="" coords="244,5,568,47"/>
+<area shape="rect" id="node3" href="$classorientan_1_1config_1_1_action.html#a2dd2dc0a0ef8ea2b571f287908fb974c" title="orientan.config.Action.get\lAnimation" alt="" coords="321,71,491,112"/>
+<area shape="rect" id="node4" href="$classorientan_1_1mascot_1_1_timeline_manger.html#a081297e5fadadebec82c50a229964fa1" title="orientan.mascot.Timeline\lManger.getTimelineList" alt="" coords="323,136,489,177"/>
+</map>

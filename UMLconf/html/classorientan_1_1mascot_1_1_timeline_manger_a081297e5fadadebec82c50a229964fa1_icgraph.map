@@ -1,0 +1,13 @@
+<map id="orientan.mascot.TimelineManger.getTimelineList" name="orientan.mascot.TimelineManger.getTimelineList">
+<area shape="rect" id="node2" href="$classorientan_1_1mascot_1_1_climb_ceiling.html#a121c236d982e4c2d5843fe6886c467dd" title="orientan.mascot.ClimbCeiling.\lClimbCeiling" alt="" coords="235,5,430,47"/>
+<area shape="rect" id="node3" href="$classorientan_1_1mascot_1_1_dash.html#a0674d14f6050ba204b05596b11ed3eaf" title="orientan.mascot.Dash.Dash" alt="" coords="241,71,424,98"/>
+<area shape="rect" id="node4" href="$classorientan_1_1mascot_1_1_falling_and_bouncing.html#ad34527f62b6acbab8498b03e6c133b55" title="orientan.mascot.FallingAnd\lBouncing.FallingAndBouncing" alt="" coords="235,123,430,164"/>
+<area shape="rect" id="node5" href="$classorientan_1_1mascot_1_1_run.html#a440475b006572543a52dfea531e5fce1" title="orientan.mascot.Run.Run" alt="" coords="248,189,417,215"/>
+<area shape="rect" id="node6" href="$classorientan_1_1mascot_1_1_sit.html#a832c258c0bf251a8522dce94f2f3bb03" title="orientan.mascot.Sit.Sit" alt="" coords="255,239,410,266"/>
+<area shape="rect" id="node7" href="$classorientan_1_1mascot_1_1_sit_and_dangle_legs.html#affe3ae36fdd27ca62053ec70dad4362b" title="orientan.mascot.SitAndDangle\lLegs.SitAndDangleLegs" alt="" coords="233,291,432,332"/>
+<area shape="rect" id="node8" href="$classorientan_1_1mascot_1_1_sit_and_spin_head_action.html#a543f284336d757c91e7b58384e856379" title="orientan.mascot.SitAndSpin\lHeadAction.SitAndSpinHeadAction" alt="" coords="220,356,445,397"/>
+<area shape="rect" id="node9" href="$classorientan_1_1mascot_1_1_sit_with_legs_down.html#afcfd8646ec0025e81d09c2c94935d93d" title="orientan.mascot.SitWithLegs\lDown.SitWithLegsDown" alt="" coords="237,421,428,463"/>
+<area shape="rect" id="node10" href="$classorientan_1_1mascot_1_1_sit_with_legs_up.html#a9d1b9a5f5b6a9a68f75049cba6cf402b" title="orientan.mascot.SitWithLegs\lUp.SitWithLegsUp" alt="" coords="237,487,428,528"/>
+<area shape="rect" id="node11" href="$classorientan_1_1mascot_1_1_stand.html#a0fe133424599a3e0725ce38a38bb685a" title="orientan.mascot.Stand.Stand" alt="" coords="237,553,428,579"/>
+<area shape="rect" id="node12" href="$classorientan_1_1mascot_1_1_walk.html#ac013f0d23f8210242546f11593618111" title="orientan.mascot.Walk.Walk" alt="" coords="241,603,424,630"/>
+</map>

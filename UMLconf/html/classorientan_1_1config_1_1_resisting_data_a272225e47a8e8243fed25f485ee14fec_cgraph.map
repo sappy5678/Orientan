@@ -1,0 +1,6 @@
+<map id="orientan.config.ResistingData.ResistingData" name="orientan.config.ResistingData.ResistingData">
+<area shape="rect" id="node2" href="$classorientan_1_1config_1_1_pose.html#a83fabe26d6ae65576e0d642710d609f3" title="orientan.config.Pose.set\lImage" alt="" coords="217,5,380,47"/>
+<area shape="rect" id="node3" href="$classorientan_1_1config_1_1_pose.html#a7a1376aae523daff0b685474d51adf53" title="orientan.config.Pose.set\lDuration" alt="" coords="217,71,380,112"/>
+<area shape="rect" id="node4" href="$classorientan_1_1config_1_1_pose.html#a91d71eec2cebc4752e74818e6d922b50" title="orientan.config.Pose.set\lImageAnchor" alt="" coords="217,136,380,177"/>
+<area shape="rect" id="node5" href="$classorientan_1_1config_1_1_pose.html#a21470135e176cde36423ba6ebac12d8b" title="orientan.config.Pose.set\lVelocity" alt="" coords="217,201,380,243"/>
+</map>

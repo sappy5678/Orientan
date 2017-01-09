@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <Mascot xmlns="http://www.group-finity.com/Mascot" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.group-finity.com/Mascot Mascot.xsd">
 
@@ -126,13 +126,13 @@
 		<Action Name="ClimbCeiling" Type="Move" BorderType="Ceiling">
 			<Animation>
 				<Pose Image="/shime25.png" ImageAnchor="64,48" Velocity="0,0" Duration="16" />
-				<Pose Image="/shime25.png" ImageAnchor="64,48" Velocity="-1,0" Duration="4" />
-				<Pose Image="/shime23.png" ImageAnchor="64,48" Velocity="-1,0" Duration="4" />
-				<Pose Image="/shime24.png" ImageAnchor="64,48" Velocity="-1,0" Duration="4" />
+				<Pose Image="/shime25.png" ImageAnchor="64,48" Velocity="-4,0" Duration="4" />
+				<Pose Image="/shime23.png" ImageAnchor="64,48" Velocity="-4,0" Duration="4" />
+				<Pose Image="/shime24.png" ImageAnchor="64,48" Velocity="-4,0" Duration="4" />
 				<Pose Image="/shime24.png" ImageAnchor="64,48" Velocity="0,0" Duration="16" />
-				<Pose Image="/shime24.png" ImageAnchor="64,48" Velocity="-2,0" Duration="4" />
-				<Pose Image="/shime23.png" ImageAnchor="64,48" Velocity="-2,0" Duration="4" />
-				<Pose Image="/shime25.png" ImageAnchor="64,48" Velocity="-2,0" Duration="4" />
+				<Pose Image="/shime24.png" ImageAnchor="64,48" Velocity="-8,0" Duration="4" />
+				<Pose Image="/shime23.png" ImageAnchor="64,48" Velocity="-9,0" Duration="4" />
+				<Pose Image="/shime25.png" ImageAnchor="64,48" Velocity="-8,0" Duration="4" />
 			</Animation>
 		</Action>
 
@@ -230,7 +230,7 @@
 				<Pose Image="/shime20.png" ImageAnchor="64,128" Velocity="-2,0" Duration="4" />
 				<Pose Image="/shime20.png" ImageAnchor="64,128" Velocity="0,0" Duration="10" />
 				<Pose Image="/shime19.png" ImageAnchor="64,104" Velocity="-4,0" Duration="4" />
-			</Animation>
+			</Animation>d
 		</Action>
 
 
@@ -253,7 +253,7 @@
 				<Pose Image="/shime10.png" ImageAnchor="64,128" Velocity="0,0" Duration="5" />
 			</Animation>
 		</Action>
-		<Action Name="Resisting" Type="Embedded" Class="com.group_finity.mascot.action.Regist">
+		<Action Name="Resisting" Type="Embedded" Class="Rcom.group_finity.mascot.action.Regist">
 			<Animation>
 				<Pose Image="/shime5.png" ImageAnchor="64,128" Velocity="0,0" Duration="5" />
 				<Pose Image="/shime6.png" ImageAnchor="64,128" Velocity="0,0" Duration="5" />

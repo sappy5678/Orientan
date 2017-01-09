@@ -342,19 +342,19 @@
 "ImageAnchor": "64,48",
 "Duration": 4,
 "Image": "/shime25.png",
-"Velocity": "-1,0"
+"Velocity": "-4,0"
 },
 {
 "ImageAnchor": "64,48",
 "Duration": 4,
 "Image": "/shime23.png",
-"Velocity": "-1,0"
+"Velocity": "-4,0"
 },
 {
 "ImageAnchor": "64,48",
 "Duration": 4,
 "Image": "/shime24.png",
-"Velocity": "-1,0"
+"Velocity": "-4,0"
 },
 {
 "ImageAnchor": "64,48",
@@ -366,19 +366,19 @@
 "ImageAnchor": "64,48",
 "Duration": 4,
 "Image": "/shime24.png",
-"Velocity": "-2,0"
+"Velocity": "-8,0"
 },
 {
 "ImageAnchor": "64,48",
 "Duration": 4,
 "Image": "/shime23.png",
-"Velocity": "-2,0"
+"Velocity": "-9,0"
 },
 {
 "ImageAnchor": "64,48",
 "Duration": 4,
 "Image": "/shime25.png",
-"Velocity": "-2,0"
+"Velocity": "-8,0"
 }
 ]},
 "BorderType": "Ceiling",
@@ -684,6 +684,7 @@
 }
 ]},
 "BorderType": "Floor",
+"content": "d",
 "Name": "Tripping"
 },
 {
@@ -922,7 +923,7 @@
 "Velocity": "0,0"
 }
 ]},
-"Class": "com.group_finity.mascot.action.Regist",
+"Class": "Rcom.group_finity.mascot.action.Regist",
 "Name": "Resisting"
 }
 ]},

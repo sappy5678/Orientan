@@ -126,13 +126,13 @@
 		<Action Name="ClimbCeiling" Type="Move" BorderType="Ceiling">
 			<Animation>
 				<Pose Image="/shime25.png" ImageAnchor="64,48" Velocity="0,0" Duration="16" />
-				<Pose Image="/shime25.png" ImageAnchor="64,48" Velocity="-4,0" Duration="4" />
-				<Pose Image="/shime23.png" ImageAnchor="64,48" Velocity="-4,0" Duration="4" />
-				<Pose Image="/shime24.png" ImageAnchor="64,48" Velocity="-4,0" Duration="4" />
+				<Pose Image="/shime25.png" ImageAnchor="64,48" Velocity="-2,0" Duration="4" />
+				<Pose Image="/shime23.png" ImageAnchor="64,48" Velocity="-2,0" Duration="4" />
+				<Pose Image="/shime24.png" ImageAnchor="64,48" Velocity="-2,0" Duration="4" />
 				<Pose Image="/shime24.png" ImageAnchor="64,48" Velocity="0,0" Duration="16" />
-				<Pose Image="/shime24.png" ImageAnchor="64,48" Velocity="-8,0" Duration="4" />
-				<Pose Image="/shime23.png" ImageAnchor="64,48" Velocity="-9,0" Duration="4" />
-				<Pose Image="/shime25.png" ImageAnchor="64,48" Velocity="-8,0" Duration="4" />
+				<Pose Image="/shime24.png" ImageAnchor="64,48" Velocity="-4,0" Duration="4" />
+				<Pose Image="/shime23.png" ImageAnchor="64,48" Velocity="-4,0" Duration="4" />
+				<Pose Image="/shime25.png" ImageAnchor="64,48" Velocity="-4,0" Duration="4" />
 			</Animation>
 		</Action>
 

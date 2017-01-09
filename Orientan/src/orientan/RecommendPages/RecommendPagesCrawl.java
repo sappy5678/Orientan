@@ -40,6 +40,14 @@ public final class RecommendPagesCrawl {
                 data = ISR.read();
             }
             ISR.close();
+            //去掉頭  "
+            //bf.deleteCharAt(0);
+            //去掉尾巴 "
+            //System.out.println(bf.charAt(bf.length()-1));
+            //bf.delete(bf.length()-2, bf.length());
+            //bf.toString().replaceAll("\\\\", "");
+                    //str1.replaceAll("\\\\", "");
+            //System.out.println("crawl :"+bf.toString());
         } catch (MalformedURLException ex) {
             Logger.getLogger(RecommendPagesCrawl.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -51,8 +59,8 @@ public final class RecommendPagesCrawl {
                 Logger.getLogger(RecommendPagesCrawl.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        System.out.printf("!!!!");
-        RecommendPageJson=bf.toString();
+        //System.out.printf("!!!!");
+        RecommendPageJson=bf.toString().replaceAll("\\\\\\\\","\\");
         //System.out.printf(RecommendPageJson);
         return RecommendPageJson;
     }

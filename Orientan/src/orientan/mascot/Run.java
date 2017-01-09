@@ -60,7 +60,7 @@ public class Run extends MascotAction {
                 mascotStage.setX((mascotStage.getX() + deltaX));
             }
         };
-
+        deltaX=Config.getAnimation().get(0).getVelocityX();
         duration = Config.getAnimation().get(0).getDuration() / 10;
         for (int i = 0; i < Config.getAnimation().size(); i++) {
             //image.add(new Image(new File(System.getProperty("user.dir") + "\\img" + Walk.getAnimation().get(i).getImage()).toURI().toString()));

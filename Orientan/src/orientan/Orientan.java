@@ -27,6 +27,7 @@ import java.util.Locale;
 import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.logging.FileHandler;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import javafx.application.Platform;
@@ -113,8 +114,11 @@ public class Orientan extends Application {
                 public void actionPerformed(ActionEvent e) {
                     // execute default action of the application
                     String cmd = e.getActionCommand();
+
                     // exit 離開
+
                     if (cmd == Localelanguage.getStringLocalelanguage("exit")) {
+
                         System.out.println(e);
                         System.exit(0);
 
@@ -166,6 +170,7 @@ public class Orientan extends Application {
             // create a popup menu
             PopupMenu popup = new PopupMenu();
             // create menu item for the default action
+
 
             java.awt.MenuItem exit = new java.awt.MenuItem(Localelanguage.getStringLocalelanguage("exit"));
             java.awt.MenuItem Add_mascot = new java.awt.MenuItem(Localelanguage.getStringLocalelanguage("Add_mascot"));
@@ -242,4 +247,13 @@ public class Orientan extends Application {
         logger.info("Start to Run");
     }
 
+    public String i18nConvert(String src) 
+    {
+        try {
+            return (new String(src.getBytes("ISO-8859-1"),"UTF-8"));
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(Orientan.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return " ";
+    }
 }

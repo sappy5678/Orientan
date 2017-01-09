@@ -342,19 +342,19 @@
 "ImageAnchor": "64,48",
 "Duration": 4,
 "Image": "/shime25.png",
-"Velocity": "-4,0"
+"Velocity": "-2,0"
 },
 {
 "ImageAnchor": "64,48",
 "Duration": 4,
 "Image": "/shime23.png",
-"Velocity": "-4,0"
+"Velocity": "-2,0"
 },
 {
 "ImageAnchor": "64,48",
 "Duration": 4,
 "Image": "/shime24.png",
-"Velocity": "-4,0"
+"Velocity": "-2,0"
 },
 {
 "ImageAnchor": "64,48",
@@ -366,19 +366,19 @@
 "ImageAnchor": "64,48",
 "Duration": 4,
 "Image": "/shime24.png",
-"Velocity": "-8,0"
+"Velocity": "-4,0"
 },
 {
 "ImageAnchor": "64,48",
 "Duration": 4,
 "Image": "/shime23.png",
-"Velocity": "-9,0"
+"Velocity": "-4,0"
 },
 {
 "ImageAnchor": "64,48",
 "Duration": 4,
 "Image": "/shime25.png",
-"Velocity": "-8,0"
+"Velocity": "-4,0"
 }
 ]},
 "BorderType": "Ceiling",

@@ -74,11 +74,11 @@ public class ClimbCeiling extends MascotAction {
             timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(time = time + (double) CimbCeilingConfig.getAnimation().get(i - 1).getDuration() / 10), onFinished, new KeyValue(MascotimageView.imageProperty(), image.get(i))));
             if (i == CimbCeilingConfig.getAnimation().size() - 1) {
                 timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(time = time + (double) CimbCeilingConfig.getAnimation().get(i).getDuration() / 10), onFinished, new KeyValue(MascotimageView.imageProperty(), image.get(i))));
-                token = CimbCeilingConfig.getAnimation().get(i).getVelocity().split(",|\n");
-            poseVelocity.add(Double.parseDouble(token[0]));
+                //token = CimbCeilingConfig.getAnimation().get(i).getVelocity().split(",|\n");
+            poseVelocity.add(CimbCeilingConfig.getAnimation().get(i).getVelocityX());
             }
-            token = CimbCeilingConfig.getAnimation().get(i - 1).getVelocity().split(",|\n");
-            poseVelocity.add(Double.parseDouble(token[0]));
+            //token = CimbCeilingConfig.getAnimation().get(i - 1).getVelocity().split(",|\n");
+            poseVelocity.add(CimbCeilingConfig.getAnimation().get(i-1).getVelocityX());
         }
         this.size = CimbCeilingConfig.getAnimation().size();
         animationManger.getTimelineList().add(timeline);

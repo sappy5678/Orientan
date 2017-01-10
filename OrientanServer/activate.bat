@@ -1,0 +1,1 @@
+call "D:\software\Anaconda\Scripts\activate" %"mylab"

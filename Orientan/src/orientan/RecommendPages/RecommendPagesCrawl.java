@@ -30,9 +30,9 @@ public final class RecommendPagesCrawl {
         try {
             URL targetURL = new URL(apiURL + "/" + userName + "/" + pagesNumber.toString());
             URLConnection conn = targetURL.openConnection();
-            System.out.println(targetURL);
+            //System.out.println(targetURL);
             conn.connect();
-            System.out.println(conn.getContentType());
+            //System.out.println(conn.getContentType());
             ISR = new InputStreamReader(conn.getInputStream(), "UTF-8");
             data = ISR.read();
             while (data != -1) {

@@ -30,10 +30,12 @@ public final class Localelanguage {
 
     //private static String key = null;
     public static String getStringLocalelanguage(String key) {
-        if(selectlanguageBoolean)
-            return ResourceBundle.getBundle("properties."+language, Locale.getDefault()).getString(key);
-        else
+
+        if (selectlanguageBoolean) {
+            return ResourceBundle.getBundle("properties." + language, Locale.getDefault()).getString(key);
+        } else {
             return SystemTrayMenu.getString(key);
+        }
     }
 
     public static void selectLanguage() {

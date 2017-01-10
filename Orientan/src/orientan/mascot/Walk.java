@@ -30,8 +30,12 @@ public class Walk extends MascotAction {
     private double time = 0;
     private double duration = 0;
     private double deltaX = -10;
+    private int leftORight = 1;
+    private int poseNumber = 0;
     //private double deltaY = 0;
     private Timeline timeline = new Timeline();
+    private ArrayList<Double> poseVelocityX = new ArrayList<Double>();
+    private ArrayList<Double> poseVelocityY = new ArrayList<Double>();
 
     public Walk(Stage mascotStage, ImageView MascotimageView, Action walkConfig, TimelineManger animationManger, String imgPath) {
         this.duration = walkConfig.getAnimation().get(0).getDuration();
@@ -43,28 +47,34 @@ public class Walk extends MascotAction {
             public void handle(ActionEvent t) {
                 //如果超出左右邊界，就變換前進方向與圖片翻轉
                 //if(mascotStage.getX()<=-20||mascotStage.getX()>=primScreenBounds.getWidth())
-                if (MascotimageView.getRotate() == 180) {
-                    deltaX = Math.abs(deltaX);
-                } else if (MascotimageView.getRotate() == 0) {
-                    deltaX = Math.abs(deltaX) * -1;
-                }
+                MascotimageView.setRotationAxis(Rotate.Y_AXIS);
                 if (mascotStage.getX() <= mascotenvironment.getLeftWall() || mascotStage.getX() >= mascotenvironment.getRightWall()) {
 
-                    deltaX = deltaX * (-1);
-                    MascotimageView.setRotationAxis(Rotate.Y_AXIS);
-                    if (deltaX > 0) {
+                    //
+                    if (mascotStage.getX() <= mascotenvironment.getLeftWall()) {
                         MascotimageView.setRotate(180);
-                    } else {
+                    } else if (mascotStage.getX() >= mascotenvironment.getRightWall()) {
                         MascotimageView.setRotate(0);
                     }
+                    //
                 }
-                mascotStage.setX((mascotStage.getX() + deltaX));
+                if (MascotimageView.getRotate() == 0) {
+                    leftORight = Math.abs(leftORight);
+                } else if (MascotimageView.getRotate() == 180) {
+                    leftORight = Math.abs(leftORight) * -1;
+                }
+                mascotStage.setX(mascotStage.getX() + poseVelocityX.get(poseNumber) * leftORight);
+                mascotStage.setX(mascotStage.getX() + poseVelocityY.get(poseNumber) * leftORight);
+                poseNumber++;
+                if (poseNumber == poseVelocityX.size()) {
+                    poseNumber = 0;
+                }
             }
         };
-        deltaX=walkConfig.getAnimation().get(0).getVelocityX();
+        deltaX = walkConfig.getAnimation().get(0).getVelocityX();
         //System.out.println("!????????"+walkConfig.getAnimation().get(0).getVelocityX());
         //時間軸生成
-        duration = walkConfig.getAnimation().get(0).getDuration() / 10;
+        //duration = walkConfig.getAnimation().get(0).getDuration() / 10;
         for (int i = 0; i < walkConfig.getAnimation().size(); i++) {
             //image.add(new Image(new File(System.getProperty("user.dir") + "\\img" + Walk.getAnimation().get(i).getImage()).toURI().toString()));
             image.add(new Image(new File(imagePath + walkConfig.getAnimation().get(i).getImage()).toURI().toString()));
@@ -72,9 +82,13 @@ public class Walk extends MascotAction {
         for (int i = 0; i < walkConfig.getAnimation().size(); i++) {
             if (i == 0) {
                 timeline.getKeyFrames().add(new KeyFrame(Duration.ZERO, onFinished, new KeyValue(MascotimageView.imageProperty(), image.get(i))));
+                poseVelocityX.add(walkConfig.getAnimation().get(i).getVelocityX());
+                poseVelocityY.add(walkConfig.getAnimation().get(i).getVelocityY());
                 continue;
             }
             timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(time = time + (double) walkConfig.getAnimation().get(i - 1).getDuration() / 10), onFinished, new KeyValue(MascotimageView.imageProperty(), image.get(i))));
+            poseVelocityX.add(walkConfig.getAnimation().get(i).getVelocityX());
+            poseVelocityY.add(walkConfig.getAnimation().get(i).getVelocityY());
             if (i == walkConfig.getAnimation().size() - 1) {
                 timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(time = time + (double) walkConfig.getAnimation().get(i).getDuration() / 10), new KeyValue(MascotimageView.imageProperty(), image.get(i))));
             }

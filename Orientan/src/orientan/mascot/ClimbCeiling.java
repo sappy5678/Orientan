@@ -12,8 +12,10 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Point3D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import orientan.config.Action;
@@ -34,28 +36,30 @@ public class ClimbCeiling extends MascotAction {
     private int size = 0;
     private int leftORight = 1;
     private String[] token;
-    private ArrayList<Double> poseVelocity = new ArrayList<Double>();
+    private ArrayList<Double> poseVelocityX = new ArrayList<Double>();
+    private ArrayList<Double> poseVelocityY = new ArrayList<Double>();
 
     public ClimbCeiling(Stage mascotStage, ImageView MascotimageView, Action CimbCeilingConfig, TimelineManger animationManger, String imgPath) {
         this.imagePath = imgPath;
 
         EventHandler onFinished = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent t) {
+                MascotimageView.setRotationAxis(Rotate.Y_AXIS);
                 if (mascotStage.getX() <= mascotenvironment.getLeftWall()) {
                     MascotimageView.setRotate(180);
                 } else if (mascotStage.getX() >= mascotenvironment.getRightWall()) {
                     MascotimageView.setRotate(0);
                 }
                 if (MascotimageView.getRotate() == 0) {
-                    leftORight = Math.abs(leftORight)*-1;
-                } else if (MascotimageView.getRotate() == 180) {
                     leftORight = Math.abs(leftORight);
+                } else if (MascotimageView.getRotate() == 180) {
+                    leftORight = Math.abs(leftORight) * -1;
                 }
                 //System.out.println(MascotimageView.getRotate());
-                mascotStage.setX(mascotStage.getX() + poseVelocity.get(poseNumber)*leftORight);
-                mascotStage.setX(mascotStage.getX() + 5 * leftORight);
+                mascotStage.setX(mascotStage.getX() + poseVelocityX.get(poseNumber) * leftORight);
+                mascotStage.setX(mascotStage.getX() + poseVelocityY.get(poseNumber) * leftORight);
                 poseNumber++;
-                if (poseNumber == size) {
+                if (poseNumber == poseVelocityX.size()) {
                     poseNumber = 0;
                 }
             }
@@ -69,16 +73,16 @@ public class ClimbCeiling extends MascotAction {
         for (int i = 0; i < CimbCeilingConfig.getAnimation().size(); i++) {
             if (i == 0) {
                 timeline.getKeyFrames().add(new KeyFrame(Duration.ZERO, onFinished, new KeyValue(MascotimageView.imageProperty(), image.get(i))));
+                poseVelocityX.add(CimbCeilingConfig.getAnimation().get(i).getVelocityX());
+                poseVelocityY.add(CimbCeilingConfig.getAnimation().get(i).getVelocityY());
                 continue;
             }
             timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(time = time + (double) CimbCeilingConfig.getAnimation().get(i - 1).getDuration() / 10), onFinished, new KeyValue(MascotimageView.imageProperty(), image.get(i))));
+            poseVelocityX.add(CimbCeilingConfig.getAnimation().get(i).getVelocityX());
+            poseVelocityY.add(CimbCeilingConfig.getAnimation().get(i).getVelocityY());
             if (i == CimbCeilingConfig.getAnimation().size() - 1) {
-                timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(time = time + (double) CimbCeilingConfig.getAnimation().get(i).getDuration() / 10), onFinished, new KeyValue(MascotimageView.imageProperty(), image.get(i))));
-                //token = CimbCeilingConfig.getAnimation().get(i).getVelocity().split(",|\n");
-            poseVelocity.add(CimbCeilingConfig.getAnimation().get(i).getVelocityX());
+                timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(time = time + (double) CimbCeilingConfig.getAnimation().get(i).getDuration() / 10), new KeyValue(MascotimageView.imageProperty(), image.get(i))));
             }
-            //token = CimbCeilingConfig.getAnimation().get(i - 1).getVelocity().split(",|\n");
-            poseVelocity.add(CimbCeilingConfig.getAnimation().get(i-1).getVelocityX());
         }
         this.size = CimbCeilingConfig.getAnimation().size();
         animationManger.getTimelineList().add(timeline);
